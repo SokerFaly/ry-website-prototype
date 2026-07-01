@@ -510,7 +510,7 @@ html.jsm .reveal.in{ opacity:1; transform:none; }
 
 /* —— 09 投資の流れ＝唯一のダイアグラム（一筆の縦線·番号ノード·2列 grid·スクロールで draw）—— */
 .flow-line{ list-style:none; margin:clamp(1.5rem,2.6vw,2.2rem) 0 0; padding:0; position:relative; }
-.flow-line::before{ content:""; position:absolute; left:calc(.825rem - 1px); top:.7rem; bottom:1.5rem; width:2px; background:var(--brand); transform:scaleY(0); transform-origin:top; transition:transform 1.15s var(--ease-draw); }
+.flow-line::before{ content:""; position:absolute; left:calc(.825rem - 1px); top:.7rem; bottom:2.5rem; width:2px; background:var(--brand); transform:scaleY(0); transform-origin:top; transition:transform 1.15s var(--ease-draw); }
 .g-flow.in .flow-line::before{ transform:scaleY(1); }
 .flow-line > li{ display:grid; grid-template-columns:1.65rem 1fr; gap:1.1rem; align-items:start; padding-bottom:clamp(1.3rem,2.3vw,2rem); }
 .flow-line > li:last-child{ padding-bottom:0; }
