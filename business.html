@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>事業紹介 ｜ 株式会社RY</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --brand:#4C0018; --brand-rgb:76,0,24; --accent-warm:#D8C8B8; --warm:#FBFAF7; --warm2:#F4F1EA; --white:#fff;
+  --ink:#1A1919; --ink2:#6B6862; --bd:#E3E0DA; --ease:cubic-bezier(.22,.61,.36,1);
+  --serif:'Noto Serif JP',serif; --sans:'Noto Sans JP',sans-serif; --ts:1.18;
+  --fs-section:calc(clamp(2.4rem,4.2vw,3.7rem)*var(--ts));
+  --fs-eyebrow:calc(clamp(.9rem,1.2vw,1.05rem)*var(--ts));
+  --fs-lead:calc(clamp(1.18rem,1.55vw,1.5rem)*var(--ts));
+  --fs-hero:calc(clamp(2.4rem,5.4vw,5.2rem)*var(--ts));
+  --fs-statement:calc(clamp(1.45rem,2.3vw,2rem)*var(--ts));
+  --fs-statement-big:calc(clamp(2rem,3.6vw,3.1rem)*var(--ts));
+  --fs-num:calc(clamp(2.6rem,5vw,4rem)*var(--ts)); --val-h:calc(var(--fs-num)*1.04);
+  --pad:clamp(1.4rem,5vw,4.5rem); --max:1560px;
+  /* v6：Business 融合で必要（v5 に無かった分）*/
+  --fs-h3:calc(clamp(1.18rem,1.5vw,1.4rem)*var(--ts)); --radius-md:8px;
+  --dur-base:.3s; --dur-enter:.85s; --dur-draw:.85s; --dur-line:.55s; --dur-fade:.22s; --ease-draw:cubic-bezier(.65,0,.35,1);
+}
+*{ box-sizing:border-box; } body{ margin:0; font-family:var(--sans); color:var(--ink); background:var(--white); font-feature-settings:"palt" 1; -webkit-font-smoothing:antialiased; line-height:1.7; }
+.wrap{ max-width:var(--max); margin-inline:auto; padding-inline:var(--pad); }
+.jp{ line-break:strict; word-break:auto-phrase; text-wrap:pretty; } .np{ white-space:nowrap; }
+.eyebrow{ font-size:var(--fs-eyebrow); font-weight:700; letter-spacing:.32em; text-transform:uppercase; color:var(--ink); margin:0; }
+h2.sec{ font-family:var(--serif); font-weight:700; font-size:var(--fs-section); line-height:1.32; margin:.5rem 0 0; }
+.lead{ font-size:var(--fs-lead); color:var(--ink2); line-height:1.9; margin:1rem 0 0; max-width:30em; }
+.arr{ color:var(--brand); font-weight:700; }
+.box{ border:1.5px dashed var(--bd); background:var(--warm2); display:grid; place-items:center; color:var(--ink2); font-size:.78rem; text-align:center; padding:.8rem; line-height:1.5; }
+.box.img{ background:repeating-linear-gradient(135deg,var(--warm2) 0 11px,#E8E2D8 11px 22px); }
+.asy-note{ font-size:.74rem; color:var(--ink2); margin:.5rem 0 0; line-height:1.6; } .asy-note b{ color:var(--brand); }
+section{ padding-block:clamp(2.2rem,5vw,4rem); }   /* v6：段間の細線は全廃（line-free・Stance/余白 含む全段）*/
+.sec-id{ font-size:.72rem; font-weight:700; letter-spacing:.1em; color:#B9B3A9; margin-bottom:.4rem; display:flex; align-items:center; gap:.6rem; flex-wrap:wrap; }
+.lv{ font-size:.66rem; font-weight:700; letter-spacing:.08em; padding:.12rem .5rem; border-radius:999px; }
+.lv.peak{ background:var(--brand); color:#fff; } .lv.mid{ background:#C9A27A; color:#fff; } .lv.low{ background:var(--warm2); color:var(--ink2); border:1px solid var(--bd); } .lv.rest{ background:transparent; color:#B9B3A9; border:1px dashed var(--bd); }
+
+/* ===== 解説モード：右側·縦·药丸カード（点開で出現）===== */
+.dm-toggle{ position:fixed; left:0; top:50%; transform:translateY(-50%); z-index:200; display:flex; flex-direction:column; align-items:center; gap:1px; padding:.7rem .35rem; font:inherit; font-size:.78rem; font-weight:700; line-height:1.15; letter-spacing:.02em; color:var(--brand); background:#fff; border:1px solid var(--brand); border-left:0; border-radius:0 7px 7px 0; cursor:pointer; box-shadow:0 8px 24px rgba(0,0,0,.12); }
+body.dm-on .dm-toggle{ background:var(--brand); color:#fff; }
+.dm-panel{ position:fixed; top:62px; right:16px; z-index:199; width:238px; max-height:calc(100dvh - 84px); overflow-y:auto; background:var(--ink); color:#fff; border-radius:20px; padding:1.05rem 1.1rem 1.15rem; box-shadow:0 26px 64px rgba(0,0,0,.34); -webkit-overflow-scrolling:touch; }
+.dm-panel[hidden]{ display:none; }
+.dm-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:.85rem; } .dm-head b{ font-size:.78rem; font-weight:700; }
+.dm-close{ font:inherit; font-size:1.15rem; line-height:1; color:rgba(255,255,255,.7); background:transparent; border:0; cursor:pointer; padding:.1rem .35rem; }
+.dm-grp{ margin-bottom:.95rem; }
+.dm-lbl{ display:block; font-size:.62rem; font-weight:700; letter-spacing:.08em; color:rgba(255,255,255,.5); margin-bottom:.42rem; text-transform:uppercase; }
+.dm-panel .seg{ display:flex; flex-wrap:wrap; gap:.3rem; }
+.dm-panel .seg button{ font:inherit; font-size:.72rem; font-weight:600; padding:.3rem .72rem; border:1px solid rgba(255,255,255,.28); background:transparent; color:rgba(255,255,255,.78); border-radius:999px; cursor:pointer; }
+.dm-panel .seg button[aria-pressed="true"]{ background:#fff; color:var(--ink); border-color:#fff; }
+.dm-now{ margin-top:.4rem; padding-top:.7rem; border-top:1px solid rgba(255,255,255,.16); font-size:.66rem; line-height:1.6; color:rgba(255,255,255,.6); } .dm-now b{ color:var(--accent-warm); }
+@media(max-width:560px){ .dm-panel{ left:16px; right:16px; width:auto; } }
+
+/* ===== 01 HERO（峰·全面ブリード／静止·260608_C 蒸馏·白 NAV 融合）===== */
+.hero{ position:relative; width:100%; min-height:100vh; min-height:100svh; overflow:hidden; isolation:isolate; display:flex; align-items:flex-end; background:var(--ink); }
+.hero-ph{ position:absolute; inset:0; z-index:0; background:linear-gradient(158deg,#CDB89F 0%,#AC896C 32%,#6F4C3D 70%,#3C2925 100%); }
+.hero-ph::after{ content:""; position:absolute; inset:0; background:radial-gradient(120% 100% at 26% 22%,rgba(255,250,243,.4),transparent 56%); }
+/* scrims：上＝NAV 可読性·下＝見出し可読性（暖め·控えめ）*/
+.hero-shade-top{ position:absolute; left:0; right:0; top:0; height:34%; z-index:1; background:linear-gradient(to bottom,rgba(28,16,12,.46),transparent); pointer-events:none; }
+.hero-scrim{ position:absolute; inset:0; z-index:1; background:linear-gradient(180deg,rgba(28,17,17,0) 40%,rgba(28,17,17,.14) 62%,rgba(28,17,17,.6) 100%); pointer-events:none; }
+/* NAV（透明·白·hero に融合＝進站時の静止状態）*/
+.hero-nav{ position:absolute; top:0; left:0; right:0; z-index:5; padding:clamp(1.1rem,2.4vw,1.7rem) var(--pad); }
+.hero-nav-in{ max-width:var(--max); margin-inline:auto; width:100%; display:flex; align-items:center; justify-content:space-between; gap:2rem; }
+.hero-nav-logo{ display:flex; align-items:center; gap:.6rem; color:#fff; text-decoration:none; }
+.hnl-mark{ height:34px; width:34px; flex:none; }
+.hnl-wm{ font-family:var(--serif); font-weight:600; font-size:1.18rem; letter-spacing:.12em; }
+.hero-nav-menu{ display:flex; align-items:center; gap:clamp(1.1rem,2.4vw,2.4rem); }
+.hero-nav-menu a{ font-family:var(--sans); font-size:.92rem; font-weight:500; letter-spacing:.04em; text-decoration:none; opacity:.92; transition:opacity .2s; }
+.hero-nav-menu a:hover{ opacity:1; }
+.hero-cta{ border:1px solid rgba(255,255,255,.78); border-radius:2px; padding:.6rem 1.25rem; transition:background .2s,border-color .2s; }
+.hero-cta:hover{ background:rgba(255,255,255,.12); border-color:#fff; }
+.hero-cta-bar{ display:none; }   /* 手机端バー専用 CTA：桌面では隠す（既存メニュー内 CTA はそのまま）*/
+/* 内容（左下·eyebrow 削除·細罫＋見出し＋lead）*/
+.hero-in{ position:relative; z-index:2; width:100%; max-width:var(--max); margin-inline:auto; padding-inline:var(--pad); padding-block:clamp(3rem,9vh,6.2rem); display:flex; flex-direction:column; align-items:flex-start; }
+.hero-hr{ display:block; width:52px; height:2px; background:var(--accent-warm); margin:0 0 1.4rem; }
+.hero-h1{ font-family:var(--serif); font-weight:700; font-size:var(--fs-hero); line-height:1.42; color:#fff; text-shadow:0 2px 30px rgba(0,0,0,.38); margin:0; max-width:16em; line-break:strict; }
+.hero-h1 .ln{ display:block; }
+.hero-lead{ color:rgba(255,255,255,.94); font-size:var(--fs-lead); line-height:1.85; text-shadow:0 1px 16px rgba(0,0,0,.34); margin:1.5rem 0 0; max-width:26em; }
+.hero-cue{ position:absolute; left:50%; bottom:1.3rem; transform:translateX(-50%); z-index:2; display:grid; justify-items:center; gap:.5rem; color:#fff; opacity:.72; font-family:var(--sans); font-size:.64rem; letter-spacing:.22em; }
+.hero-cue::after{ content:""; width:1px; height:26px; background:rgba(255,255,255,.7); animation:sh 1.8s var(--ease) infinite; }   /* 260608_C SCROLL 線アニメ蒸馏 */
+@keyframes sh{ 0%{ transform:scaleY(0); transform-origin:top; } 45%{ transform:scaleY(1); transform-origin:top; } 55%{ transform:scaleY(1); transform-origin:bottom; } 100%{ transform:scaleY(0); transform-origin:bottom; } }   /* 260608_C 逐字搬·draw-down→retract */
+@media(max-width:760px){
+  .hero{ min-height:100svh; }
+  .hero-nav-menu{ gap:.85rem; }
+  .hero-nav-menu a:not(.hero-cta){ display:none; }
+  .hnl-wm{ font-size:1rem; }
+  .hero-cue{ bottom:calc(1.3rem + env(safe-area-inset-bottom,0px)); }   /* (乙)：SP でも表示·display:none 解除 → home indicator 分だけ持ち上げ（非ノッチ/PC は 0px=無影響）*/
+}
+
+/* ===== ★ 私たちの姿勢（3案＋開閉）===== */
+.stance{ background:var(--warm); } body[data-stance="off"] #stance{ display:none; }
+.stance-stage{ display:grid; align-items:start; margin-top:.4rem; }
+.lbl{ font-size:var(--fs-eyebrow); font-weight:700; letter-spacing:.3em; text-transform:uppercase; color:var(--ink2); margin:0 0 .9rem; }
+.para{ font-family:var(--serif); font-weight:600; font-size:clamp(1.15rem,1.7vw,1.5rem); line-height:2.05; color:var(--ink); margin:0; } .para .big{ font-size:1.14em; }
+.v-tate,.v-rail{ font-family:var(--serif); }
+.v-tate{ writing-mode:vertical-rl; font-weight:700; font-size:clamp(1.1rem,1.5vw,1.45rem); line-height:1.95; letter-spacing:.18em; color:var(--ink); border-right:1px solid var(--accent-warm); padding-right:1rem; max-height:14em; justify-self:end; }
+.v-rail{ writing-mode:vertical-rl; font-size:var(--fs-eyebrow); font-weight:700; letter-spacing:.32em; color:var(--ink2); border-left:1px solid var(--bd); padding-left:.8rem; }
+body[data-sv="1"] .stance-stage{ grid-template-columns:1fr; } body[data-sv="1"] .para-wrap{ max-width:30em; margin-inline:auto; text-align:center; } body[data-sv="1"] .v-tate,body[data-sv="1"] .v-rail{ display:none; }
+body[data-sv="2"] .stance-stage{ grid-template-columns:minmax(0,40em) auto; gap:clamp(1.6rem,4vw,4rem); justify-content:space-between; } body[data-sv="2"] .para-wrap{ max-width:40em; } body[data-sv="2"] .v-rail{ display:none; }
+body[data-sv="3"] .stance-stage{ grid-template-columns:auto minmax(0,42em); gap:clamp(1.4rem,4vw,3.2rem); } body[data-sv="3"] .para-wrap{ max-width:42em; } body[data-sv="3"] .v-tate{ display:none; }
+
+/* ===== About（吸収·全保真·① 間中心 / ② ミニマル ＋ 画像2サイズ）===== */
+.about{ padding-block:clamp(4rem,9vw,8rem); }
+.about-stage{ display:grid; grid-template-columns:minmax(0,40%) 1fr; gap:clamp(2.5rem,7vw,7rem); align-items:center; margin-top:1.2rem; }
+.about-lead{ max-width:25em; }
+.strengths{ margin-top:clamp(1.9rem,3vw,2.8rem); display:grid; gap:clamp(1.2rem,1.9vw,1.7rem); }
+.st b{ font-family:var(--serif); font-weight:600; color:var(--ink); font-size:clamp(1.25rem,1.6vw,1.45rem); line-height:1.5; display:block; }
+.st span{ font-size:.95rem; color:var(--ink2); line-height:1.85; display:block; margin-top:.3rem; max-width:26em; }
+/* 箭头 hover：蓄势待发（先后退蓄力 → 弹出·--aw＝各箭头の前进距離·点击後の追加動効なし）*/
+@keyframes arrowWindup{ 0%{ transform:translateX(0); } 30%{ transform:translateX(calc(var(--aw,6px) * -0.65)); } 100%{ transform:translateX(var(--aw,6px)); } }
+@media (prefers-reduced-motion:reduce){ .tlink2:hover .a, .idx-item:hover .idx-ar, .idx-item:focus-visible .idx-ar, .card:hover .ca .a, .card:focus-visible .ca .a{ animation:none; } }
+.about-more{ margin-top:clamp(2rem,3.2vw,2.8rem); }
+.tlink2{ position:relative; display:inline-flex; align-items:center; gap:.55em; font-weight:600; font-size:clamp(1.25rem,1.6vw,1.45rem); text-decoration:none; color:var(--brand); }  /* 点2：強み標題と同級サイズ */
+.tlink2::after{ content:""; position:absolute; left:0; bottom:-5px; width:100%; height:1.5px; background:currentColor; transform:scaleX(0); transform-origin:left; transition:transform .5s var(--ease); }
+.tlink2:hover::after{ transform:scaleX(1); } .tlink2:focus-visible{ outline:2px solid currentColor; outline-offset:5px; }
+.tlink2 .a{ --aw:7px; transition:transform .3s var(--ease); } .tlink2:hover .a{ transform:translateX(var(--aw)); animation:arrowWindup .5s var(--ease-draw); }
+.fig{ display:flex; }
+.fig .ph{ position:relative; overflow:hidden; background:linear-gradient(135deg,#F1EADF 0%,#E8DDCD 55%,#DDD0BC 100%); border:1px solid rgba(26,25,25,.06); box-shadow:0 30px 64px -34px rgba(26,25,25,.32); border-radius:3px; }
+.fig .ph::before{ content:""; position:absolute; inset:0; background:radial-gradient(120% 90% at 28% 22%,rgba(255,255,255,.55),transparent 56%); }
+.fig .ph .tag{ position:absolute; left:14px; bottom:14px; z-index:1; font-size:.7rem; letter-spacing:.06em; color:var(--ink2); background:rgba(255,255,255,.86); padding:.32rem .7rem; border-radius:2px; }
+.cap{ margin-top:.7rem; font-size:.74rem; color:var(--ink2); letter-spacing:.05em; display:flex; gap:.55em; align-items:center; } .cap::before{ content:"／"; color:var(--brand); }
+/* ① 間中心 */
+body[data-dir="ma"] .fig{ justify-content:center; } body[data-dir="ma"] .fig .ph{ width:min(100%,440px); aspect-ratio:4/5; } body[data-dir="ma"] .cap{ display:none; }
+/* ② ミニマル */
+body[data-dir="min"] .about-stage{ align-items:start; gap:clamp(2rem,6vw,6rem); }
+body[data-dir="min"] .about-lead{ display:none; } body[data-dir="min"] .st span{ display:none; }
+body[data-dir="min"] .strengths{ gap:clamp(1.6rem,3.2vw,2.6rem); } body[data-dir="min"] .about-more{ margin-top:clamp(3rem,6vw,5rem); }
+body[data-dir="min"] .fig{ flex-direction:column; }
+body[data-dir="min"][data-imgsize="1"] .fig .ph{ width:100%; aspect-ratio:3/4; }                        /* 画像1＝大（現状）*/
+body[data-dir="min"][data-imgsize="2"] .fig{ align-items:flex-start; }
+body[data-dir="min"][data-imgsize="2"] .fig .ph{ width:82%; aspect-ratio:1/1; }                          /* 画像2＝小·右下に余白増（緑ブロック）*/
+
+/* ===== Numbers v6 融合 ===== */
+.numbers-real{ --ts:1.12; padding-block:clamp(2.6rem,5vw,4.2rem); }   /* 点7/8：Numbers のみ Facts.html と同じ 1.12 にスコープ（全站 1.18 は不変）*/
+.nb{ padding-block:0; } .nb-inner{ display:flex; flex-direction:column; }
+.nb-head{ order:0; max-width:46em; margin-bottom:clamp(1.2rem,2.5vw,2.2rem); }
+.nb-h2{ font-family:var(--serif); font-weight:700; font-size:var(--fs-section); line-height:1.3; margin:.5rem 0 0; }
+.overlap{ order:2; position:relative; } .figs{ order:3; }
+.nb[data-figs="top"] .figs{ order:1; margin-bottom:clamp(2.5rem,6vw,5rem); border-top:none; padding-top:0; }
+.nb[data-figs="top"] .overlap{ margin-top:clamp(1rem,2vw,2rem); }
+/* ===== Numbers 峰：A=段差重ね / B=はめ込み（Tishman型·実画像·大）===== */
+.kotoba{ position:relative; background:var(--brand); color:#fff; }
+.kotoba .statement{ font-family:var(--serif); font-weight:600; font-size:var(--fs-statement); line-height:1.75; margin:0; }
+.kotoba .statement .ph{ white-space:nowrap; }
+.kotoba .quote{ position:relative; padding:1.4rem 0 1.4rem 1.9rem; }
+.kotoba .quote::before,.kotoba .quote::after{ content:""; position:absolute; width:30px; height:30px; }
+.kotoba .quote::before{ top:0; left:0; border-top:2px solid var(--accent-warm); border-left:2px solid var(--accent-warm); }
+.kotoba .quote::after{ bottom:0; right:0; border-bottom:2px solid var(--accent-warm); border-right:2px solid var(--accent-warm); }
+.overlap-img{ position:absolute; z-index:3; }
+.overlap-img .ph{ position:relative; width:100%; height:100%; overflow:hidden; background:#e6ded2; border:1px solid rgba(0,0,0,.06); box-shadow:0 26px 64px -30px rgba(0,0,0,.5); }
+/* A：段差重ね（主色块＝右上 / 照片＝左下・縦の落差・照片在前）*/
+.nb[data-kotoba="A"] .overlap{ min-height:clamp(620px,70vh,820px); }
+.nb[data-kotoba="A"] .kotoba{ position:absolute; top:0; right:0; width:60%; min-height:78%; display:flex; align-items:center; padding:clamp(2.4rem,4vw,3.8rem) clamp(2rem,3vw,2.8rem) clamp(2.4rem,4vw,3.8rem) 16%; }
+.nb[data-kotoba="A"] .kotoba .quote{ margin-left:0; max-width:none; }
+.nb[data-kotoba="A"] .overlap-img{ left:0; bottom:10%; width:51%; height:68%; }
+/* B：はめ込み（照片を主色块の内側へ·周囲に主色マージン）*/
+.nb[data-kotoba="B"] .overlap{ min-height:clamp(520px,58vh,680px); }
+.nb[data-kotoba="B"] .kotoba{ position:absolute; inset:0; width:100%; display:flex; align-items:center; padding:clamp(2.4rem,4vw,3.8rem) clamp(2.4rem,4vw,4rem) clamp(2.4rem,4vw,3.8rem) 53%; }
+.nb[data-kotoba="B"] .statement{ line-height:1.7; }
+.nb[data-kotoba="B"] .kotoba .quote{ max-width:30em; }
+.nb[data-kotoba="B"] .overlap-img{ left:4%; top:50%; transform:translateY(-50%); width:42%; height:76%; }
+/* mobile：両案ともスタック（照片上·色块下·小重なり）*/
+@media (max-width:860px){
+  .nb[data-kotoba="A"] .overlap,.nb[data-kotoba="B"] .overlap{ min-height:0; display:flex; flex-direction:column; }
+  .nb[data-kotoba="A"] .kotoba,.nb[data-kotoba="B"] .kotoba{ position:static; width:100%; min-height:0; padding:clamp(1.8rem,6vw,2.6rem); order:2; }
+  .nb[data-kotoba="A"] .kotoba .quote,.nb[data-kotoba="B"] .kotoba .quote{ margin-left:0; max-width:none; }
+  .nb[data-kotoba="A"] .overlap-img,.nb[data-kotoba="B"] .overlap-img{ position:relative; inset:auto; transform:none; width:100%; height:auto; aspect-ratio:4/3; order:1; margin-bottom:-26px; }
+}
+.figs{ display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(1.4rem,3vw,2.6rem); margin-top:clamp(3.5rem,7vw,6rem); padding-top:clamp(1.6rem,3vw,2.4rem); }   /* 点4：数字グリッド上の細線削除 */
+.fig2{ display:flex; flex-direction:column; }
+.fig2 .v{ min-height:var(--val-h); display:flex; align-items:flex-end; flex-wrap:wrap; font-family:var(--serif); font-weight:700; font-size:var(--fs-num); line-height:1; font-variant-numeric:tabular-nums; letter-spacing:-.01em; gap:.06em; }
+.fig2 .v .u{ font-size:.3em; font-weight:500; } .fig2 .v.txt{ letter-spacing:0; white-space:nowrap; }
+#slot3 .v{ justify-content:flex-start; } #slot3 .v.txt{ font-size:calc(var(--fs-num)*0.68); line-height:1; text-align:left; margin-bottom:calc(var(--fs-num)*0.12); }
+#slot3 .k{ font-size:clamp(1.05rem,1.4vw,1.25rem); font-weight:700; } #slot3 .t{ font-size:.9rem; color:var(--ink); }
+.fig2 .k{ font-weight:600; font-size:1rem; margin-top:.8rem; } .fig2 .t{ font-size:.76rem; color:var(--ink2); margin-top:.25rem; line-height:1.5; }
+
+/* （旧 Business 線框 CSS は rev3 融合により削除。新 CSS はスタイル末尾の v6 ブロックに）*/
+/* （旧 Guide 線框 CSS は 提案A 融合により削除。新 CSS はスタイル末尾の Guide ブロックに）*/
+
+.inter-wf{ background:var(--warm2); }
+.inter-wf .qbox{ max-width:600px; margin:0 auto; position:relative; padding:2.2rem 2.4rem; text-align:center; }
+.inter-wf .qbox::before,.inter-wf .qbox::after{ content:""; position:absolute; width:26px; height:26px; }
+.inter-wf .qbox::before{ top:0; left:24px; border-top:2px solid var(--accent-warm); border-left:2px solid var(--accent-warm); }
+.inter-wf .qbox::after{ bottom:0; right:24px; border-bottom:2px solid var(--accent-warm); border-right:2px solid var(--accent-warm); }
+.inter-wf .q{ font-family:var(--serif); font-size:1.7rem; color:var(--ink); line-height:1.7; margin:0; }
+
+.contact{ padding-bottom:clamp(3rem,7vw,6rem); }
+.contact .bigimg{ min-height:clamp(560px,70vh,840px); margin-top:clamp(1.4rem,3vw,2.4rem); position:relative; }
+.contact .bigimg .ov{ position:absolute; inset:0; background:linear-gradient(58deg,rgba(var(--brand-rgb),.58) 0%,rgba(var(--brand-rgb),.16) 44%,transparent 72%); }
+.contact .panel{ background:var(--white); border:1px solid var(--bd); border-radius:10px; margin-top:clamp(-180px,-12vw,-110px); position:relative; z-index:2; width:min(960px,94%); margin-inline:auto; padding:clamp(2.2rem,4vw,3.8rem); box-shadow:0 44px 96px -26px rgba(26,25,25,.22); }
+.contact .panel .row{ border-bottom:1px solid var(--bd); padding:1.05rem 0; font-size:.92rem; color:var(--ink2); } .contact .panel .row:last-of-type{ border-bottom:0; }
+.contact .panel .submit{ margin-top:1.8rem; display:inline-block; background:var(--brand); color:#fff; font-weight:700; font-size:.95rem; padding:.78rem 2rem; border-radius:3px; }
+
+.legend{ background:var(--ink); color:#fff; padding:1.3rem 0; } .legend h1{ font-family:var(--sans); font-size:1rem; font-weight:700; margin:0; }
+.legend p{ margin:.4rem 0 0; font-size:.78rem; color:rgba(255,255,255,.7); max-width:72em; line-height:1.7; } .legend b{ color:#fff; }
+.flag{ background:#FFF6E5; border:1px solid #F0D9A8; border-radius:5px; padding:.6rem .9rem; margin-top:.8rem; font-size:.75rem; color:#7a5a1a; line-height:1.6; } .flag b{ color:#5a3d00; }
+.footer-wf{ background:var(--brand); color:#fff; padding-block:clamp(2.5rem,5vw,4rem); }
+@media (max-width:880px){ .about-stage,body[data-dir="min"] .about-stage{ grid-template-columns:1fr !important; gap:2rem; align-items:start; } .fig .ph,body[data-dir="min"][data-imgsize="1"] .fig .ph,body[data-dir="min"][data-imgsize="2"] .fig .ph,body[data-dir="ma"] .fig .ph{ width:100% !important; max-width:520px; aspect-ratio:4/3 !important; } .fig,body[data-dir="ma"] .fig{ justify-content:flex-start; } }
+@media (max-width:860px){ .overlap-img{ position:relative; left:auto; top:auto; transform:none !important; width:80%; margin:0 0 -34px; } .kotoba{ margin-left:0; margin-right:0; padding-left:clamp(1.6rem,6vw,2.6rem); } .figs{ grid-template-columns:1fr 1fr; gap:2.2rem 1.4rem; } .fig2 .v{ min-height:auto; } }
+@media (max-width:820px){ .stance-stage{ grid-template-columns:1fr !important; } .v-tate,.v-rail{ display:none !important; } .para-wrap{ max-width:none !important; text-align:left !important; margin:0 !important; } }
+/* ============================================================
+   ===== v6 改修（micro 調整 ＋ Business 融合）=====
+   ============================================================ */
+/* 点3/5：指定セクション間の細線削除（他段は不変）*/
+.about, .numbers-real{ border-bottom:none; }
+/* 点2/2.5：Our Stance ／ 06 余白 の背景色トグル（A=暖色既定 / B=白）*/
+body[data-stancebg="white"] .stance{ background:var(--white); }
+body[data-yohakubg="white"] .inter-wf{ background:var(--white); }
+
+/* ===== Business（rev3 融合：図左 split ＋ カード/編集インデックス ＋ カード動き2種）===== */
+.business{ padding-block:clamp(3rem,6vw,5.5rem); border-bottom:none; }   /* 点5/6：上下に細線を置かない（border-top も付けない）*/
+.biz-band{ display:grid; grid-template-columns:54fr 46fr; gap:clamp(2rem,5vw,4.5rem); align-items:end; margin-top:clamp(1.8rem,3.4vw,2.8rem); }
+.biz-fig{ position:relative; }
+.biz-fig .ph{ position:relative; overflow:hidden; aspect-ratio:3/2; border-radius:3px;
+  background:linear-gradient(135deg,#F1EADF 0%,#E8DDCD 55%,#DDD0BC 100%);
+  border:1px solid rgba(26,25,25,.06); box-shadow:0 30px 64px -34px rgba(26,25,25,.32); }
+.biz-fig .ph::before{ content:""; position:absolute; inset:0; background:radial-gradient(120% 90% at 28% 22%,rgba(255,255,255,.55),transparent 56%); }
+.biz-fig .ph .tag{ position:absolute; left:14px; bottom:14px; font-size:.7rem; letter-spacing:.06em; color:var(--ink2); background:rgba(255,255,255,.86); padding:.32rem .7rem; border-radius:2px; }
+.biz-cap{ margin-top:.7rem; font-size:.74rem; color:var(--ink2); letter-spacing:.05em; display:flex; gap:.55em; align-items:center; }
+.biz-cap::before{ content:"／"; color:var(--brand); }
+.biz-lead{ font-size:var(--fs-lead); color:var(--ink2); line-height:1.95; max-width:24em; padding-bottom:.3rem; }
+.biz-idx{ margin-top:clamp(2.6rem,5vw,4.2rem); }
+.idx-item{ display:grid; grid-template-columns:1fr auto; gap:.6rem 2rem; align-items:center; padding:clamp(1.3rem,2.2vw,1.75rem) 0; position:relative; text-decoration:none; color:inherit; }
+.idx-item::before{ content:""; position:absolute; bottom:0; left:0; right:0; height:2px; background:var(--brand); transform:scaleX(0); transform-origin:left; opacity:0; transition:transform var(--dur-line) var(--ease-draw), opacity var(--dur-fade) var(--ease); }
+.idx-item:hover::before, .idx-item:focus-visible::before{ transform:scaleX(1); opacity:1; }
+.idx-main{ display:flex; flex-direction:column; gap:.34rem; }
+.idx-ttl{ font-family:var(--serif); font-weight:600; font-size:clamp(1.2rem,1.7vw,1.5rem); color:var(--ink); line-height:1.4; }
+.idx-ds{ font-size:.93rem; color:var(--ink2); line-height:1.75; max-width:42em; }
+.idx-ar{ --aw:6px; color:var(--brand); font-weight:700; font-size:1.15rem; line-height:1; transition:transform .3s var(--ease); }
+.idx-item:hover .idx-ar, .idx-item:focus-visible .idx-ar{ transform:translateX(var(--aw)); animation:arrowWindup .5s var(--ease-draw); }
+.biz-cards{ display:grid; grid-template-columns:repeat(4,1fr); gap:1.1rem; margin-top:clamp(2.6rem,5vw,4.2rem); }
+.card{ display:flex; flex-direction:column; background:var(--white); border:1px solid var(--bd); border-radius:var(--radius-md); padding:1.6rem 1.4rem; position:relative; text-decoration:none; color:inherit; }
+.card-bd{ position:absolute; inset:0; width:100%; height:100%; overflow:visible; pointer-events:none; }
+.card-bd rect{ x:1px; y:1px; width:calc(100% - 2px); height:calc(100% - 2px); rx:var(--radius-md); ry:var(--radius-md); fill:none; stroke:var(--brand); stroke-width:2; vector-effect:non-scaling-stroke; stroke-dasharray:100; opacity:0; }
+body[data-cardfx="draw"] .card-bd rect{ stroke-dashoffset:100; transition:stroke-dashoffset var(--dur-draw) var(--ease-draw), opacity var(--dur-fade) var(--ease); }
+body[data-cardfx="draw"] .card:hover .card-bd rect, body[data-cardfx="draw"] .card:focus-visible .card-bd rect{ stroke-dashoffset:0; opacity:1; }
+body[data-cardfx="glow"] .card-bd rect{ stroke-dashoffset:0; transition:opacity var(--dur-line) var(--ease-draw); }
+body[data-cardfx="glow"] .card:hover .card-bd rect, body[data-cardfx="glow"] .card:focus-visible .card-bd rect{ opacity:1; }
+.card .ct{ font-family:var(--serif); font-weight:600; font-size:var(--fs-h3); color:var(--ink); line-height:1.4; }
+.card .cd{ font-size:.9rem; color:var(--ink2); line-height:1.7; margin-top:.55rem; flex:1; }
+.card .ca{ margin-top:.95rem; color:var(--brand); font-weight:700; font-size:.9rem; display:inline-flex; gap:.3em; }
+.card:hover .ca .a, .card:focus-visible .ca .a{ transform:translateX(var(--aw)); animation:arrowWindup .5s var(--ease-draw); } .card .ca .a{ --aw:4px; transition:transform .3s var(--ease); }
+body[data-biz="idx"]  .biz-cards{ display:none; }
+body[data-biz="card"] .biz-idx{ display:none; }
+@media (max-width:820px){ .biz-band{ grid-template-columns:1fr; gap:1.6rem; align-items:start; } .biz-cards{ grid-template-columns:1fr 1fr; } .biz-lead{ max-width:none; } }
+@media (max-width:520px){ .biz-cards{ grid-template-columns:1fr; } .idx-item{ grid-template-columns:1fr; gap:.5rem; } .idx-ar{ justify-self:start; } }
+@media (prefers-reduced-motion:reduce){ .card-bd rect, .idx-item::before{ transition:none !important; } }
+/* ===== 05 Investment Guide（提案A 融合：一筆の道・画像2サイズ ①普通/②大・既定②）===== */
+.guide-a{ background:var(--warm); padding-block:clamp(3.5rem,7vw,6.5rem); }
+.ga-grid{ display:grid; gap:clamp(3rem,6vw,5rem) clamp(2rem,5vw,5rem); margin-top:clamp(1.4rem,3vw,2.4rem); }
+body[data-gaimg="1"] .ga-grid{ grid-template-columns:minmax(0,1fr) clamp(280px,37%,500px); grid-template-areas:"intro fig" "steps steps"; align-items:end; }
+body[data-gaimg="2"] .ga-grid{ grid-template-columns:minmax(0,1fr) clamp(320px,42%,600px); grid-template-areas:"intro fig" "steps fig"; align-items:start; }
+.ga-intro{ grid-area:intro; padding-bottom:.5rem; }
+.ga-fig{ grid-area:fig; }
+.ga-lead{ font-size:var(--fs-lead); color:var(--ink2); line-height:1.95; margin:clamp(1.2rem,2.4vw,2rem) 0 0; max-width:24em; }
+.ga-fig .ph{ position:relative; overflow:hidden; aspect-ratio:4/5; border-radius:3px; background:linear-gradient(135deg,#F1EADF 0%,#E8DDCD 55%,#DDD0BC 100%); border:1px solid rgba(26,25,25,.06); box-shadow:0 30px 64px -34px rgba(26,25,25,.32); }
+body[data-gaimg="2"] .ga-fig .ph{ aspect-ratio:5/6; }
+body[data-gaimg="2"] .ga-intro{ padding-top:clamp(2.75rem,15vw,13rem); }   /* 大：eyebrow を画像 top より下げ＝A plan の左上「間」 */
+.ga-fig .ph::before{ content:""; position:absolute; inset:0; background:radial-gradient(120% 90% at 28% 22%,rgba(255,255,255,.55),transparent 56%); }
+.ga-fig .ph .tag{ position:absolute; left:14px; bottom:14px; font-size:.7rem; letter-spacing:.06em; color:var(--ink2); background:rgba(255,255,255,.86); padding:.32rem .7rem; border-radius:2px; }
+.ga-fig .fig-cap{ margin-top:.7rem; font-size:.74rem; color:var(--ink2); letter-spacing:.05em; }
+.ga-fig .fig-cap::before{ content:"／"; color:var(--brand); margin-right:.45em; }
+.ga-steps{ grid-area:steps; list-style:none; margin:0; padding:0; position:relative; --ga-col:clamp(2.6rem,5vw,3.6rem); }
+.ga-steps::before{ content:""; position:absolute; top:0; bottom:0; left:calc(var(--ga-col)/2); width:1px; transform:translateX(-50%); background:linear-gradient(to bottom,transparent 0,var(--accent-warm) 7%,var(--accent-warm) 93%,transparent 100%); }
+.ga-step{ display:grid; grid-template-columns:var(--ga-col) 1fr; gap:clamp(1.2rem,3vw,2.4rem); align-items:start; padding:clamp(1.4rem,2.8vw,2.1rem) 0; position:relative; }
+.ga-num{ justify-self:center; display:grid; place-items:center; min-width:1.5em; padding:.12em .28em; font-family:var(--serif); font-weight:600; font-size:clamp(1.7rem,2.8vw,2.5rem); color:var(--brand); line-height:1; background:var(--warm); position:relative; z-index:1; }
+.ga-main{ display:flex; flex-direction:column; gap:.45rem; padding-top:.2rem; }
+.ga-ttl{ font-family:var(--serif); font-weight:600; font-size:clamp(1.25rem,1.7vw,1.55rem); color:var(--ink); line-height:1.45; }
+.ga-ds{ font-size:.95rem; color:var(--ink2); line-height:1.85; max-width:34em; }
+@media (max-width:820px){
+  body[data-gaimg="1"] .ga-grid, body[data-gaimg="2"] .ga-grid{ grid-template-columns:1fr; grid-template-areas:"intro" "fig" "steps"; align-items:start; gap:1.8rem; }
+  body[data-gaimg="2"] .ga-intro{ padding-top:0; }
+}
+/* ============================================================
+   ===== v9 追加（テーマカラー4套 ＋ 解説ページング ＋ 注釈ゲート）=====
+   ============================================================ */
+/* 0：テーマカラー 4 套（全站 var(--brand)／var(--brand-rgb) が追従）*/
+body[data-palette="burgundy"]{ --brand:#4C0018; --brand-rgb:76,0,24; }
+body[data-palette="forest"]{   --brand:#014421; --brand-rgb:1,68,33; }
+body[data-palette="deep"]{     --brand:#0C3620; --brand-rgb:12,54,32; }
+body[data-palette="bottle"]{   --brand:#0F2A1D; --brand-rgb:15,42,29; }
+/* 0.5：解説モード ページング（左·圆形小按钮 1/2）*/
+.dm-nav{ display:flex; gap:.4rem; margin-bottom:.9rem; }
+.dm-nav button{ width:26px; height:26px; flex:none; border-radius:50%; font:inherit; font-size:.72rem; font-weight:700; cursor:pointer; border:1px solid rgba(255,255,255,.28); background:transparent; color:rgba(255,255,255,.7); display:grid; place-items:center; line-height:1; }
+.dm-nav button[aria-pressed="true"]{ background:#fff; color:var(--ink); border-color:#fff; }
+.dm-page[hidden]{ display:none; }
+.dm-replay{ display:flex; align-items:center; justify-content:center; gap:.45rem; width:100%; margin-top:.55rem; padding:.52rem .8rem; font:inherit; font-size:.74rem; font-weight:600; letter-spacing:.02em; color:#fff; background:transparent; border:1px solid rgba(255,255,255,.34); border-radius:9px; cursor:pointer; transition:background .18s, border-color .18s; }
+.dm-replay:hover{ background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.6); }
+.dm-replay .ic{ font-size:.62rem; line-height:1; }
+.dm-sw{ width:11px; height:11px; border-radius:50%; display:inline-block; margin-right:.4em; vertical-align:-1px; border:1px solid rgba(255,255,255,.5); }
+/* 3：辅助注釈は解説モード ON のみ表示（OFF＝クリーンな汇报ビュー）*/
+body:not(.dm-on) .asy-note{ display:none; }
+body:not(.dm-on) .sec-id{ display:none; }
+/* ===== 08 FOOTER 内部（260608_C 蒸馏·主色帯固定·logo/文字白）===== */
+.footer-wf .f-top{ display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-start; gap:clamp(2rem,5vw,4rem); margin-top:1.2rem; }
+.footer-wf .f-brand{ display:flex; align-items:center; gap:.6rem; margin-bottom:1.2rem; }
+.footer-wf .f-logo{ height:38px; width:38px; flex:none; color:#fff; }
+.footer-wf .f-wm{ font-family:var(--serif); font-weight:600; font-size:1.3rem; letter-spacing:.1em; color:#fff; }
+.footer-wf .f-dl{ display:grid; grid-template-columns:auto 1fr; gap:.4rem 1rem; font-size:.85rem; margin:0; max-width:34em; }
+.footer-wf .f-dl dt{ color:rgba(255,255,255,.75); } .footer-wf .f-dl dd{ margin:0; color:#fff; }
+.footer-wf .f-dl a{ color:#fff; text-decoration:none; } .footer-wf .f-dl a:hover{ text-decoration:underline; }
+.footer-wf .f-legal h4{ font-family:var(--sans); font-size:.82rem; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.75); margin:0 0 1rem; }
+.footer-wf .f-legal ul{ list-style:none; padding:0; margin:0; display:grid; gap:.7rem; font-size:.85rem; }
+.footer-wf .f-legal a{ color:#fff; text-decoration:none; } .footer-wf .f-legal a:hover{ text-decoration:underline; }
+.footer-wf .f-legal .soon{ color:rgba(255,255,255,.75); }
+.footer-wf .f-disc{ display:none; margin-top:clamp(1.6rem,3vw,2.4rem); padding-top:clamp(1.2rem,2.4vw,1.8rem); border-top:1px solid rgba(255,255,255,.18); font-size:.74rem; color:rgba(255,255,255,.75); line-height:1.9; max-width:62em; }
+body.dm-on .footer-wf .f-disc{ display:block; }
+.footer-wf .f-copy{ margin-top:clamp(1.2rem,2.4vw,1.8rem); font-size:.74rem; color:rgba(255,255,255,.75); }
+.kari{ display:none; } body.dm-on .kari{ display:inline; color:var(--accent-warm); }
+@media (max-width:760px){ .footer-wf .f-top{ flex-direction:column; gap:2rem; } }
+/* ===== 返回顶部（260608_C 完全照搬·色のみ var(--brand) 追従·z は v9 stack に合わせ190）===== */
+.to-top{ position:fixed; right:clamp(1rem,3vw,2rem); bottom:clamp(1rem,3vw,2rem); z-index:190; width:52px; height:52px; border-radius:50%; border:1px solid var(--brand); background:var(--warm); color:var(--brand); cursor:pointer; display:grid; place-items:center; opacity:0; transform:translateY(14px); pointer-events:none; transition:opacity .4s var(--ease), transform .4s var(--ease), background var(--dur-base), color var(--dur-base); }
+.to-top.show{ opacity:1; transform:none; pointer-events:auto; }
+.to-top:hover{ background:var(--brand); color:#fff; }
+.to-top svg{ width:20px; height:20px; transition:transform var(--dur-base) var(--ease); } .to-top:hover svg{ transform:translateY(-3px); }
+/* ===== v9.1（260630）：実画像差込＋解説 page3 換図＋余白「」色 ===== */
+/* 占位框を object-fit:cover で埋める（朝向は各框に合わせて既定図を選定済）*/
+.hero-ph img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
+.fig .ph img,.biz-fig .ph img,.ga-fig .ph img,.overlap-img .ph img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.contact .bigimg{ overflow:hidden; } .contact .bigimg img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; } .contact .bigimg .ov{ z-index:1; }
+/* 解説 page3：板块ごと ◀ ▶ 換図 */
+.imgseg{ display:flex; align-items:center; gap:.5rem; }
+.imgseg button{ width:30px; height:28px; flex:none; border-radius:5px; border:1px solid rgba(255,255,255,.28); background:transparent; color:rgba(255,255,255,.85); cursor:pointer; font-size:.78rem; line-height:1; display:grid; place-items:center; }
+.imgseg button:hover{ background:rgba(255,255,255,.12); }
+.imgseg .imgnow{ flex:1; min-width:0; text-align:center; font-size:.64rem; color:rgba(255,255,255,.72); letter-spacing:.02em; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+/* ===================== MOTION（動效パス · 260608_C 蒸馏 + Tishman 式吸顶 NAV）=====================
+   原則：克制 + 护栏（reduced-motion / mobile 关重 parallax）·色/字阶/間距 token 不变·只加動效。
+   無 JS 時：veil 不显示・reveal 全可见（html.jsm gate·防 FOUC & 防无JS卡死）。 */
+
+/* ---- 開場幕 veil（brand 底·白 #ry-mark + 株式会社RY·accent-warm 線·sub）---- */
+#veil{ display:none; }
+html.jsm #veil{ position:fixed; inset:0; z-index:9999; display:grid; place-items:center; background:var(--brand); transition:opacity 1s var(--ease); }
+#veil .vw{ display:grid; justify-items:center; gap:1.4rem; text-align:center; padding:1.5rem; }
+#veil .v-lock{ display:flex; flex-direction:column; align-items:center; gap:.95rem; max-width:100%; }
+#veil .v-logo{ display:flex; align-items:center; gap:1rem; color:#fff; opacity:0; transform:translateY(10px); transition:opacity .8s var(--ease) .15s, transform .8s var(--ease) .15s; }
+#veil .v-logo .logo{ height:clamp(58px,9.5vw,90px); width:auto; }
+#veil .v-logo .wm{ font-family:var(--serif); font-weight:600; font-size:clamp(1.7rem,4vw,2.5rem); letter-spacing:.14em; color:#fff; }
+#veil .v-line{ width:0; height:1px; background:var(--accent-warm); transition:width .9s var(--ease) .55s; }
+#veil .v-sub{ font-size:clamp(.8rem,1.35vw,1rem); letter-spacing:.4em; text-transform:uppercase; color:rgba(255,255,255,.72); opacity:0; transition:opacity .7s var(--ease) .9s; }
+body.veil-go #veil .v-logo{ opacity:1; transform:none; }
+body.veil-go #veil .v-line{ width:100%; }   /* logo+株式会社RY と同幅（=.v-lock 幅）·響応式で PC/SP とも自動一致 */
+body.veil-go #veil .v-sub{ opacity:1; }
+body.veil-out #veil{ opacity:0; pointer-events:none; }
+body.veil-reset #veil, body.veil-reset #veil *{ transition:none !important; animation:none !important; }  /* 重播：先瞬置初態 */
+
+/* ---- 吸顶 NAV：absolute→fixed・半透明玻璃・滚动渐变（4 态·--navp は JS が更新）---- */
+.hero-nav{ position:fixed; top:0; left:0; right:0; z-index:60; background:color-mix(in srgb, var(--warm) calc(var(--navp,0)*88%), transparent); transition:background .12s linear; }
+.hero-nav.stuck{ -webkit-backdrop-filter:blur(14px) saturate(106%); backdrop-filter:blur(14px) saturate(106%); border-bottom:1px solid color-mix(in srgb, var(--bd) calc(var(--navp,0)*100%), transparent); }
+.hero-nav-menu a:not(.hero-cta){ color:color-mix(in srgb, #fff calc(100% - var(--navp,0)*100%), var(--ink)); }
+.hero-nav-logo{ color:color-mix(in srgb, #fff calc(100% - var(--navp,0)*100%), var(--brand)); }
+.hero-nav::after{ content:""; position:absolute; inset:0; z-index:2; pointer-events:none; opacity:0; background:linear-gradient(180deg,#fff,rgba(255,255,255,.82)); }
+.hero-nav.flash::after{ animation:navFlash 1.35s cubic-bezier(.16,1,.3,1) both; }
+@keyframes navFlash{ 0%{ opacity:.92; } 100%{ opacity:0; } }
+
+/* ---- flow-fill（E-04·主题色左→右流水）：お問い合わせ CTA + 送信する ---- */
+.hero-cta{ --cta-bd-scrolled:var(--ink); position:relative; z-index:0; overflow:hidden; background:transparent; border:1px solid color-mix(in srgb, rgba(255,255,255,.78) calc(100% - var(--navp,0)*100%), var(--cta-bd-scrolled)); color:color-mix(in srgb, #fff calc(100% - var(--navp,0)*100%), var(--ink)); transition:color .34s var(--ease), border-color .38s var(--ease); }
+.hero-cta::before{ content:""; position:absolute; inset:0; z-index:-1; background:var(--brand); transform:scaleX(0); transform-origin:left center; transition:transform .38s var(--ease); }
+.hero-cta:hover::before{ transform:scaleX(1); }
+.hero-cta:hover{ background:transparent; border-color:var(--brand); color:#fff; }
+/* 桌面メニュー内 CTA：静止文字色を navp 連動に（.hero-nav-menu a の静的白＝特異度 0,1,1 を上書き＝スクロール後は黒で可読）*/
+.hero-nav-menu a.hero-cta{ color:color-mix(in srgb, #fff calc(100% - var(--navp,0)*100%), var(--ink)); }
+.hero-nav-menu a.hero-cta:hover{ color:#fff; }   /* hover は従来どおり：主色の流水充填→満ちたら白字 */
+
+/* ===== 桌面 nav hover 子菜单（mtg3 ホバープレビュー菜单·参考 Tishman）＋ 項目下線ドロー（編集インデックス一筆·L→R 流用）===== */
+.nav-item{ position:relative; display:inline-flex; align-items:center; }
+.nav-item > a{ position:relative; }
+/* 項目下線：2px 主色·scaleX 左→右（--dur-line / --ease-draw を編集インデックスから流用）*/
+.nav-item > a::after{ content:""; position:absolute; left:0; right:0; bottom:-5px; height:2px; background:var(--brand); transform:scaleX(0); transform-origin:left center; transition:transform var(--dur-line) var(--ease-draw); }
+.nav-item:hover > a::after, .nav-item:focus-within > a::after{ transform:scaleX(1); }
+/* 子菜单パネル：主色地·白字·淡入＋わずかに下降（漸進表示）。absolute は .nav-item 基準＝.hero-nav の backdrop-filter 包含块に拾われない */
+.nav-sub{ position:absolute; top:100%; left:-.85rem; margin-top:.7rem; min-width:268px; padding:1.55rem 1.75rem; display:grid; gap:1.15rem; background:var(--brand); border-radius:0 0 5px 5px; box-shadow:0 20px 46px rgba(0,0,0,.24); opacity:0; visibility:hidden; transform:translateY(8px); transition:opacity .32s var(--ease), transform .32s var(--ease), visibility 0s linear .32s; z-index:6; }
+.nav-sub::before{ content:""; position:absolute; top:-.7rem; left:0; right:0; height:.7rem; }  /* 透明桥：补 margin 间隙·维持 hover 连续 */
+.hero-nav-menu .nav-sub a{ color:rgba(255,255,255,.84); font-size:.96rem; font-weight:500; letter-spacing:.05em; line-height:1.4; white-space:nowrap; cursor:pointer; opacity:1; transition:color .18s, transform .18s; }
+.hero-nav-menu .nav-sub a:hover{ color:#fff; transform:translateX(3px); }
+.nav-item:hover .nav-sub, .nav-item:focus-within .nav-sub{ opacity:1; visibility:visible; transform:translateY(0); transition:opacity .32s var(--ease), transform .32s var(--ease), visibility 0s; }
+.contact .panel .submit{ position:relative; z-index:0; overflow:hidden; cursor:pointer; background:transparent; border:1px solid var(--brand); color:var(--brand); transition:color .25s var(--ease); }
+.contact .panel .submit::before{ content:""; position:absolute; inset:0; z-index:-1; background:var(--brand); transform:scaleX(0); transform-origin:left center; transition:transform .38s var(--ease); }
+.contact .panel .submit:hover::before{ transform:scaleX(1); }
+.contact .panel .submit:hover{ color:#fff; }
+
+/* ---- hero 入場（veil 退場 → body.entered）+ ken-burns ---- */
+html.jsm .hero-hr{ transform:scaleX(0); transform-origin:left; }
+html.jsm .hero-h1 .ln{ opacity:0; transform:translateY(18px); }
+html.jsm .hero-lead, html.jsm .hero-cue{ opacity:0; transform:translateY(18px); }
+body.entered .hero-hr{ transform:none; transition:transform .8s var(--ease) .1s; }
+body.entered .hero-h1 .ln{ opacity:1; transform:none; transition:opacity .9s var(--ease), transform .9s var(--ease); }
+body.entered .hero-h1 .ln:nth-child(2){ transition-delay:.16s; }
+body.entered .hero-lead{ opacity:1; transform:none; transition:opacity .9s var(--ease) .28s, transform .9s var(--ease) .28s; }
+body.entered .hero-cue{ opacity:1; transform:none; transition:opacity .9s var(--ease) .5s, transform .9s var(--ease) .5s; }
+html.jsm #img-hero{ transform:scale(1.09); }   /* 既定で拡大＝開場幕の裏ですでに大·幕が散ると「大→縮小」で連続（scale 1 の一跳を消す）*/
+body.entered #img-hero{ animation:heroZoom 8s var(--ease) both; }
+@keyframes heroZoom{ from{ transform:scale(1.09); } to{ transform:scale(1); } }
+/* hero-ph 上下延展，为 hero parallax 留 overscan（位移不露边）*/
+.hero-ph{ top:calc(-1 * var(--hero-par,100px)); right:0; bottom:calc(-1 * var(--hero-par,100px)); left:0; height:auto; will-change:transform; }
+
+/* ---- 全板块 scroll reveal（統一フェードアップ·class 由 JS 付与·零改 content 标记）---- */
+html.jsm .reveal{ opacity:0; transform:translateY(26px); transition:opacity var(--dur-enter) var(--ease), transform var(--dur-enter) var(--ease); }
+html.jsm .reveal.in{ opacity:1; transform:none; }
+
+/* ---- reduced-motion：装飾モーション全停（scroll 連動の機能的 nav 変色は保留）---- */
+@media (prefers-reduced-motion:reduce){
+  html.jsm #veil{ transition:none; }
+  #veil .v-logo, #veil .v-line, #veil .v-sub{ transition:none !important; }
+  html.jsm .reveal, html.jsm .hero-h1 .ln, html.jsm .hero-lead, html.jsm .hero-cue, html.jsm .hero-hr{ opacity:1 !important; transform:none !important; transition:none !important; }
+  .hero-cue::after{ animation:none; }   /* reduce：SCROLL 線 loop 停止（260608_C 同方針）*/
+  html.jsm #img-hero{ animation:none; transform:none; }   /* reduce：拡大せず·静止 scale 1 */
+  .hero-nav.flash::after{ animation:none; }
+  .hero-ph{ transform:none !important; }
+  .numbers-real .kotoba, .numbers-real .kotoba .quote, .numbers-real .overlap-img{ opacity:1 !important; transform:none !important; }
+}
+
+/* ---- 手机端 汉堡 → 下拉抽屉（≤760px）。抽屉 = body 直下の独立要素 .nav-drawer：
+   .hero-nav は .stuck で backdrop-filter を持つ＝fixed 子要素の包含块になる。
+   旧实装は抽屉を .hero-nav 内に置いたため inset:0 が「導航条 ~60px」基準で解決され、
+   盒子が縮んで正文が透けた。抽屉を body 直下へ出すと fixed が視口基準に戻る（260608_C と同方式）。
+   桌面端：.hero-nav-menu はそのまま（不受影响）·CTA はバーへ移設 ---- */
+.nav-burger{ display:none; }
+.nav-drawer{ display:none; }
+@media(max-width:760px){
+  .hero-nav-in{ gap:.55rem; }                                     /* 手机：logo｜（余白）｜CTA·汉堡 */
+  .hero-nav-menu{ display:none; }                                 /* 桌面横排メニューは手机で隠す（抽屉が代替）*/
+
+  /* バー常駐 CTA（汉堡の外·折りたたまれない）。色は既存 .hero-cta の navp 連動を継承し再宣言 */
+  .hero-cta-bar{ display:inline-flex; align-items:center; white-space:nowrap; margin-left:auto; border-radius:2px; padding:.5rem .95rem; font-family:var(--sans); font-size:.85rem; font-weight:500; letter-spacing:.03em; text-decoration:none; border:1px solid #fff; border:1px solid color-mix(in srgb, #fff calc(100% - var(--navp,0)*100%), color-mix(in srgb, var(--ink) 26%, var(--accent-warm))); color:#fff; color:color-mix(in srgb, #fff calc(100% - var(--navp,0)*100%), var(--ink)); transition:color .12s linear, border-color .12s linear; }
+  .hero-cta-bar::before{ display:none; }                           /* 触摸端：流水填充 OFF */
+  .hero-cta-bar:hover{ background:transparent; border:1px solid #fff; border:1px solid color-mix(in srgb, #fff calc(100% - var(--navp,0)*100%), color-mix(in srgb, var(--ink) 26%, var(--accent-warm))); color:#fff; color:color-mix(in srgb, #fff calc(100% - var(--navp,0)*100%), var(--ink)); }  /* sticky-hover を無効化 */
+
+  .hero-nav-logo{ position:relative; z-index:3; }
+  .nav-burger{ display:flex; flex-direction:column; justify-content:center; gap:5px; width:36px; height:36px; padding:0; margin:0; background:transparent; border:0; cursor:pointer; position:relative; z-index:3; }
+  .nav-burger span{ display:block; width:24px; height:2px; border-radius:2px; background:#fff; background:color-mix(in srgb, #fff calc(100% - var(--navp,0)*100%), var(--ink)); transition:transform .3s var(--ease), opacity .2s var(--ease), background .2s linear; }
+
+  /* 抽屉＝导航条下缘から下拉する纯色面板（top は条高 ~69px より小さく＝条の下に潜り込ませ正文の隙間を作らない；条が不透明な間は隠れる）*/
+  .nav-drawer{ display:grid; gap:1.05rem; position:fixed; top:56px; left:0; right:0; z-index:55; padding:1.5rem var(--pad) 1.8rem; background:#FBFAF7; background:var(--warm); border-bottom:1px solid var(--bd); visibility:hidden; transform:translateY(-100%); transition:transform .42s var(--ease), visibility 0s linear .42s; }
+  .nav-drawer a{ color:var(--ink); text-decoration:none; font-size:1.1rem; font-weight:500; letter-spacing:.04em; }
+
+  body.menu-open .hero-nav{ background:#FBFAF7; background:var(--warm); }   /* 開いた間はバーを不透明な暖白に＝抽屉の潜り込み部を隠す */
+  body.menu-open .nav-drawer{ visibility:visible; transform:translateY(0); transition:transform .42s var(--ease), visibility 0s; }
+  body.menu-open .hero-nav-logo{ color:var(--brand); }
+  body.menu-open .hero-cta-bar{ border:1px solid var(--brand); color:var(--brand); }
+  body.menu-open .nav-burger span{ background:var(--ink); }
+  body.menu-open .nav-burger span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  body.menu-open .nav-burger span:nth-child(2){ opacity:0; }
+  body.menu-open .nav-burger span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+}/* ---- Facts 峰段 scrub：合成层提示（仅桌面重叠版·scrub 是行内 transform/opacity·无 CSS transition 以免拖影）---- */
+@media(min-width:861px){
+  .numbers-real .kotoba, .numbers-real .kotoba .quote, .numbers-real .overlap-img{ will-change:transform, opacity; }
+}/* ---- color-mix 非対応ブラウザ（旧 WebView 等）フォールバック：手机端 nav の滚动态可视性を確保（対応ブラウザは無視）---- */
+@supports not (background: color-mix(in srgb, #fff, #000)){
+  @media(max-width:760px){
+    .hero-nav.stuck{ background:#FBFAF7; background:var(--warm); }
+    .hero-nav.stuck .hero-nav-logo{ color:var(--brand); }
+    .hero-nav.stuck .nav-burger span{ background:var(--ink); }
+  }
+}
+
+/* ================= L1 / Business（概览页·2レイアウト切替）================= */
+/* —— 共用 L1 chrome（与 about 同：吸顶 NAV 実底·当前页 active）—— */
+.l1-page .hero-nav{ --navp:1; }
+.l1-page .hero-nav-menu .nav-item > a[aria-current="page"]{ color:var(--brand); }
+.l1-page .hero-nav-menu .nav-item > a[aria-current="page"]::after{ transform:scaleX(1); }
+.l1-rule{ display:block; width:52px; height:2px; background:var(--brand); margin:0 0 1.3rem; }
+.l1-title{ font-family:var(--serif); font-weight:700; font-size:var(--fs-section); line-height:1.26; margin:0; color:var(--ink); }
+
+/* —— stage / 页头 —— */
+.biz-stage{ padding-top:calc(clamp(1.1rem,2.4vw,1.7rem) * 2 + 4.2rem); padding-bottom:clamp(3rem,6vw,5rem); }
+.bs-head{ margin-bottom:clamp(2.4rem,5vw,4rem); }
+.bs-lead{ max-width:42em; margin-top:1.05rem; }
+
+/* —— 図 共通（gradient 占位 + cover）—— */
+.bs-fig{ display:block; }
+.bs-fig .ph{ position:relative; display:block; overflow:hidden; background:linear-gradient(135deg,#F1EADF 0%,#E8DDCD 55%,#DDD0BC 100%); }
+.bs-fig .ph img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .6s var(--ease); }
+.bs-ttl{ font-family:var(--serif); font-weight:600; color:var(--ink); display:block; }
+.bs-ds{ color:var(--ink2); line-height:1.85; display:block; }
+.bs-cta{ color:var(--brand); font-weight:700; font-size:.92rem; display:inline-flex; align-items:center; gap:.4em; }
+.bs-cta .a{ --aw:5px; transition:transform .3s var(--ease); }
+.bs-entry:hover .bs-cta .a, .bs-entry:focus-visible .bs-cta .a{ transform:translateX(var(--aw)); animation:arrowWindup .5s var(--ease-draw); }
+.bs-entry:focus-visible{ outline:2px solid var(--brand); outline-offset:4px; }
+.bs-list{ list-style:none; margin:0; padding:0; }
+
+/* ============ レイアウト A：大判オルタネート・バンド（既定）============ */
+[data-bizlayout="band"] .bs-list{ display:flex; flex-direction:column; gap:clamp(2.8rem,5.5vw,5rem); }
+[data-bizlayout="band"] .bs-entry{ display:grid; grid-template-columns:1.12fr .88fr; gap:clamp(1.6rem,4vw,3.6rem); align-items:center; text-decoration:none; color:inherit; }
+[data-bizlayout="band"] .bs-list > li:nth-child(even) .bs-entry{ grid-template-columns:.88fr 1.12fr; }
+[data-bizlayout="band"] .bs-list > li:nth-child(even) .bs-fig{ order:2; }
+[data-bizlayout="band"] .bs-fig .ph{ aspect-ratio:3/2; border-radius:5px; box-shadow:0 30px 62px -40px rgba(26,25,25,.5); }
+[data-bizlayout="band"] .bs-entry:hover .bs-fig .ph img{ transform:scale(1.04); }
+[data-bizlayout="band"] .bs-ttl{ font-size:clamp(1.5rem,2.4vw,2.15rem); line-height:1.34; }
+[data-bizlayout="band"] .bs-ds{ font-size:1rem; margin-top:.75rem; max-width:30em; }
+[data-bizlayout="band"] .bs-cta{ margin-top:1.15rem; }
+@media (max-width:760px){
+  [data-bizlayout="band"] .bs-entry, [data-bizlayout="band"] .bs-list > li:nth-child(even) .bs-entry{ grid-template-columns:1fr; gap:1.15rem; }
+  [data-bizlayout="band"] .bs-fig{ order:0 !important; }
+}
+
+/* ============ レイアウト B：非対称ギャラリー・ウォール ============ */
+[data-bizlayout="wall"] .bs-list{ display:grid; grid-template-columns:repeat(6,1fr); grid-auto-rows:clamp(150px,17vw,228px); gap:clamp(.7rem,1.4vw,1.3rem); }
+[data-bizlayout="wall"] .bs-list > li:nth-child(1){ grid-column:span 4; grid-row:span 2; }
+[data-bizlayout="wall"] .bs-list > li:nth-child(2){ grid-column:span 2; }
+[data-bizlayout="wall"] .bs-list > li:nth-child(3){ grid-column:span 2; }
+[data-bizlayout="wall"] .bs-list > li:nth-child(4){ grid-column:span 3; }
+[data-bizlayout="wall"] .bs-list > li:nth-child(5){ grid-column:span 3; }
+[data-bizlayout="wall"] .bs-entry{ display:block; position:relative; height:100%; overflow:hidden; border-radius:4px; text-decoration:none; color:inherit; }
+[data-bizlayout="wall"] .bs-fig, [data-bizlayout="wall"] .bs-fig .ph{ height:100%; }
+[data-bizlayout="wall"] .bs-txt{ position:absolute; left:0; right:0; bottom:0; padding:clamp(.85rem,1.4vw,1.25rem); background:linear-gradient(to top, rgba(20,18,18,.66) 0%, rgba(20,18,18,.16) 58%, transparent 100%); }
+[data-bizlayout="wall"] .bs-ttl{ color:#fff; font-size:clamp(1rem,1.5vw,1.42rem); line-height:1.32; text-shadow:0 1px 14px rgba(0,0,0,.45); }
+[data-bizlayout="wall"] .bs-ds, [data-bizlayout="wall"] .bs-cta{ display:none; }
+[data-bizlayout="wall"] .bs-entry::after{ content:""; position:absolute; inset:0; box-shadow:inset 0 0 0 0 var(--brand); transition:box-shadow .3s var(--ease); border-radius:4px; pointer-events:none; }
+[data-bizlayout="wall"] .bs-entry:hover::after, [data-bizlayout="wall"] .bs-entry:focus-visible::after{ box-shadow:inset 0 0 0 3px var(--brand); }
+[data-bizlayout="wall"] .bs-entry:hover .bs-fig .ph img{ transform:scale(1.05); }
+@media (max-width:760px){
+  [data-bizlayout="wall"] .bs-list{ grid-template-columns:1fr 1fr; grid-auto-rows:42vw; }
+  [data-bizlayout="wall"] .bs-list > li:nth-child(1){ grid-column:span 2; grid-row:span 1; }
+  [data-bizlayout="wall"] .bs-list > li:nth-child(4), [data-bizlayout="wall"] .bs-list > li:nth-child(5){ grid-column:span 1; }
+}
+
+/* —— reveal stagger（両レイアウト共通）—— */
+.bs-list > li:nth-child(2){ transition-delay:.07s; }
+.bs-list > li:nth-child(3){ transition-delay:.14s; }
+.bs-list > li:nth-child(4){ transition-delay:.21s; }
+.bs-list > li:nth-child(5){ transition-delay:.28s; }
+@media (max-width:760px){ .bs-list > li:nth-child(n){ transition-delay:0s; } }
+.l1-note{ font-size:.74rem; color:var(--ink2); margin:clamp(2rem,3vw,2.8rem) 0 0; line-height:1.65; max-width:70em; } .l1-note b{ color:var(--brand); }
+
+/* —— 結尾 CTA（与 about 同·flow-fill）—— */
+.l1-cta-sec{ background:var(--warm); border-top:1px solid var(--bd); padding-block:clamp(3.2rem,7vw,5.5rem); text-align:center; }
+.l1-cta-sec .eyebrow{ color:var(--ink2); }
+.l1-cta-lead{ font-family:var(--serif); font-weight:600; font-size:clamp(1.5rem,2.6vw,2.2rem); color:var(--ink); line-height:1.5; margin:.55rem 0 0; }
+.l1-cta-btn{ --aw:5px; position:relative; z-index:0; overflow:hidden; display:inline-flex; align-items:center; gap:.5em; margin-top:1.8rem; padding:.85rem 2.1rem; border:1.5px solid var(--brand); border-radius:3px; color:var(--brand); font-weight:700; font-size:1rem; text-decoration:none; transition:color .34s var(--ease); }
+.l1-cta-btn::before{ content:""; position:absolute; inset:0; z-index:-1; background:var(--brand); transform:scaleX(0); transform-origin:left; transition:transform .42s var(--ease-draw); }
+.l1-cta-btn:hover{ color:#fff; } .l1-cta-btn:hover::before{ transform:scaleX(1); }
+.l1-cta-btn:focus-visible{ outline:2px solid var(--brand); outline-offset:3px; }
+.l1-cta-btn .a{ transition:transform .3s var(--ease); } .l1-cta-btn:hover .a{ transform:translateX(var(--aw)); }
+@media (prefers-reduced-motion:reduce){
+  .bs-fig .ph img, .bs-entry:hover .bs-fig .ph img{ transform:none !important; }
+  .bs-entry:hover .bs-cta .a, .l1-cta-btn:hover .a{ animation:none; }
+  .l1-cta-btn::before{ transition:none; }
+}
+
+</style>
+<script>document.documentElement.classList.add('jsm');</script>
+</head>
+<body class="l1-page" data-palette="burgundy" data-bizlayout="band">
+
+<!-- 実 logo（260608_C と同じ #ry-mark／currentColor で再着色）-->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ry-mark" viewBox="0 0 176.19898 176.13703"><defs><clipPath id="rc1"><path transform="matrix(1,0,0,-1,-413.0675,890.94998)" d="M413.0675 714.8129H589.2665V890.94998H413.0675Z" clip-rule="evenodd"/></clipPath><clipPath id="rc2"><path transform="matrix(1,0,0,-1,-413.0675,890.94998)" d="M0 1000H1000V0H0Z"/></clipPath></defs><g clip-path="url(#rc1)"><g clip-path="url(#rc2)"><path transform="matrix(1,0,0,-1,7.3475039,221.48053)" d="M0 0C-1.662 1.377-4.088 2.065-7.278 2.065H-15.935V-13.935H-7.278C-4.088-13.935-1.662-13.236 0-11.836 1.661-10.438 2.492-8.471 2.492-5.935 2.492-3.355 1.661-1.377 0 0M2.688-35.181-6.164-22.394H-6.688-15.935V-35.181H-26.558V10.722H-6.688C-2.623 10.722 .907 10.043 3.901 8.688 6.896 7.333 9.202 5.41 10.82 2.918 12.437 .426 13.246-2.524 13.246-5.935 13.246-9.345 12.427-12.285 10.787-14.754 9.147-17.225 6.82-19.115 3.804-20.427L14.099-35.181Z" fill="currentColor"/><path transform="matrix(1,0,0,-1,50.364107,240.39844)" d="M0 0V-16.263H-10.623V.131L-28.394 29.64H-17.115L-4.853 9.246 7.41 29.64H17.836Z" fill="currentColor"/><path transform="matrix(1,0,0,-1,-413.0675,890.94998)" d="M504.939 680.191H509.792V634.289H504.939Z" fill="currentColor"/><path transform="matrix(1,0,0,-1,138.59168,225.67774)" d="M0 0C2.558-2.514 3.836-6.175 3.836-10.983V-30.983H-.819V-11.442C-.819-7.858-1.716-5.126-3.508-3.245-5.301-1.366-7.858-.426-11.181-.426-14.896-.426-17.836-1.53-20-3.737-22.164-5.945-23.246-8.994-23.246-12.885V-30.983H-27.901V3.509H-23.442V-2.853C-22.175-.754-20.416 .874-18.164 2.033-15.913 3.191-13.301 3.771-10.328 3.771-6 3.771-2.558 2.514 0 0" fill="currentColor"/><path transform="matrix(1,0,0,-1,160.36219,254.75983)" d="M0 0C-2.688 1.486-4.799 3.574-6.328 6.263-7.859 8.951-8.623 11.978-8.623 15.345-8.623 18.71-7.859 21.727-6.328 24.394-4.799 27.06-2.688 29.137 0 30.623 2.688 32.109 5.737 32.853 9.147 32.853 12.12 32.853 14.775 32.273 17.114 31.115 19.453 29.956 21.3 28.263 22.655 26.033L19.181 23.673C18.043 25.378 16.601 26.656 14.853 27.509 13.104 28.361 11.202 28.787 9.147 28.787 6.655 28.787 4.415 28.229 2.426 27.115 .437 26-1.115 24.415-2.229 22.361-3.345 20.306-3.902 17.968-3.902 15.345-3.902 12.678-3.345 10.328-2.229 8.296-1.115 6.263 .437 4.688 2.426 3.574 4.415 2.459 6.655 1.902 9.147 1.902 11.202 1.902 13.104 2.317 14.853 3.147 16.601 3.978 18.043 5.246 19.181 6.951L22.655 4.591C21.3 2.361 19.442 .666 17.082-.491 14.721-1.65 12.075-2.229 9.147-2.229 5.737-2.229 2.688-1.486 0 0" fill="currentColor"/><path transform="matrix(1,0,0,-1,191.44318,255.93958)" d="M0 0C-.679 .698-1.017 1.551-1.017 2.557-1.017 3.563-.679 4.403 0 5.082 .677 5.759 1.496 6.098 2.459 6.098 3.42 6.098 4.251 5.759 4.95 5.082 5.649 4.403 6 3.563 6 2.557 6 1.551 5.649 .698 4.95 0 4.251-.7 3.42-1.05 2.459-1.05 1.496-1.05 .677-.7 0 0" fill="currentColor"/><path transform="matrix(1,0,0,-1,81.548007,58.54303)" d="M0 0-.089 44.543-37.847 44.541C-54.25 44.541-67.548 31.215-67.548 14.778V-103.594H-40.223V29.064C-40.223 32.68-37.298 35.612-33.69 35.612-30.081 35.612-27.155 32.68-27.155 29.064V-14.286-29.581-29.647-103.594H0V-59.228C0-43.766-11.77-31.067-26.82-29.614-11.77-28.161 0-15.463 0 0M53.288 44.543V-88.115C53.288-91.732 50.36-94.663 46.746-94.663 43.132-94.663 40.202-91.732 40.202-88.115V-44.765-29.47-29.405 44.543H13.01V.177C13.01-15.286 24.796-27.984 39.867-29.437 24.796-30.891 13.01-43.588 13.01-59.051L13.098-103.594 50.91-103.593C67.335-103.593 80.651-90.267 80.651-73.83V44.543Z" fill="currentColor" fill-rule="evenodd"/></g></g></symbol></svg>
+
+<!-- L1：開場 veil なし（克制·content 即表示）-->
+
+<!-- 全局吸顶 NAV（動效パス：hero 内 → body 直下へ移動。fixed を hero の isolation stacking-context から出すため／markup は不変·親要素のみ変更）-->
+<nav class="hero-nav" aria-label="グローバルナビ">
+  <div class="hero-nav-in">
+    <a class="hero-nav-logo" href="index.html" aria-label="株式会社RY ホーム"><svg class="hnl-mark" viewBox="0 0 176.19898 176.13703"><use href="#ry-mark"/></svg><span class="hnl-wm">株式会社RY</span></a>
+    <div class="hero-nav-menu" id="navMenu">
+      <div class="nav-item">
+        <a href="about.html">RYについて</a>
+        <div class="nav-sub" aria-label="RYについて の下層">
+          <a>会社概要</a>
+          <a>強み・数字</a>
+          <a>多言語・ネットワーク</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="#top" aria-current="page">事業紹介</a>
+        <div class="nav-sub" aria-label="事業紹介 の下層">
+          <a>保有・管理・運営</a>
+          <a>建物修繕</a>
+          <a>投資情報提供</a>
+          <a>海外サポート</a>
+          <a>実績・事例</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="guide.html">投資ガイド</a>
+      </div>
+      <a class="hero-cta" href="index.html#contact">お問い合わせ</a>
+    </div>
+    <a class="hero-cta hero-cta-bar" href="index.html#contact">お問い合わせ</a>
+    <button class="nav-burger" type="button" aria-label="メニュー" aria-expanded="false" aria-controls="navDrawer"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- 手机端 下拉抽屉（body 直下＝.hero-nav の backdrop-filter 包含块の外·fixed が視口基準に解決。桌面端は CSS で display:none）-->
+<nav class="nav-drawer" id="navDrawer" aria-label="モバイルメニュー" aria-hidden="true">
+  <a href="about.html">RYについて</a>
+  <a href="business.html">事業紹介</a>
+  <a href="guide.html">投資ガイド</a>
+</nav>
+
+<header class="legend" id="legend" hidden><div class="wrap">
+  <h1>business.html ｜ 事業紹介（L1 概览页·派生 claude_index_260630 / 同 about 骨架）</h1>
+  <p>L1 概览页 = <b>リード + 5 子页入口（2栏分割·編集メディアリスト·与 about 区别化）</b>（①保有・管理・運営／②建物修繕／③情報提供／④海外サポート／⑤実績・事例 → 各 L2）。順＝<b>①〜⑤ 信任優先</b>（既存・低牌照リスク事業を先·投資/海外を後·実績で締め·IA-v2 §3）。<b>延续 about 同款 L1 chrome</b>：開場 veil なし·克制页头·吸顶 NAV 実底·面包屑なし（L2 から付与）。図＝暖の点缀（非 load-bearing）·解説モード「画像」で差替。<b>⚠ ③情報提供＝服务层</b>（市場データは本页で重複せず投資ガイドへ）·<b>④海外サポート＝老板指定の唯一例外页</b>（nav/パンくず短名＝海外のお客様サポート·页内 H1 は「日本での不動産・各種手続きサポート」）——詳細・合规高危项は L2 段（行政書士・弁護士確認）。文案＝<b>content 占位</b>。入口 href・NAV 跨页リンク＝<b>jump 阶段で接続</b>。</p>
+</div></header>
+
+<button class="dm-toggle" id="dmToggle" aria-expanded="false" aria-label="解説モード切替"><span>解</span><span>説</span><span>表</span><span>示</span></button>
+<aside class="dm-panel" id="dmPanel" hidden aria-label="解説モード">
+  <div class="dm-head"><b>解説モード</b><button class="dm-close" id="dmClose" aria-label="閉じる">×</button></div>
+  <div class="dm-nav" role="group" aria-label="ページ切替"><button data-page="1" aria-pressed="true" aria-label="1ページ目 レイアウト">配置</button><button data-page="2" aria-label="2ページ目 画像">画像</button><button data-page="3" aria-label="3ページ目 配色">配色</button></div>
+  <div class="dm-page" data-page="1">
+    <div class="dm-grp"><span class="dm-lbl">レイアウト（2案·社長選定用）</span><div class="seg" role="group" aria-label="レイアウト">
+      <button data-bizlayout="band" aria-pressed="true">A 大判バンド</button>
+      <button data-bizlayout="wall">B 非対称ウォール</button>
+    </div></div>
+    <div class="dm-now">A＝大判の画像＋テキストを左右交互（編集·映画的）。B＝大小不揃いの画像ウォール（①を主役に拡大·策展·非対称）。どちらも about のカード網格・前回のリスト案とは別構成。既定＝A。</div>
+  </div>
+  <div class="dm-page" data-page="2" hidden>
+    <div class="dm-now" style="margin:0 0 .85rem">各事業の画像を ◀ ▶ で差替（全候補·圧縮済）。本番＝各1枚に確定。</div>
+    <div class="dm-grp imgsw" data-sec="biz-asset"><span class="dm-lbl">① 保有・管理・運営</span><div class="imgseg"><button class="imgprev" aria-label="前の画像">◀</button><span class="imgnow"></span><button class="imgnext" aria-label="次の画像">▶</button></div></div>
+    <div class="dm-grp imgsw" data-sec="biz-maint"><span class="dm-lbl">② 建物修繕</span><div class="imgseg"><button class="imgprev" aria-label="前の画像">◀</button><span class="imgnow"></span><button class="imgnext" aria-label="次の画像">▶</button></div></div>
+    <div class="dm-grp imgsw" data-sec="biz-info"><span class="dm-lbl">③ 情報提供</span><div class="imgseg"><button class="imgprev" aria-label="前の画像">◀</button><span class="imgnow"></span><button class="imgnext" aria-label="次の画像">▶</button></div></div>
+    <div class="dm-grp imgsw" data-sec="biz-overseas"><span class="dm-lbl">④ 海外サポート</span><div class="imgseg"><button class="imgprev" aria-label="前の画像">◀</button><span class="imgnow"></span><button class="imgnext" aria-label="次の画像">▶</button></div></div>
+    <div class="dm-grp imgsw" data-sec="biz-record"><span class="dm-lbl">⑤ 実績・事例</span><div class="imgseg"><button class="imgprev" aria-label="前の画像">◀</button><span class="imgnow"></span><button class="imgnext" aria-label="次の画像">▶</button></div></div>
+  </div>
+  <div class="dm-page" data-page="3" hidden>
+    <div class="dm-grp"><span class="dm-lbl">テーマカラー（全站·var(--brand) 連動）</span><div class="seg" role="group" aria-label="テーマカラー">
+      <button data-palette="burgundy" aria-pressed="true"><span class="dm-sw" style="background:#4C0018"></span>バーガンディ</button>
+      <button data-palette="forest"><span class="dm-sw" style="background:#014421"></span>フォレスト</button>
+      <button data-palette="deep"><span class="dm-sw" style="background:#0C3620"></span>ディープ</button>
+      <button data-palette="bottle"><span class="dm-sw" style="background:#0F2A1D"></span>ボトル</button>
+    </div></div>
+    <div class="dm-now">変わる＝矢印·下線·CTA·NAV active·ウォールの枠·Footer 帯 など主色連動分。恒定＝暖白底·本文色·字体(Noto)。</div>
+  </div>
+</aside>
+
+
+
+<!-- ===== L1 Business｜事業紹介（概览页·2レイアウト切替=A 大判バンド / B 非対称ウォール·解説モードで選定）·派生 ===== -->
+<main id="top">
+
+  <section class="biz-stage">
+    <div class="wrap">
+      <!-- 页头（type-led·克制）-->
+      <div class="bs-head">
+        <span class="l1-rule" aria-hidden="true"></span>
+        <p class="eyebrow">Business</p>
+        <h1 class="l1-title">事業紹介</h1>
+        <p class="lead bs-lead jp">不動産の保有・管理から、建物の修繕、情報のご提供、海外のお客様の支援まで。RY の事業を、ひとつずつ。</p>
+      </div>
+
+      <!-- 5 子页入口（順=①〜⑤信任優先·同一マークアップ→ CSS が band/wall に再配置·→ L2）-->
+      <ol class="bs-list">
+        <li class="reveal"><a class="bs-entry" data-slot="biz-asset" data-href="/ja/business/asset-management">
+          <span class="bs-fig"><span class="ph"><img id="img-biz-asset" src="images/20_toki-no-ori.webp" alt="" loading="lazy" decoding="async"></span></span>
+          <span class="bs-txt">
+            <span class="bs-ttl">不動産保有・管理・運営サポート</span>
+            <span class="bs-ds jp">物件の保有から日々の管理・運営まで、トータルでサポート。</span>
+            <span class="bs-cta">詳しく<span class="a" aria-hidden="true">→</span></span>
+          </span>
+        </a></li>
+        <li class="reveal"><a class="bs-entry" data-slot="biz-maint" data-href="/ja/business/maintenance">
+          <span class="bs-fig"><span class="ph"><img id="img-biz-maint" src="images/17_mebmrauf.webp" alt="" loading="lazy" decoding="async"></span></span>
+          <span class="bs-txt">
+            <span class="bs-ttl">建物修繕</span>
+            <span class="bs-ds jp">退去立会・原状回復・内装工事・建物メンテナンス。</span>
+            <span class="bs-cta">詳しく<span class="a" aria-hidden="true">→</span></span>
+          </span>
+        </a></li>
+        <li class="reveal"><a class="bs-entry" data-slot="biz-info" data-href="/ja/business/investment-info">
+          <span class="bs-fig"><span class="ph"><img id="img-biz-info" src="images/01_guide-plan-b.webp" alt="" loading="lazy" decoding="async"></span></span>
+          <span class="bs-txt">
+            <span class="bs-ttl">不動産投資に関する情報提供</span>
+            <span class="bs-ds jp">情報・資料のご提供（市場や流れの詳しい解説は投資ガイドへ）。</span>
+            <span class="bs-cta">詳しく<span class="a" aria-hidden="true">→</span></span>
+          </span>
+        </a></li>
+        <li class="reveal"><a class="bs-entry" data-slot="biz-overseas" data-href="/ja/business/overseas-support">
+          <span class="bs-fig"><span class="ph"><img id="img-biz-overseas" src="images/14_kampus-660.webp" alt="" loading="lazy" decoding="async"></span></span>
+          <span class="bs-txt">
+            <span class="bs-ttl">海外のお客様サポート</span>
+            <span class="bs-ds jp">日本での不動産・各種手続きを、言語と現地ネットワークの面から支援。</span>
+            <span class="bs-cta">詳しく<span class="a" aria-hidden="true">→</span></span>
+          </span>
+        </a></li>
+        <li class="reveal"><a class="bs-entry" data-slot="biz-record" data-href="/ja/business/track-record">
+          <span class="bs-fig"><span class="ph"><img id="img-biz-record" src="images/22_pjh.webp" alt="" loading="lazy" decoding="async"></span></span>
+          <span class="bs-txt">
+            <span class="bs-ttl">実績・事例</span>
+            <span class="bs-ds jp">これまでの管理・運営の実績と、具体的な事例。</span>
+            <span class="bs-cta">詳しく<span class="a" aria-hidden="true">→</span></span>
+          </span>
+        </a></li>
+      </ol>
+
+      <p class="l1-note"><b>L1 概览页·2レイアウト</b>（解説モード「レイアウト」で切替·A 大判バンド / B 非対称ウォール·既定＝A）。順＝①〜⑤ 信任優先。文案＝<b>content 占位</b>（正本は各 L2）。<span class="arr">⚠</span> ③情報提供・④海外サポート＝<b>合规高危</b>（公開前に行政書士・弁護士確認·詳細は L2）。入口 href＝予定ルート（jump 阶段で接続）。</p>
+    </div>
+  </section>
+
+  <!-- 結尾导引 → お問い合わせ（Home #contact·jump 阶段で接続）-->
+  <section class="l1-cta-sec reveal" aria-label="お問い合わせ">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <p class="l1-cta-lead jp">事業について詳しくは、<span class="np">お気軽に</span>。</p>
+      <a class="l1-cta-btn" href="index.html#contact"><span class="t">お問い合わせ</span><span class="a" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+</main>
+
+<!-- 08 FOOTER 帯 -->
+<div class="footer-wf"><div class="wrap">
+  <div class="sec-id" style="color:rgba(255,255,255,.5)">08 / FOOTER（全站共通·260608_C 蒸馏）<span class="lv" style="background:#fff;color:var(--brand)">主色帯</span></div>
+  <div class="f-top">
+    <div>
+      <div class="f-brand"><svg class="f-logo" viewBox="0 0 176.19898 176.13703"><use href="#ry-mark"/></svg><span class="f-wm">株式会社RY</span></div>
+      <dl class="f-dl"><dt>設立</dt><dd>2021年11月</dd><dt>所在地</dt><dd>東京都港区赤坂（ヒューリックJP赤坂ビル）</dd><dt>代表者</dt><dd>清水 梛央</dd><dt>TEL</dt><dd><a href="tel:0368247009">03-6824-7009</a></dd></dl>
+    </div>
+    <div class="f-legal"><h4>Legal</h4><ul>
+      <li><a href="#">サイトマップ</a></li>
+      <li><span class="soon">プライバシーポリシー<span class="kari">（準備中）</span></span></li>
+      <li><span class="soon">個人情報の取扱い<span class="kari">（準備中）</span></span></li>
+      <li><span class="soon">利用規約<span class="kari">（準備中）</span></span></li>
+    </ul></div>
+  </div>
+  <p class="f-disc">【免責事項（案・公開前に行政書士・弁護士の確認）】当社は宅地建物取引業免許および金融商品取引業の登録を受けておりません。特定の金融商品・不動産の購入を勧誘するものではなく、個別の投資助言・投資判断の代行・資産運用の受託を行いません。掲載情報は一般的な情報提供を目的とし、将来の収益・成果を保証しません。掲載の数字・データは作成時点のものです。</p>
+  <p class="f-copy">© 2026 株式会社RY</p>
+</div></div>
+
+<!-- 返回顶部（260608_C 完全照搬·样式/特效/动画）-->
+<button class="to-top" id="toTop" aria-label="ページ上部へ戻る"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+
+<script>
+/* ===== A) 解説モード（パネル開閉 + 配色 + 入口卡 画像差替 + ページング）·L1 About 専用 ===== */
+(function(){
+  "use strict";
+  var body = document.body;
+  var panel = document.getElementById("dmPanel"), tgl = document.getElementById("dmToggle"), cls = document.getElementById("dmClose");
+  function openPanel(o){ if(!panel) return; panel.hidden = !o; body.classList.toggle("dm-on", !!o); var lg = document.getElementById("legend"); if(lg){ lg.hidden = !o; } if(tgl){ tgl.setAttribute("aria-expanded", o ? "true" : "false"); } }
+  if(tgl){ tgl.addEventListener("click", function(){ openPanel(panel.hidden); }); }
+  if(cls){ cls.addEventListener("click", function(){ openPanel(false); }); }
+
+  function group(sel, fn){ var b = document.querySelectorAll(sel); b.forEach(function(x){ x.addEventListener("click", function(){ fn(x); b.forEach(function(y){ y.setAttribute("aria-pressed", y === x ? "true" : "false"); }); }); }); }
+  group(".dm-panel [data-palette]", function(b){ body.dataset.palette = b.dataset.palette; });
+  group(".dm-panel [data-bizlayout]", function(b){ body.dataset.bizlayout = b.dataset.bizlayout; });
+
+  /* 入口卡 候補画像プール（先頭＝既定·画框 4:3 に合わせ選定）*/
+  var IMG_POOLS = {
+    "biz-asset":    ["20_toki-no-ori","06_l-ch","16_kuma-jio","04_johan-mouchet","08_petr","13_faruktokluoglu"],
+    "biz-maint":    ["17_mebmrauf","04_johan-mouchet","20_toki-no-ori","07_matt-mutlu","21_phc-software","06_l-ch"],
+    "biz-info":     ["01_guide-plan-b","03_jezael-melgoza","21_phc-software","15_kampus-662","19_railgunbreaker","22_pjh"],
+    "biz-overseas": ["14_kampus-660","10_asia-culture","02_hanvin-cheong","18_nappy","11_bylukemiller","23_trac-vu"],
+    "biz-record":   ["22_pjh","08_petr","19_railgunbreaker","16_kuma-jio","20_toki-no-ori","03_jezael-melgoza"]
+  };
+  var imgIdx = {}; Object.keys(IMG_POOLS).forEach(function(k){ imgIdx[k] = 0; });
+  function setImg(sec){
+    var pool = IMG_POOLS[sec]; if(!pool){ return; }
+    var i = imgIdx[sec], name = pool[i];
+    var el = document.getElementById("img-" + sec); if(el){ el.src = "images/" + name + ".webp"; }
+    var lbl = document.querySelector('.imgsw[data-sec="' + sec + '"] .imgnow'); if(lbl){ lbl.textContent = name + " · " + (i + 1) + "/" + pool.length; }
+  }
+  document.querySelectorAll(".imgsw").forEach(function(g){
+    var sec = g.dataset.sec, pool = IMG_POOLS[sec] || [];
+    var pv = g.querySelector(".imgprev"), nx = g.querySelector(".imgnext");
+    if(pv){ pv.addEventListener("click", function(){ imgIdx[sec] = (imgIdx[sec] - 1 + pool.length) % pool.length; setImg(sec); }); }
+    if(nx){ nx.addEventListener("click", function(){ imgIdx[sec] = (imgIdx[sec] + 1) % pool.length; setImg(sec); }); }
+    setImg(sec);
+  });
+
+  /* ページング（1=画像 / 2=配色）*/
+  if(panel){
+    var dmPages = panel.querySelectorAll(".dm-page"), dmNav = panel.querySelectorAll(".dm-nav button");
+    dmNav.forEach(function(b){ b.addEventListener("click", function(){ var p = b.dataset.page; dmPages.forEach(function(pg){ pg.hidden = pg.dataset.page !== p; }); dmNav.forEach(function(x){ x.setAttribute("aria-pressed", x === b ? "true" : "false"); }); }); });
+  }
+})();
+</script><script>
+/* ===== B) chrome（L1：吸顶 NAV 実底 + scroll reveal + 返顶 + 手机抽屉）·veil/parallax/Numbers なし ===== */
+(function(){
+  "use strict";
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var nav = document.querySelector(".hero-nav");
+
+  /* 1) L1 NAV は常時実底（navp は CSS で 1·ここでは blur/border 用の .stuck を付与）*/
+  if(nav){ nav.classList.add("stuck"); }
+
+  /* 2) scroll reveal（.reveal → .in·IO·reduce/非対応は即表示）*/
+  var revealEls = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
+  if(reduce || !("IntersectionObserver" in window)){
+    revealEls.forEach(function(el){ el.classList.add("in"); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, { threshold:0.12, rootMargin:"0px 0px -8% 0px" });
+    revealEls.forEach(function(el){ io.observe(el); });
+  }
+
+  /* 3) 返回顶部 */
+  var toTop = document.getElementById("toTop");
+  if(toTop){
+    var onST = function(){ toTop.classList.toggle("show", window.scrollY > innerHeight * 0.9); };
+    onST(); addEventListener("scroll", onST, { passive:true });
+    toTop.addEventListener("click", function(){ scrollTo({ top:0, behavior: reduce ? "auto" : "smooth" }); });
+  }
+
+  /* 4) 手机端 汉堡 → 下拉抽屉 */
+  var burger = nav ? nav.querySelector(".nav-burger") : null;
+  var navDrawer = document.getElementById("navDrawer");
+  function setMenu(open){
+    document.body.classList.toggle("menu-open", open);
+    if(burger){ burger.setAttribute("aria-expanded", open ? "true" : "false"); }
+    if(navDrawer){ navDrawer.setAttribute("aria-hidden", open ? "false" : "true"); }
+  }
+  if(burger){ burger.addEventListener("click", function(){ setMenu(!document.body.classList.contains("menu-open")); }); }
+  if(navDrawer){ navDrawer.addEventListener("click", function(e){ if(e.target.closest("a")){ setMenu(false); } }); }
+  document.addEventListener("keydown", function(e){ if(e.key === "Escape" && document.body.classList.contains("menu-open")){ setMenu(false); } });
+})();
+</script>
+
+</body>
+</html>
