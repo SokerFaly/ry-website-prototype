@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>会社概要 ｜ 株式会社RY</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- ============================================================
+  L2 新設（2026-07-13）：会社概要（生産 slug＝/ja/about/company・IA-v2 §1）・評審集命名規約＝「親-子.html」
+  ・共通分（token/NAV/抽屉/footer/解説モード/reveal）＝assets/ 参照（本頁は頁固有分のみ）
+  ・L2 共通骨架（l2-hero／crumb パンくず／l2-back 戻り・親 L1 標示＝aria-current="true"）＝assets 側「L2 共通」区（2026-07-13 新設）
+  ・私たちの姿勢＝mtg_4/index.html 姿勢段より 3 排版（中央/左·縦組/右·軸・既定 左·縦組）を逐字移設。
+    文字池＝第3世代 S1–S5（content 別紙①・逐字・暫定 S5）——旧第2世代文字列は不搬（mtg4 全廃・墓碑）。
+    旧 on/off トグル廃（常設格上げ＝mtg4 社長指定）・旧 stancebg トグル廃→背景固定 --warm2（サブ背景＝区块交替用途・PM 承認）。
+  ・会社情報＝content 2 会社概要（2026-07-13 版）逐字。許認可＝行を設けない（content 3）・売上高＝V1 不載（PM 07-12）。
+  ・所在地行に Google マップ埋め込み（PM 拍板 2026-07-13・lazy・hairline 枠＝mtg_5 語彙・下に外部リンク兜底）。
+    ピン＝q=住所 の検索埋め込み——ズレる場合は Google マップ「共有→地図を埋め込む」生成の公式 iframe src へ差替
+    （生産期 build も公式串推奨）。合规＝外部送信規律／プライバシーポリシー記載→公開前専門家確認（sync 時 content へ注記）。
+  ・mtg5 選定後 strip＝落選 2 排版 CSS＋落選 4 文＋姿勢 picker（dock page1）。
+  ・file:// 直開き可・JS 無効時＝共通 chrome 非表示＋姿勢は S5 静的表示（評審用の既知制約）
+============================================================ -->
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/shared.css">
+<style>
+/* ==================== 頁固有様式（会社概要/L2 のみ）====================
+   共通分＝assets/ に分離済（頭注参照）。以下は本頁固有：① 私たちの姿勢（3 排版・mtg_4 より値不変更で移設）
+   ② 会社情報表 cinfo-tbl。 */
+
+/* —— ① 私たちの姿勢（3案・mtg_4 姿勢段より逐字移設・値不変更／変更点＝背景のみ固定 --warm2〔頭注〕）—— */
+.stance{ background:var(--warm2); }
+.stance-stage{ display:grid; align-items:start; margin-top:.4rem; }
+.lbl{ font-size:var(--fs-eyebrow); font-weight:700; letter-spacing:.3em; text-transform:uppercase; color:var(--ink2); margin:0 0 .9rem; }
+.para{ font-family:var(--serif); font-weight:600; font-size:clamp(1.15rem,1.7vw,1.5rem); line-height:2.05; color:var(--ink); margin:0; } .para .big{ font-size:1.14em; }
+.v-tate,.v-rail{ font-family:var(--serif); }
+.v-tate{ writing-mode:vertical-rl; font-weight:700; font-size:clamp(1.1rem,1.5vw,1.45rem); line-height:1.95; letter-spacing:.18em; color:var(--ink); border-right:1px solid var(--accent-warm); padding-right:1rem; max-height:14em; justify-self:end; }
+.v-rail{ writing-mode:vertical-rl; font-size:var(--fs-eyebrow); font-weight:700; letter-spacing:.32em; color:var(--ink2); border-left:1px solid var(--bd); padding-left:.8rem; }
+body[data-sv="1"] .stance-stage{ grid-template-columns:1fr; } body[data-sv="1"] .para-wrap{ max-width:30em; margin-inline:auto; text-align:center; } body[data-sv="1"] .v-tate,body[data-sv="1"] .v-rail{ display:none; }
+body[data-sv="2"] .stance-stage{ grid-template-columns:minmax(0,40em) auto; gap:clamp(1.6rem,4vw,4rem); justify-content:space-between; } body[data-sv="2"] .para-wrap{ max-width:40em; } body[data-sv="2"] .v-rail{ display:none; }
+body[data-sv="3"] .stance-stage{ grid-template-columns:auto minmax(0,42em); gap:clamp(1.4rem,4vw,3.2rem); } body[data-sv="3"] .para-wrap{ max-width:42em; } body[data-sv="3"] .v-tate{ display:none; }
+@media (max-width:820px){ .stance-stage{ grid-template-columns:1fr !important; } .v-tate,.v-rail{ display:none !important; } .para-wrap{ max-width:none !important; text-align:left !important; margin:0 !important; } }
+
+/* —— ② 会社情報表（惯例式 2 列・hairline＝内容内部構造線〔line-free 対象外・Tokens 12.5〕・
+      th 幅＝内容 shrink〔width:1%+nowrap・固定 px 不使用＝多語言弾性〕）—— */
+.cinfo{ padding-top:clamp(1.6rem,3.5vw,2.8rem); }
+.cinfo-tbl{ width:100%; max-width:52em; border-collapse:collapse; font-size:.98rem; line-height:1.9; }
+.cinfo-tbl th,.cinfo-tbl td{ padding:1.05rem 0; border-bottom:1px solid var(--bd); vertical-align:top; text-align:left; }
+.cinfo-tbl tr:first-child th,.cinfo-tbl tr:first-child td{ border-top:1px solid var(--bd); }
+.cinfo-tbl th{ white-space:nowrap; width:1%; font-weight:600; color:var(--ink); padding-right:clamp(1.8rem,5vw,4.5rem); }
+.cinfo-tbl td{ color:var(--ink); }
+.cinfo-tbl td a{ color:var(--ink); text-decoration:none; }
+.cinfo-tbl td a:hover{ color:var(--brand); text-decoration:underline; text-underline-offset:3px; }
+/* —— 所在地の地図（Google 埋め込み・PM 拍板 2026-07-13）：hairline 枠のみ（無影・無角丸＝表の構造線と同語彙）・
+      lazy＝視界に入るまで第三方資源を読まない・オフライン時は空枠（評審用の既知制約）。
+      .cinfo-map-link は .cinfo-tbl スコープ＝上の「td a」規則（0,1,2）より特異度を上げ確実に上書き —— */
+.cinfo-map{ margin-top:.95rem; max-width:40em; aspect-ratio:16/10; border:1px solid var(--bd); }
+.cinfo-map iframe{ display:block; width:100%; height:100%; border:0; }
+.cinfo-tbl .cinfo-map-link{ display:inline-flex; align-items:center; gap:.35em; margin-top:.55rem; font-size:.85rem; color:var(--ink2); text-decoration:none; }
+.cinfo-tbl .cinfo-map-link:hover{ color:var(--brand); text-decoration:underline; text-underline-offset:3px; }
+@media (max-width:640px){   /* 手机：label 上・値 下の堆叠（境界線は値行側に集約） */
+  .cinfo-tbl th,.cinfo-tbl td{ display:block; width:auto; }
+  .cinfo-tbl th{ border-bottom:0; padding:1.05rem 0 .15rem; }
+  .cinfo-tbl td{ padding:0 0 1.05rem; }
+  .cinfo-tbl tr:first-child td{ border-top:0; }
+}
+</style>
+<script>document.documentElement.classList.add('jsm');</script>
+</head>
+<body class="l2-page" data-nav="solid" data-palette="burgundy" data-sv="2">
+
+<!-- 頁固有：解説モードの中身（shared.js が共通壳へ展開。palette 組＝共通側単一ソース）
+     本頁の解説モード＝2 機能のみ：① 姿勢（版面 3 × 文 5・mtg5 選定用）② テーマカラー切替 -->
+<template id="ry-dm-content">
+  <div class="dm-nav" role="group" aria-label="ページ切替"><button data-page="1" aria-pressed="true" aria-label="1ページ目 姿勢">1</button><button data-page="2" aria-label="2ページ目 配色">2</button></div>
+  <div class="dm-page" data-page="1">
+    <div class="dm-grp"><span class="dm-lbl">姿勢 版面（3案・mtg5 選定）</span><div class="seg" role="group" aria-label="姿勢 版面"><button data-sv="1">中央</button><button data-sv="2" aria-pressed="true">左·縦組</button><button data-sv="3">右·軸</button></div></div>
+    <div class="dm-grp"><span class="dm-lbl">姿勢 文（池5・別紙①・mtg5 選定）</span><div class="seg" role="group" aria-label="姿勢 文"><button data-st="1">S1</button><button data-st="2">S2</button><button data-st="3">S3</button><button data-st="4">S4</button><button data-st="5" aria-pressed="true">S5</button></div></div>
+    <div class="dm-now">版面 × 文＝<b>自由組合</b>（catch とも綁定なし・mtg4）。暫定＝左·縦組 × S5【仮】。<b>S1/S2/S4＝amber</b>（利益直結系）——選定組合は公開前に行政書士・弁護士確認、amber は最高審級（content 別紙①）。</div>
+  </div>
+  <div class="dm-page" data-page="2" hidden>
+<!--RY:PALETTE-->
+    <div class="dm-now">変わる＝パンくず hover・矢印・CTA・NAV active・Footer 帯 など主色連動分。恒定＝暖白底・本文色・border・字体(Noto)。</div>
+  </div>
+</template>
+
+<!-- 共通 chrome（#ry-mark symbol／NAV／手机抽屉／解説モード壳）＝ shared.js がこの位置に同期注入 -->
+<script src="assets/shared.js"></script>
+
+<!-- ===== L2 会社概要（生産 /ja/about/company）＝ 頁頭 → 私たちの姿勢（常設・moment）→ 会社情報 → 戻り → CTA
+     ・情緒档＝「機構可信・谷」（Rationale 8／三菱地所の秩序感・Rationale 2）——表が主体、姿勢が本頁唯一の moment
+     ・段順＝姿勢 先・情報 後（PM 指示 2026-07-13）・段区切り＝背景色差のみ（line-free・Tokens 12.5） -->
+<main id="top">
+
+  <!-- 克制页頭（L2：パンくず＋rule＋title・veil なし・NAV 実底）-->
+  <section class="l2-hero">
+    <div class="wrap">
+      <nav class="crumb" aria-label="パンくず"><ol>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">RYについて</a></li>
+        <li aria-current="page">会社概要</li>
+      </ol></nav>
+      <span class="l1-rule" aria-hidden="true"></span>
+      <h1 class="l1-title">会社概要</h1>
+    </div>
+  </section>
+
+  <!-- ① 私たちの姿勢（会社概要 常設＝mtg4 社長指定・3 排版＝mtg_4 より移設・文＝S1–S5 池・暫定 S5）-->
+  <section class="stance" id="stance">
+    <div class="wrap reveal">
+      <div class="stance-stage">
+        <div class="v-rail">私たちの姿勢</div>
+        <div class="para-wrap">
+          <p class="lbl">Our Stance</p>
+          <p class="para jp" id="stancePara"><span class="big">豊かさへの準備は、誰でも今日から始められます。</span>その準備をともに整え、お客様の歩みに長く寄り添う。<span class="np">それがRYの仕事です。</span></p>
+        </div>
+        <div class="v-tate">私たちの姿勢</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ② 会社情報（値源＝content 2 会社概要・逐字）-->
+  <section class="cinfo">
+    <div class="wrap reveal">
+      <table class="cinfo-tbl">
+        <tbody>
+          <tr><th scope="row">会社名</th><td>株式会社RY</td></tr>
+          <tr><th scope="row">設立</th><td>2021年11月8日</td></tr>
+          <tr><th scope="row">所在地</th><td class="jp">東京都港区赤坂2丁目5番8号 ヒューリックJP赤坂ビル3F-6F
+            <div class="cinfo-map"><iframe src="https://maps.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%B8%AF%E5%8C%BA%E8%B5%A4%E5%9D%822%E4%B8%81%E7%9B%AE5%E7%95%AA8%E5%8F%B7%20%E3%83%92%E3%83%A5%E3%83%BC%E3%83%AA%E3%83%83%E3%82%AFJP%E8%B5%A4%E5%9D%82%E3%83%93%E3%83%AB&hl=ja&z=16&output=embed" title="株式会社RY 所在地（Googleマップ）" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+            <a class="cinfo-map-link" href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%B8%AF%E5%8C%BA%E8%B5%A4%E5%9D%822%E4%B8%81%E7%9B%AE5%E7%95%AA8%E5%8F%B7%20%E3%83%92%E3%83%A5%E3%83%BC%E3%83%AA%E3%83%83%E3%82%AFJP%E8%B5%A4%E5%9D%82%E3%83%93%E3%83%AB" target="_blank" rel="noopener">Googleマップで見る<span aria-hidden="true">&#8599;</span></a>
+          </td></tr>
+          <tr><th scope="row">代表者</th><td>清水 梛央</td></tr>
+          <tr><th scope="row">事業内容</th><td class="jp">不動産の保有・管理・運営／建物修繕（退去立会・原状回復・内装工事・建物メンテナンス）／不動産投資に関する情報提供／海外のお客様の各種手続きサポート</td></tr>
+          <tr><th scope="row">資本金</th><td>500万円</td></tr>
+          <tr><th scope="row">従業員数</th><td>5 名</td></tr>
+          <tr><th scope="row">連絡先</th><td><a href="tel:0368247009">TEL 03-6824-7009</a></td></tr>
+        </tbody>
+      </table>
+      <p class="asy-note"><b>会社情報</b>：値源＝content 2 会社概要（2026-07-13 版・事業内容行含む・逐字）。<span class="arr">⚠</span> 許認可＝未取得のため<b>行を設けない</b>（content 3）／売上高＝V1 不載（PM 2026-07-12）／連絡先＝tap-to-call。表の hairline＝内容内部の構造線（line-free 対象外）。地図＝Google 埋め込み（lazy・PM 拍板 07-13）——<b>外部送信規律・プライバシーポリシー記載＝公開前専門家確認</b>（sync 時 content へ注記）／オフライン・遮断時は空枠＝予期／ピンずれ時＝頁頭注の差替手順。</p>
+    </div>
+  </section>
+
+  <!-- 関連ページ（About 兄弟·統一）-->
+  <section class="rel" style="padding-bottom:1rem">
+    <div class="wrap">
+      <a href="about-strengths.html"><span class="jp">強み・数字へ</span><span class="a" aria-hidden="true">→</span></a>
+      <a href="about-network.html"><span class="jp">多言語対応・現地ネットワークへ</span><span class="a" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <!-- 戻りリンク（IA-v2 §3：L2 頁下部）-->
+  <section class="l2-back">
+    <div class="wrap"><a href="about.html"><span class="a" aria-hidden="true">←</span>RYについて一覧へ</a></div>
+  </section>
+
+  <!-- 結尾导引 → お問い合わせ（Home #contact・L1 と同型）-->
+  <section class="l1-cta-sec reveal" aria-label="お問い合わせ">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <p class="l1-cta-lead jp">ご相談は、<span class="np">検討段階から</span>どうぞ。</p>
+      <a class="l1-cta-btn" href="index.html#contact"><span class="t">お問い合わせ</span><span class="a" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+</main>
+
+<!-- 共通 footer ＋ 返回顶部（shared.js がこの位置に注入）→ 共通挙動 init -->
+<script>RY.mountFooter();RY.init();</script>
+
+<script>
+/* ===== 頁固有（L2 会社概要）：姿勢 版面（data-sv）＋ 姿勢文 池（S1–S5・content 別紙① 逐字）＋ reveal ===== */
+(function(){
+  "use strict";
+  var body=document.body;
+  var para=document.getElementById("stancePara");
+  /* 姿勢池（第3世代・content 別紙① 逐字。.big＝第一文の視覚強調・.np＝結句の禁則保護——文字は不変更） */
+  var ST={
+    "1":'<span class="big">誰もが、お金持ちになる準備はできます。</span>違いは、始まりだけ。お客様の資産が増えていくこと——それを、私たちの価値とし、<span class="np">利益とします。</span>',
+    "2":'<span class="big">RYの利益は、お客様の豊かさと同じ方向にあります。</span>一度の取引で終わる関係ではなく、準備の段階から運営まで、<span class="np">ずっとおそばに。</span>',
+    "3":'<span class="big">はじめからお金持ちの人はいません。</span>あるのは、始まりの差だけ。その始まりを整えるところから、お客様とともに<span class="np">歩みます。</span>',
+    "4":'<span class="big">生まれや才能ではなく、準備から。</span>お客様が一歩ずつ豊かさへ向かうこと——その歩みを支えることが、RYの価値であり、<span class="np">利益です。</span>',
+    "5":'<span class="big">豊かさへの準備は、誰でも今日から始められます。</span>その準備をともに整え、お客様の歩みに長く寄り添う。<span class="np">それがRYの仕事です。</span>'
+  };
+  RY.group(".dm-panel [data-sv]",function(b){ body.dataset.sv=b.dataset.sv; });
+  RY.group(".dm-panel [data-st]",function(b){ para.innerHTML=ST[b.dataset.st]; });
+  RY.reveal([".reveal"]);
+})();
+</script>
+
+</body>
+</html>

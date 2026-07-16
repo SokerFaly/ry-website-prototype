@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>投資ガイド ｜ 株式会社RY</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- ============================================================
+  mtg_5 準項目化（続・2026-07-10）：mtg_4/guide.html → 解耦・mtg_5 基準へ換底 ＋ 正文灌入
+  ・正文＝`02_content/investment_guide_content.md` 3（全 13 块＋页尾免責照録・2026-07-07 PM 過目済）を照録（一字不改）
+    槽位映射＝同 0 節：導入→g-sec-ds／本文条目→g-dl・flow-line・faq-list・check-list／短文・結び→g-p／块7 事実＋出典行→g-src-list
+    本文槽（块1–8・11）＝本次増設（原型骨架の予定内・視覚言語＝骨架既存の「名＋説明」ov-grid 系を .g-dl に一般化）
+  ・注記（⚠/★/【仮】/免責の案書き）＝dm-on 門控の独立要素（asy-note）・日文正文字符串に混入しない（律师審クリーン版要件）
+  ・リンク注（块10 別ページ／FAQ A5 事業紹介／CTA）＝該当箇所の HTML コメントに記録（実リンク化＝build 期）
+  ・解説モード＝mtg_5 機構・配色のみ 1 頁（本頁写真なし）。旧 legend 黒帯＝廃止（要旨→本コメント・原文＝mtg_4 アーカイブ）
+  ・共通分（token/NAV/抽屉/footer/解説モード/reveal/L1 骨架）＝ assets/ 参照。旧頁の死 CSS・旧 A/B 検索切替の残説明＝清掃済
+  ・頁規格（旧 legend 由来）：type＋structure＋線・写真なし／sticky 目次＋現在地ハイライト＋番号付き 13 節／09 の一筆線＝唯一のダイアグラム／
+    無 veil・無面包屑・NAV「投資ガイド」active／⚠ 利回りシミュ・収益試算・成功事例＝不做（金商敏感）／目次＋页内搜索＝build 勿删（Master 8.5）
+  ・共通部分の修正＝assets 側を直す（二重修正禁止）。file:// 直開き可・JS 無効時は共通 chrome 非表示（評審用の既知制約）
+============================================================ -->
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/shared.css">
+<style>
+/* ==================== 頁固有様式（Investment Guide/L1 单页のみ）====================
+   共通分＝assets/ に分離済（頭注参照）。値＝mtg_4 版から不変更（ov-grid → .g-dl 改名＝汎用化のみ・
+   新設＝本文槽 3 種 .g-p/.g-src/.g-note）。 */
+@media (prefers-reduced-motion:no-preference){ html{ scroll-behavior:smooth; } }
+
+/* —— 页头（全站最暖·type-led）—— */
+.g-hero{ background:var(--warm); padding-top:calc(clamp(1.1rem,2.4vw,1.7rem) * 2 + 4.2rem); padding-bottom:clamp(2.2rem,4.5vw,3.6rem); }
+.g-h1{ font-size:clamp(1.85rem,3.4vw,2.9rem); line-height:1.4; }
+.g-lead{ max-width:34em; margin-top:1.1rem; }
+
+/* —— ページ内検索（hero 下·常時「絞り込み＋ハイライト」）—— */
+.g-search-sec{ background:var(--warm); padding-bottom:clamp(1.6rem,3vw,2.6rem); }
+.g-search{ position:relative; max-width:540px; }
+.g-search-icon{ position:absolute; left:1.05rem; top:50%; transform:translateY(-50%); width:19px; height:19px; color:var(--ink2); pointer-events:none; }
+.g-search-input{ width:100%; font-family:var(--sans); font-size:1rem; color:var(--ink); background:var(--white); border:1px solid var(--bd); border-radius:100px; padding:.82rem 3rem .82rem 3rem; transition:border-color .25s var(--ease), box-shadow .25s var(--ease); }
+.g-search-input::placeholder{ color:#a8a29a; }
+.g-search-input:focus{ outline:none; border-color:var(--brand); box-shadow:0 0 0 2px color-mix(in srgb, var(--brand) 22%, transparent), 0 0 15px 4px color-mix(in srgb, var(--brand) 17%, transparent); }
+.g-search-input::-webkit-search-cancel-button{ -webkit-appearance:none; appearance:none; }
+.g-search-clear{ position:absolute; right:.7rem; top:50%; transform:translateY(-50%); width:1.7rem; height:1.7rem; border:0; background:var(--warm2); color:var(--ink2); border-radius:50%; cursor:pointer; font-size:1.05rem; line-height:1; display:grid; place-items:center; transition:color .2s var(--ease); }
+.g-search-clear:hover{ color:var(--ink); }
+.g-search-status{ margin:.7rem 0 0; font-size:.8rem; color:var(--ink2); min-height:1.1em; }
+
+/* —— 目次 + 本文 2栏（desktop sticky·mobile は目次非表示）—— */
+.g-body{ padding-block:clamp(2.4rem,5vw,4.5rem) clamp(3rem,6vw,5.5rem); }
+.g-layout{ display:grid; grid-template-columns:minmax(176px,228px) 1fr; gap:clamp(2.5rem,6vw,6rem); align-items:start; }
+.g-toc{ position:sticky; top:6.4rem; }
+.g-toc-h{ font-size:.72rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--ink2); margin:0 0 1rem; }
+.g-toc ol{ list-style:none; margin:0; padding:0; counter-reset:toc; }
+.g-toc li{ counter-increment:toc; }
+.g-toc a{ display:block; padding:.42rem 0 .42rem 2.1rem; position:relative; font-size:.86rem; line-height:1.5; color:var(--ink2); text-decoration:none; transition:color .2s var(--ease), opacity .2s var(--ease); }
+.g-toc a::before{ content:counter(toc,decimal-leading-zero); position:absolute; left:0; top:.42rem; font-family:var(--serif); font-size:.78rem; color:var(--bd); transition:color .2s var(--ease); }
+.g-toc a:hover{ color:var(--ink); }
+.g-toc a.is-current{ color:var(--brand); }
+.g-toc a.is-current::before{ color:var(--brand); }
+.g-toc a.is-current::after{ content:""; position:absolute; left:-12px; top:50%; transform:translateY(-50%); width:2px; height:1.05em; background:var(--brand); }
+.g-toc a.g-toc-dim{ opacity:.3; }
+@media (max-width:980px){ .g-layout{ grid-template-columns:1fr; gap:0; } .g-toc{ display:none; } }
+
+/* —— 区块（番号付き·細罫·留白）—— */
+.g-content{ min-width:0; }
+.g-sec{ padding-block:clamp(1.7rem,2.7vw,2.5rem); border-top:1px solid var(--bd); scroll-margin-top:5.6rem; }
+.g-sec:first-child{ border-top:0; padding-top:0; }
+.g-sec-no{ display:block; font-family:var(--serif); font-weight:600; font-size:.92rem; letter-spacing:.1em; color:var(--brand); margin-bottom:.4rem; }
+.g-sec-ttl{ font-family:var(--serif); font-weight:700; font-size:clamp(1.3rem,2vw,1.72rem); color:var(--ink); line-height:1.4; margin:0; }
+.g-sec-ds{ color:var(--ink2); line-height:1.95; margin:.62rem 0 0; max-width:42em; }
+.g-warn{ font-family:var(--sans); font-size:.66rem; font-weight:600; letter-spacing:.04em; color:var(--ink2); background:var(--warm2); padding:.18rem .55rem; border-radius:2px; vertical-align:middle; margin-left:.5em; }
+.g-star{ color:var(--brand); font-size:.62em; font-weight:700; letter-spacing:.06em; vertical-align:middle; margin-left:.4em; }
+
+/* —— 本文槽（正文灌入 2026-07-10 新設·既存尺度に整合）—— */
+.g-p{ color:var(--ink2); line-height:1.95; margin:.9rem 0 0; max-width:42em; }
+.g-src-list{ list-style:none; margin:clamp(1.3rem,2.2vw,1.8rem) 0 0; padding:0; }
+.g-src-list li{ border-top:1px solid var(--bd); padding:.8rem 0 .9rem; color:var(--ink); font-size:.95rem; line-height:1.8; max-width:42em; }
+.g-src{ display:block; margin-top:.3rem; font-size:.78rem; color:var(--ink2); }
+.g-src a{ color:inherit; text-decoration:underline; text-underline-offset:2px; }
+.g-src a:hover{ color:var(--brand); }
+.g-note{ margin:1rem 0 0; font-size:.72rem; color:#a8a299; line-height:1.65; }
+
+/* —— 「名＋説明」2列リスト（.g-dl＝旧 ov-grid の一般化·块3/4/5/6/8/10/11 共用·値不変更）—— */
+.g-dl{ list-style:none; margin:clamp(1.3rem,2.2vw,1.8rem) 0 0; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:clamp(.9rem,1.6vw,1.3rem) clamp(1.6rem,3vw,2.6rem); }
+.g-dl li{ border-top:1px solid var(--bd); padding-top:.7rem; }
+.g-dl b{ display:block; font-size:.95rem; color:var(--ink); font-weight:600; }
+.g-dl span{ display:block; font-size:.84rem; color:var(--ink2); line-height:1.7; margin-top:.22rem; }
+@media (max-width:560px){ .g-dl{ grid-template-columns:1fr; } }
+
+/* —— 09 投資の流れ＝唯一のダイアグラム（一筆の縦線·番号ノード·スクロールで draw）—— */
+.flow-line{ list-style:none; margin:clamp(1.5rem,2.6vw,2.2rem) 0 0; padding:0; position:relative; }
+.flow-line::before{ content:""; position:absolute; left:calc(.825rem - 1px); top:.7rem; bottom:2.5rem; width:2px; background:var(--brand); transform:scaleY(0); transform-origin:top; transition:transform 1.15s var(--ease-draw); }
+.g-flow.in .flow-line::before{ transform:scaleY(1); }
+.flow-line > li{ display:grid; grid-template-columns:1.65rem 1fr; gap:1.1rem; align-items:start; padding-bottom:clamp(1.3rem,2.3vw,2rem); }
+.flow-line > li:last-child{ padding-bottom:0; }
+.fl-no{ width:1.65rem; height:1.65rem; display:grid; place-items:center; font-family:var(--serif); font-weight:600; font-size:.82rem; color:#fff; background:var(--brand); border-radius:50%; position:relative; z-index:1; }
+.fl-body{ min-width:0; padding-top:.05rem; }
+.fl-ttl{ display:block; font-family:var(--serif); font-weight:600; font-size:clamp(1.08rem,1.4vw,1.28rem); color:var(--ink); line-height:1.4; }
+.fl-ds{ display:block; font-size:.9rem; color:var(--ink2); line-height:1.7; margin-top:.22rem; max-width:38em; }
+
+/* —— 12 FAQ（页内 section·6問）—— */
+.faq-list{ margin:clamp(1.3rem,2.2vw,1.8rem) 0 0; }
+.faq-list dt{ font-weight:600; color:var(--ink); margin-top:1.05rem; position:relative; padding-left:1.4rem; }
+.faq-list dt:first-child{ margin-top:0; }
+.faq-list dt::before{ content:"Q"; position:absolute; left:0; font-family:var(--serif); color:var(--brand); font-weight:700; }
+.faq-list dd{ margin:.3rem 0 0 1.4rem; color:var(--ink2); font-size:.92rem; line-height:1.7; }
+
+/* —— 13 チェックリスト —— */
+.check-list{ list-style:none; margin:clamp(1.3rem,2.2vw,1.8rem) 0 0; padding:0; display:flex; flex-wrap:wrap; gap:.7rem 1.6rem; }
+.check-list li{ position:relative; padding-left:1.5rem; color:var(--ink); font-size:.95rem; }
+.check-list li::before{ content:"✓"; position:absolute; left:0; color:var(--brand); font-weight:700; }
+
+/* —— 页尾免責（別紙④ 照録·footer 直上）—— */
+.g-disclaimer{ margin-top:clamp(2.6rem,4vw,3.6rem); padding:clamp(1.1rem,2vw,1.5rem) clamp(1.2rem,2.2vw,1.6rem); background:var(--warm2); border-left:3px solid var(--brand); border-radius:0 4px 4px 0; font-size:.8rem; color:var(--ink2); line-height:1.78; }
+.g-disclaimer b{ color:var(--ink); }
+.g-disclaimer ul{ list-style:none; margin:.5rem 0 0; padding:0; display:grid; gap:.35rem; }
+.g-disc-note{ display:block; margin-top:.45rem; font-size:.72rem; color:#a8a299; }
+
+/* —— 検索ハイライト & フィルタ状態 —— */
+.g-mark{ background:color-mix(in srgb, var(--brand) 20%, var(--warm)); color:var(--ink); border-radius:2px; padding:0 .12em; box-shadow:0 0 0 1px color-mix(in srgb, var(--brand) 24%, transparent); }
+.g-sec.g-hidden{ display:none; }
+
+@media (prefers-reduced-motion:reduce){
+  .g-flow.in .flow-line::before{ transition:none; }
+}
+</style>
+<script>document.documentElement.classList.add('jsm');</script>
+</head>
+<body class="l1-page" data-nav="solid" data-palette="burgundy">
+
+<!-- 頁固有：解説モードの中身（shared.js が共通壳へ展開。palette 組＝RY:PALETTE マーカーに注入）
+     本頁の解説モード＝配色のみ 1 頁（写真なしページ・換図なし・dm-nav 不要） -->
+<template id="ry-dm-content">
+  <div class="dm-page" data-page="1">
+<!--RY:PALETTE-->
+    <div class="dm-now"><b>このページは写真なし</b>（type＋線·教育/信頼ページ）。上の検索ボックスは常に「絞り込み＋ハイライト」で動きます。ここは配色のみ：変わる＝番号·一筆の線·矢印·下線·CTA·検索ハイライト·Footer 帯 など主色連動分。恒定＝暖白底·本文色·字体·目次。</div>
+  </div>
+</template>
+
+<!-- 共通 chrome（#ry-mark symbol／NAV／手机抽屉／解説モード壳）＝ shared.js がこの位置に同期注入 -->
+<script src="assets/shared.js"></script>
+
+<!-- ===== L1 Investment Guide｜投資ガイド（单页·★社長最重视·13 块·正文灌入済 2026-07-10）===== -->
+<main id="top">
+
+  <!-- 克制页头（全站最暖·type-led）-->
+  <section class="g-hero">
+    <div class="wrap">
+      <span class="l1-rule" aria-hidden="true"></span>
+      <p class="eyebrow">Investment Guide</p>
+      <h1 class="l1-title g-h1 jp">はじめての方へ、不動産投資の「考え方」から。</h1>
+      <p class="lead g-lead jp">市場の話、投資の流れ、考え方を、急かさず、わかるまで。判断はお客様自身、RYはその材料をわかりやすくお渡しします。</p>
+    </div>
+  </section>
+
+  <!-- ページ内検索（常時「絞り込み＋ハイライト」·IME 安全）-->
+  <section class="g-search-sec">
+    <div class="wrap">
+      <div class="g-search">
+        <svg class="g-search-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.2-3.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <input type="text" class="g-search-input" id="gSearch" placeholder="キーワードで探す（例：リスク・費用・海外）" aria-label="ページ内をキーワードで検索" autocomplete="off">
+        <button class="g-search-clear" id="gSearchClear" type="button" aria-label="クリア" hidden>×</button>
+      </div>
+      <p class="g-search-status" id="gSearchStatus" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <!-- 目次（desktop sticky·短名＝content 各块「目次短名」）+ 13 区块 -->
+  <section class="g-body">
+    <div class="wrap g-layout">
+
+      <nav class="g-toc" aria-label="目次">
+        <p class="g-toc-h">目次</p>
+        <ol>
+          <li><a href="#sec-1">はじめに</a></li>
+          <li><a href="#sec-2">不動産投資とは</a></li>
+          <li><a href="#sec-3">代表的な種類</a></li>
+          <li><a href="#sec-4">始める前の整理</a></li>
+          <li><a href="#sec-5">主なリスク</a></li>
+          <li><a href="#sec-6">費用と管理</a></li>
+          <li><a href="#sec-7">市場の話</a></li>
+          <li><a href="#sec-8">情報の見方</a></li>
+          <li><a href="#sec-9">投資の流れ</a></li>
+          <li><a href="#sec-10">海外のお客様へ</a></li>
+          <li><a href="#sec-11">用語集</a></li>
+          <li><a href="#sec-12">FAQ</a></li>
+          <li><a href="#sec-13">チェックリスト</a></li>
+        </ol>
+      </nav>
+
+      <div class="g-content">
+
+        <section class="g-sec reveal" id="sec-1">
+          <span class="g-sec-no">01</span><h2 class="g-sec-ttl">はじめに｜まず知ること</h2>
+          <p class="g-sec-ds jp">不動産投資のことを、基礎から順番に。急がず、ご自身のペースでどうぞ。</p>
+          <p class="g-p jp">このページは、一般的な情報の整理です。当社は、個別の投資助言は行いません。</p>
+          <p class="g-p jp">決めるのは、お客様ご自身です。私たちは、考えるための材料を、ていねいにご用意します。</p>
+        </section>
+
+        <section class="g-sec reveal" id="sec-2">
+          <span class="g-sec-no">02</span><h2 class="g-sec-ttl">不動産投資とは</h2>
+          <p class="g-sec-ds jp">基本の仕組みを、中立に整理します。</p>
+          <p class="g-p jp">不動産投資とは、不動産を保有・活用して、資産づくりを目指す方法のひとつです。</p>
+          <p class="g-p jp">柱は大きく2つ。貸すことで得られる賃料収入と、不動産そのものの資産価値です。</p>
+          <p class="g-p jp">収入も価値も一定ではなく、市場や物件の状態で変わります。</p>
+          <p class="g-p jp">また、この方法には向き不向きがあります。ご自身に合うかどうかから、考えていきましょう。</p>
+        </section>
+
+        <section class="g-sec reveal" id="sec-3">
+          <span class="g-sec-no">03</span><h2 class="g-sec-ttl">代表的な種類</h2>
+          <p class="g-sec-ds jp">代表的な4つの種類を、中立にご紹介します。優劣はつけません。</p>
+          <ul class="g-dl">
+            <li><b>一棟所有</b><span class="jp">建物を一棟まるごと保有する形です。規模が大きいぶん、費用も管理の範囲も大きくなります。</span></li>
+            <li><b>区分所有</b><span class="jp">マンションの一室など、建物の一部を保有する形です。比較的小さな規模から始められます。</span></li>
+            <li><b>戸建賃貸</b><span class="jp">一戸建てを保有し、貸し出す形です。建物と土地をあわせて持つことになります。</span></li>
+            <li><b>土地活用</b><span class="jp">保有する土地を、駐車場や賃貸住宅などに活用する形です。</span></li>
+          </ul>
+        </section>
+
+        <section class="g-sec reveal" id="sec-4">
+          <span class="g-sec-no">04</span><h2 class="g-sec-ttl">始める前に整理したいこと</h2>
+          <p class="g-sec-ds jp">検討の前に、次の5つを整理しておくと、考えやすくなります。</p>
+          <ul class="g-dl">
+            <li><b>目的</b><span class="jp">何のために投資を考えるのか。目的によって、合う形は変わります。</span></li>
+            <li><b>資金</b><span class="jp">いま使える資金と、使ってはいけない資金。この線引きが出発点になります。</span></li>
+            <li><b>リスク許容度</b><span class="jp">どこまでの変動なら受け入れられるか。ご自身の感覚を確かめておきましょう。</span></li>
+            <li><b>時間</b><span class="jp">物件や情報と向き合う時間を、どのくらい取れるか。管理の形にも関わります。</span></li>
+            <li><b>ご家族</b><span class="jp">身近な人の理解はあるか。将来の生活の変化もあわせて考えたい観点です。</span></li>
+          </ul>
+        </section>
+
+        <section class="g-sec reveal" id="sec-5">
+          <span class="g-sec-no">05</span><h2 class="g-sec-ttl">知っておきたい主なリスク</h2>
+          <p class="g-sec-ds jp">良い話の前に。知っておきたい5つのリスクを、正直にお伝えします。</p>
+          <ul class="g-dl">
+            <li><b>空室</b><span class="jp">入居者がいない期間は、賃料収入がゼロになります。立地や物件の状態に左右されます。</span></li>
+            <li><b>修繕</b><span class="jp">建物は年数とともに傷みます。設備の故障や大きな修繕で、まとまった出費が起こりえます。</span></li>
+            <li><b>金利</b><span class="jp">金利が上がると、ローンの返済額も増えます。長く借りるほど、影響は大きくなります。</span></li>
+            <li><b>災害</b><span class="jp">地震や台風、水害など。日本で不動産を持つ以上、避けて通れない前提です。</span></li>
+            <li><b>価格変動</b><span class="jp">不動産の価値は、上がることも下がることもあります。購入時の価格を下回ることもあります。</span></li>
+          </ul>
+          <p class="g-p jp">リスクはなくせません。ただ、知って備えることはできます。</p>
+        </section>
+
+        <section class="g-sec reveal" id="sec-6">
+          <span class="g-sec-no">06</span><h2 class="g-sec-ttl">費用と管理の基本</h2>
+          <p class="g-sec-ds jp">費用は「いつ・何のため」で、管理は「誰がやるか」で整理できます。</p>
+          <ul class="g-dl">
+            <li><b>取得時</b><span class="jp">物件価格のほかに、税金や手続きの費用などがかかります。</span></li>
+            <li><b>保有時</b><span class="jp">管理費、修繕積立金、固定資産税など、持ち続ける間の費用です。</span></li>
+            <li><b>売却時</b><span class="jp">売るときにも、税金や各種の費用が発生します。</span></li>
+            <li><b>自主管理</b><span class="jp">ご自身で入居者対応や建物の維持を行う形です。時間と知識が必要になります。</span></li>
+            <li><b>管理委託</b><span class="jp">専門の会社に管理を任せる形です。委託の費用がかかります。</span></li>
+          </ul>
+          <p class="g-p jp">金額は物件により大きく異なります。ご相談の際に、内訳からご説明します。</p>
+        </section>
+
+        <section class="g-sec reveal" id="sec-7">
+          <span class="g-sec-no">07</span><h2 class="g-sec-ttl">市場の話 <span class="g-warn asy-note">⚠ 出典・日付つき</span></h2>
+          <p class="g-sec-ds jp">市場の話は、公的な統計をもとに。ここでは3つだけご紹介します。</p>
+          <ol class="g-src-list">
+            <li class="jp">全国の地価は、全用途平均で5年連続の上昇となりました（＋2.8%）。<span class="g-src">出典：<a href="https://www.mlit.go.jp/totikensangyo/totikensangyo_fr4_000043.html" target="_blank" rel="noopener">国土交通省「令和8年地価公示」</a>（2026年3月18日公表）</span></li>
+            <li class="jp">2025年に建て始められた新しい住宅は、全国で約74万戸（前年比6.5%減）です。<span class="g-src">出典：<a href="https://www.mlit.go.jp/sogoseisaku/jouhouka/sosei_jouhouka_tk4_000002.html" target="_blank" rel="noopener">国土交通省「建築着工統計調査報告（2025年計）」</a>（2026年1月30日公表）</span></li>
+            <li class="jp">全国の人口は5年前より2.5%の減少。東京都と沖縄県では増加しています。<span class="g-src">出典：<a href="https://www.stat.go.jp/data/kokusei/2025/kekka.html" target="_blank" rel="noopener">総務省統計局「令和7年国勢調査 人口速報集計」</a>（2026年5月29日公表）</span></li>
+          </ol>
+          <p class="g-p jp">市場は変動します。数字は、出典と日付とセットでご覧ください。</p>
+          <!-- ⚠ 上线前硬闸（Master/CURRENT_TASK 落档済）：公表日が最新か＋リンク有効かを再確認 -->
+        </section>
+
+        <section class="g-sec reveal" id="sec-8">
+          <span class="g-sec-no">08</span><h2 class="g-sec-ttl">情報を見るときの基本視点</h2>
+          <p class="g-sec-ds jp">情報があふれる分野です。見るときの「構え」を4つだけ。</p>
+          <ul class="g-dl">
+            <li><b>「高利回り」に注意</b><span class="jp">数字の大きさより、前提が大切です。何が含まれているかを確かめましょう。</span></li>
+            <li><b>表面と実質のちがい</b><span class="jp">同じ「利回り」でも、費用を含めるかどうかで中身が変わります。</span></li>
+            <li><b>出典と日付を見る</b><span class="jp">どこが出した、いつの数字か。この2つで、情報の質はかなり見分けられます。</span></li>
+            <li><b>短期より長期の視点</b><span class="jp">「今だけ」「急いで」という言葉ほど、一歩引いて考えます。不動産は、長く付き合う資産です。</span></li>
+          </ul>
+        </section>
+
+        <!-- 09 投資の流れ＝唯一のダイアグラム（一筆の線·番号主色 accent·此処のみ）-->
+        <section class="g-sec g-flow reveal" id="sec-9">
+          <span class="g-sec-no">09</span><h2 class="g-sec-ttl">投資の流れ（伴走4ステップ）</h2>
+          <p class="g-sec-ds jp">「買い方の手順」ではなく、RYがどこで伴走するかのご案内です。</p>
+          <ol class="flow-line">
+            <li><span class="fl-no">01</span><span class="fl-body"><span class="fl-ttl">相談</span><span class="fl-ds jp">まずは、一般的な情報の整理から。何も決まっていなくても大丈夫です。</span></span></li>
+            <li><span class="fl-no">02</span><span class="fl-body"><span class="fl-ttl">機会のご提案</span><span class="fl-ds jp">判断の材料となる情報を、わかりやすい形でご用意します。急かすことはありません。</span></span></li>
+            <li><span class="fl-no">03</span><span class="fl-body"><span class="fl-ttl">ご契約・お手続き</span><span class="fl-ds jp">手続きの流れをわかりやすく整理し、ひとつずつご一緒します。</span></span></li>
+            <li><span class="fl-no">04</span><span class="fl-body"><span class="fl-ttl">取得・運営管理</span><span class="fl-ds jp">取得して終わりではなく、その後の運営・管理まで長くお付き合いします。</span></span></li>
+          </ol>
+        </section>
+
+        <!-- 10 海外のお客様へ ★強化（8 topics·一般情報·「別ページ」＝/ja/business/overseas-support·実リンク化＝build 期）-->
+        <section class="g-sec g-overseas reveal" id="sec-10">
+          <span class="g-sec-no">10</span><h2 class="g-sec-ttl">海外のお客様へ <span class="g-star asy-note">★ 強化</span></h2>
+          <p class="g-sec-ds jp">よくいただく疑問を、一般的な情報として整理しました。具体的なサポートは、別ページでご案内します。</p>
+          <ul class="g-dl">
+            <li><b>日本の不動産を持てる？</b><span class="jp">日本では、外国籍の方も不動産を持つことができます。基本からご説明します。</span></li>
+            <li><b>契約・書類と言語の壁</b><span class="jp">契約や重要な書類は、日本語が基本です。通訳・翻訳で理解をお手伝いします。</span></li>
+            <li><b>海外在住でも手続きできる？</b><span class="jp">海外にお住まいのままでも、進められる手続きがあります。流れからご案内します。</span></li>
+            <li><b>お金まわりの基本</b><span class="jp">送金や口座開設など、お金まわりの一般的な流れを整理します。</span></li>
+            <li><b>税金の基礎</b><span class="jp">関わる税金の「種類」を、概念としてご紹介します。判断は、税理士にご相談ください。</span></li>
+            <li><b>在留・ビザとの関係</b><span class="jp">在留資格との一般的な関係をご説明します。具体的なことは、専門家にご相談ください。</span></li>
+            <li><b>商習慣のちがい</b><span class="jp">母国と日本の商習慣のちがいから生まれる不安を、ひとつずつ整理します。</span></li>
+            <li><b>取得後の管理・連絡</b><span class="jp">取得後の運営・管理のご連絡は、多言語で対応します。</span></li>
+          </ul>
+        </section>
+
+        <section class="g-sec reveal" id="sec-11">
+          <span class="g-sec-no">11</span><h2 class="g-sec-ttl">用語集</h2>
+          <p class="g-sec-ds jp">本文でも出てきた言葉を中心に、意味と注意点を短くまとめました。</p>
+          <ul class="g-dl">
+            <li><b>利回り</b><span class="jp">収入と価格の関係を示す考え方。「表面」と「実質」では中身が異なります。</span></li>
+            <li><b>空室率</b><span class="jp">入居していない部屋の割合。賃料収入に直接影響します。</span></li>
+            <li><b>管理費</b><span class="jp">建物の日常の維持・管理にかかる費用のことです。</span></li>
+            <li><b>修繕積立金</b><span class="jp">将来の大きな修繕に備えて、毎月積み立てるお金です。</span></li>
+            <li><b>固定資産税</b><span class="jp">不動産を持っている間、毎年かかる税金です。</span></li>
+            <li><b>頭金</b><span class="jp">購入時に最初に支払う、自己資金の部分のことです。</span></li>
+            <li><b>登記</b><span class="jp">不動産の持ち主などを公的に記録する手続きです。</span></li>
+            <li><b>原状回復</b><span class="jp">退去後に、部屋を元の状態に近づける作業のことです。</span></li>
+            <li><b>サブリース</b><span class="jp">会社がまとめて借り上げるしくみのこと。契約の内容をよく確認したい言葉です。</span></li>
+            <li><b>重要事項説明</b><span class="jp">契約の前に、物件や条件について受ける説明のことです。</span></li>
+          </ul>
+        </section>
+
+        <!-- 12 FAQ（页内 section·6問＝既定3＋追加3〔仮〕·A5「事業紹介のページ」＝/ja/business·実リンク化＝build 期
+             ⑤実績 cross-link 预留＝素材齐后本块末尾（content 块12 末注）-->
+        <section class="g-sec g-faq reveal" id="sec-12">
+          <span class="g-sec-no">12</span><h2 class="g-sec-ttl">よくある質問</h2>
+          <p class="g-sec-ds jp">できること・できないことを、正直にお答えします。</p>
+          <dl class="faq-list">
+            <dt class="jp">RYは物件の売買や仲介もできますか？</dt><dd class="jp">中心は、自社保有物件の運営・管理と手続きのサポートです。</dd>
+            <dt class="jp">投資の判断やアドバイスはしてもらえますか？</dt><dd class="jp">個別の投資助言は行っていません。判断に役立つ一般的な情報の整理と、資料のご用意でお手伝いします。</dd>
+            <dt class="jp">海外からでも相談できますか？</dt><dd class="jp">はい。日本語・韓国語・中国語のネイティブ体制で、海外からのご相談に対応しています。</dd>
+            <dt class="jp">まだ何も決めていない段階でも相談できますか？</dt><dd class="jp">はい。決まっていることがなくても問題ありません。最初の整理から、ご一緒します。</dd>
+            <dt class="jp">管理や修繕だけの相談もできますか？</dt><dd class="jp">はい。建物の管理や修繕のみのご相談も承っています。詳しくは、事業紹介のページをご覧ください。</dd>
+            <dt class="jp">相談したら、契約しないといけませんか？</dt><dd class="jp">いいえ。ご相談は検討のための場で、契約を前提にはしていません。</dd>
+          </dl>
+          <p class="g-note asy-note">Q4〜Q6＝【仮】（PM 全権委托に基づく执笔选定·A1＝資質查证後の唯一微調箇所·詳細＝investment_guide_content.md 块12 注）</p>
+        </section>
+
+        <!-- 13 相談前チェックリスト（7項·CTA 実体＝下の結尾 l1-cta-sec ボタン·1 種のみ）-->
+        <section class="g-sec g-check reveal" id="sec-13">
+          <span class="g-sec-no">13</span><h2 class="g-sec-ttl">相談前チェックリスト</h2>
+          <p class="g-sec-ds jp">すべてそろっていなくても大丈夫。あると話が早くなるものの一覧です。</p>
+          <ul class="check-list">
+            <li class="jp">このページで気になった項目のメモ</li>
+            <li class="jp">目的のイメージ（ひとことで十分です）</li>
+            <li class="jp">使ってよい資金の、おおまかな線引き</li>
+            <li class="jp">気になるリスクや、不安な点</li>
+            <li class="jp">かけられる時間の感覚</li>
+            <li class="jp">ご家族のご意見（あれば）</li>
+            <li class="jp">聞きたいことのリスト</li>
+          </ul>
+          <p class="g-p jp">準備は途中でも構いません。まずはご相談から。</p>
+        </section>
+
+        <!-- 页尾免責（別紙④ 照録·一字不改·公開前に行政書士・弁護士確認）-->
+        <aside class="g-disclaimer reveal jp">
+          <b>【免責事項（案）】</b>
+          <ul>
+            <li>・当社は、宅地建物取引業免許および金融商品取引業の登録を受けておりません。</li>
+            <li>・当社は、特定の金融商品・不動産の購入を勧誘するものではなく、個別の投資助言・投資判断の代行・資産の運用受託を行うものではありません。</li>
+            <li>・本サイトに掲載する情報は、一般的な情報提供を目的としたものであり、将来の収益・成果を保証するものではありません。</li>
+            <li>・実際のご契約・お手続きにあたっては、お客様ご自身の判断と責任において、必要に応じて専門家にご相談ください。</li>
+            <li>・掲載している数字・データは作成時点のものであり、最新の状況と異なる場合があります。</li>
+          </ul>
+          <span class="g-disc-note asy-note">（案・公開前に行政書士・弁護士の確認）</span>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 結尾导引 → お問い合わせ（Home #contact）-->
+  <section class="l1-cta-sec reveal" aria-label="お問い合わせ">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <p class="l1-cta-lead jp">はじめての不動産投資を、迷わせない。</p>
+      <a class="l1-cta-btn" href="index.html#contact"><span class="t">お問い合わせ</span><span class="a" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+</main>
+
+<!-- 共通 footer ＋ 返回顶部（shared.js がこの位置に注入）→ 共通挙動 init -->
+<script>RY.mountFooter();RY.init();</script>
+
+<script>
+/* ===== 頁固有（Investment Guide）：reveal 起動 ＋ 目次 spy ＋ ページ内検索（絞り込み＋ハイライト·IME 安全）===== */
+(function(){
+  "use strict";
+  RY.reveal([".reveal"]);   /* 対象＝markup 側 .reveal（13 節・免責・結尾 CTA）。09 の一筆線＝.g-flow.in で draw */
+
+  var secs = Array.prototype.slice.call(document.querySelectorAll(".g-sec"));
+
+  /* —— 目次 spy（現在地ハイライト·IO 非対応環境は無効＝装飾機能のみ）—— */
+  var tocById = {};
+  document.querySelectorAll(".g-toc a").forEach(function(a){ tocById[a.getAttribute("href").slice(1)] = a; });
+  if(secs.length && Object.keys(tocById).length && "IntersectionObserver" in window){
+    var spy = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ var id = e.target.id; Object.keys(tocById).forEach(function(k){ tocById[k].classList.toggle("is-current", k === id); }); } });
+    }, { rootMargin:"-32% 0px -58% 0px" });
+    secs.forEach(function(s){ spy.observe(s); });
+  }
+
+  /* —— ページ内検索（常時＝絞り込み＋ハイライト·IME 変換中は停止）—— */
+  var input = document.getElementById("gSearch"), clearBtn = document.getElementById("gSearchClear"), status = document.getElementById("gSearchStatus");
+  /* HL＝正文の葉スロット（入れ子重複なし＝二重 mark 防止）。正文槽追加時はここも更新 */
+  var HL = Array.prototype.slice.call(document.querySelectorAll(".g-sec-ttl, .g-sec-ds, .g-p, .fl-ttl, .fl-ds, .g-dl b, .g-dl span, .g-src-list li, .faq-list dt, .faq-list dd, .check-list li, .g-disclaimer"));
+  HL.forEach(function(el){ el._orig = el.innerHTML; });
+  var composing = false;   /* IME 変換中フラグ（runSearch と input 両方でガード）*/
+
+  function esc(s){ return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
+  function markNode(tn, rx){
+    var val = tn.nodeValue, m, last = 0, frag = document.createDocumentFragment(), found = 0;
+    rx.lastIndex = 0;
+    while((m = rx.exec(val))){
+      if(m.index > last){ frag.appendChild(document.createTextNode(val.slice(last, m.index))); }
+      var mk = document.createElement("mark"); mk.className = "g-mark"; mk.textContent = m[0];
+      frag.appendChild(mk); last = m.index + m[0].length; found++;
+      if(rx.lastIndex === m.index){ rx.lastIndex++; }
+    }
+    if(found){ if(last < val.length){ frag.appendChild(document.createTextNode(val.slice(last))); } tn.parentNode.replaceChild(frag, tn); }
+    return found;
+  }
+  function runSearch(){
+    if(!input || composing){ return; }
+    var q = input.value.trim();
+    HL.forEach(function(el){ el.innerHTML = el._orig; });   /* reset highlights */
+    if(clearBtn){ clearBtn.hidden = !q; }
+    if(!q){
+      secs.forEach(function(s){ s.classList.remove("g-hidden"); });
+      Object.keys(tocById).forEach(function(k){ tocById[k].classList.remove("g-toc-dim"); });
+      if(status){ status.textContent = ""; }
+      return;
+    }
+    var rx = new RegExp("(" + esc(q) + ")", "gi"), total = 0;
+    secs.forEach(function(sec){
+      var hits = 0;
+      HL.forEach(function(el){
+        if(sec.contains(el)){
+          var nodes = [], w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null), n;
+          while((n = w.nextNode())){ nodes.push(n); }
+          nodes.forEach(function(tn){ hits += markNode(tn, rx); });
+        }
+      });
+      var has = hits > 0; total += hits;
+      sec.classList.toggle("g-hidden", !has);
+      if(tocById[sec.id]){ tocById[sec.id].classList.toggle("g-toc-dim", !has); }
+    });
+    if(status){ status.textContent = total ? (total + "件 見つかりました") : "該当なし"; }
+  }
+
+  /* IME 安全：変換中は検索停止·確定後のみ実行。e.isComposing で二重ガード */
+  if(input){
+    var deb;
+    var schedule = function(){ clearTimeout(deb); deb = setTimeout(runSearch, 130); };
+    input.addEventListener("compositionstart", function(){ composing = true; clearTimeout(deb); });
+    input.addEventListener("compositionend", function(){ composing = false; schedule(); });
+    input.addEventListener("input", function(e){ if(e.isComposing || composing){ return; } schedule(); });
+  }
+  if(clearBtn){ clearBtn.addEventListener("click", function(){ if(input){ input.value = ""; input.focus(); } runSearch(); }); }
+})();
+</script>
+
+</body>
+</html>

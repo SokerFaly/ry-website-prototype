@@ -1,0 +1,30 @@
+/* ============================================================
+   RY design tokens（assets/tokens.css）— 全站 hex/px/duration の頁側落点
+   出典：mtg_5/index.html（2026-07-09 step0 準項目化で逐字搬出・値は不変更）
+   数値の唯一正本＝ 03_design/RY_Design_Tokens.md（変更はまず正本、次に本ファイル）
+   規約：組件内 hardcode 禁止・色/字/間距/動効値は必ず var(--token) 経由
+   ============================================================ */
+:root{
+  --brand:#4C0018; --brand-rgb:76,0,24; --accent-warm:#D8C8B8; --warm:#FBFAF7; --warm2:#F4F1EA; --white:#fff;
+  --ink:#1A1919; --ink-strong:#141110; --ink2:#6B6862; --bd:#E3E0DA; --ease:cubic-bezier(.22,.61,.36,1);
+  --serif:'Noto Serif JP',serif; --sans:'Noto Sans JP',sans-serif; --ts:1.18;
+  --fs-section:calc(clamp(2.4rem,4.2vw,3.7rem)*var(--ts));
+  --fs-eyebrow:calc(clamp(.9rem,1.2vw,1.05rem)*var(--ts));
+  --fs-lead:calc(clamp(1.18rem,1.55vw,1.5rem)*var(--ts));
+  --fs-hero:calc(clamp(2.4rem,5.4vw,5.2rem)*var(--ts));
+  --fs-statement:calc(clamp(1.45rem,2.3vw,2rem)*var(--ts));
+  --fs-num:calc(clamp(2.6rem,5vw,4rem)*var(--ts)); --val-h:calc(var(--fs-num)*1.04);
+  --pad:clamp(1.4rem,5vw,4.5rem); --max:1560px;
+  /* v6：Business 融合で必要（v5 に無かった分）*/
+  --fs-h3:calc(clamp(1.18rem,1.5vw,1.4rem)*var(--ts)); --radius-md:8px;
+  --dur-base:.3s; --dur-enter:.85s; --dur-draw:.85s; --dur-line:.55s; --dur-fade:.22s; --ease-draw:cubic-bezier(.65,0,.35,1);
+}
+
+/* ============================================================
+   ===== v9 追加（テーマカラー4套 ＋ 解説ページング ＋ 注釈ゲート）=====
+   ============================================================ */
+/* 0：テーマカラー 4 套（全站 var(--brand)／var(--brand-rgb) が追従）*/
+body[data-palette="burgundy"]{ --brand:#4C0018; --brand-rgb:76,0,24; }
+body[data-palette="forest"]{   --brand:#014421; --brand-rgb:1,68,33; }
+body[data-palette="deep"]{     --brand:#0C3620; --brand-rgb:12,54,32; }
+body[data-palette="bottle"]{   --brand:#0F2A1D; --brand-rgb:15,42,29; }

@@ -1,0 +1,293 @@
+/* ============================================================
+   RY 共通様式（assets/shared.css）— 全頁共通の組件/挙動様式
+   出典：mtg_5/index.html（2026-07-09 step0 準項目化で逐字搬出・挙動不変更）
+   収載：base／解説モード(ボトムシート)／NAV(静止+navp+hover子菜単+flow-fill CTA)／
+         手机抽屉／カード(card)／tlink2／footer／返頂／imgseg／reveal／reduced-motion 護欄
+   規約：全站共通の様式変更は本ファイルのみ（各頁 <style> は頁固有分だけ）
+   変更（2026-07-13・L2 追加 about-company）：① NAV 現頁標示 selector を [aria-current] へ一般化（＋子菜単内標示 1 行）
+   ② 文末に「L2 共通」区 新設（l2-hero／crumb／l2-back・8 つの L2 頁で共用）——既存規則は①以外不変更
+   ============================================================ */
+*{ box-sizing:border-box; } body{ margin:0; font-family:var(--sans); color:var(--ink); background:var(--white); font-feature-settings:"palt" 1; -webkit-font-smoothing:antialiased; line-height:1.7; }
+.wrap{ max-width:var(--max); margin-inline:auto; padding-inline:var(--pad); }
+.jp{ line-break:strict; word-break:auto-phrase; text-wrap:pretty; } .np{ white-space:nowrap; }
+.eyebrow{ font-size:var(--fs-eyebrow); font-weight:700; letter-spacing:.32em; text-transform:uppercase; color:var(--ink); margin:0; }
+h2.sec{ font-family:var(--serif); font-weight:700; font-size:var(--fs-section); line-height:1.32; margin:.5rem 0 0; }
+.lead{ font-size:var(--fs-lead); color:var(--ink2); line-height:1.9; margin:1rem 0 0; max-width:30em; }
+.arr{ color:var(--brand); font-weight:700; }
+.box{ border:1.5px dashed var(--bd); background:var(--warm2); display:grid; place-items:center; color:var(--ink2); font-size:.78rem; text-align:center; padding:.8rem; line-height:1.5; }
+.box.img{ background:repeating-linear-gradient(135deg,var(--warm2) 0 11px,#E8E2D8 11px 22px); }
+.asy-note{ font-size:.74rem; color:var(--ink2); margin:.5rem 0 0; line-height:1.6; } .asy-note b{ color:var(--brand); }
+section{ padding-block:clamp(2.2rem,5vw,4rem); }   /* v6：段間の細線は全廃（line-free・Stance/余白 含む全段）*/
+.sec-id{ font-size:.72rem; font-weight:700; letter-spacing:.1em; color:#B9B3A9; margin-bottom:.4rem; display:flex; align-items:center; gap:.6rem; flex-wrap:wrap; }
+.lv{ font-size:.66rem; font-weight:700; letter-spacing:.08em; padding:.12rem .5rem; border-radius:999px; }
+.lv.peak{ background:var(--brand); color:#fff; } .lv.mid{ background:#C9A27A; color:#fff; } .lv.low{ background:var(--warm2); color:var(--ink2); border:1px solid var(--bd); }
+
+/* ===== 解説モード：ボトムシート（PC/SP 共通·下部ドック·ページは上に見えたまま）===== */
+.dm-toggle{ position:fixed; left:0; top:50%; transform:translateY(-50%); z-index:200; display:flex; flex-direction:column; align-items:center; gap:1px; padding:.7rem .35rem; font:inherit; font-size:.78rem; font-weight:700; line-height:1.15; letter-spacing:.02em; color:var(--brand); background:#fff; border:1px solid var(--brand); border-left:0; border-radius:0 7px 7px 0; cursor:pointer; box-shadow:0 8px 24px rgba(0,0,0,.12); }
+body.dm-on .dm-toggle{ background:var(--brand); color:#fff; }
+.dm-panel{ position:fixed; left:50%; bottom:0; transform:translateX(-50%); z-index:199; width:min(720px,100%); max-height:min(58dvh,560px); overflow-y:auto; background:var(--ink); color:#fff; border-radius:18px 18px 0 0; padding:1.4rem 1.25rem calc(1.15rem + env(safe-area-inset-bottom,0px)); box-shadow:0 -18px 54px rgba(0,0,0,.34); -webkit-overflow-scrolling:touch; }
+.dm-panel::before{ content:""; position:absolute; top:.55rem; left:50%; transform:translateX(-50%); width:38px; height:4px; border-radius:999px; background:rgba(255,255,255,.28); }
+.dm-panel[hidden]{ display:none; }
+@keyframes dmSheetUp{ from{ transform:translate(-50%,100%); } to{ transform:translate(-50%,0); } }
+.dm-panel:not([hidden]){ animation:dmSheetUp .32s var(--ease); }
+.dm-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:.85rem; } .dm-head b{ font-size:.78rem; font-weight:700; }
+.dm-close{ font:inherit; font-size:1.15rem; line-height:1; color:rgba(255,255,255,.7); background:transparent; border:0; cursor:pointer; padding:.1rem .35rem; }
+.dm-grp{ margin-bottom:.95rem; }
+.dm-lbl{ display:block; font-size:.62rem; font-weight:700; letter-spacing:.08em; color:rgba(255,255,255,.5); margin-bottom:.42rem; text-transform:uppercase; }
+.dm-panel .seg{ display:flex; flex-wrap:wrap; gap:.3rem; }
+.dm-panel .seg button{ font:inherit; font-size:.72rem; font-weight:600; padding:.3rem .72rem; border:1px solid rgba(255,255,255,.28); background:transparent; color:rgba(255,255,255,.78); border-radius:999px; cursor:pointer; }
+.dm-panel .seg button[aria-pressed="true"]{ background:#fff; color:var(--ink); border-color:#fff; }
+.dm-now{ margin-top:.4rem; padding-top:.7rem; border-top:1px solid rgba(255,255,255,.16); font-size:.66rem; line-height:1.6; color:rgba(255,255,255,.6); } .dm-now b{ color:var(--accent-warm); }
+@media(prefers-reduced-motion:reduce){ .dm-panel:not([hidden]){ animation:none; } }
+/* NAV（透明·白·hero に融合＝進站時の静止状態）*/
+.hero-nav{ position:absolute; top:0; left:0; right:0; z-index:5; padding:clamp(1.1rem,2.4vw,1.7rem) var(--pad); }
+.hero-nav-in{ max-width:var(--max); margin-inline:auto; width:100%; display:flex; align-items:center; justify-content:space-between; gap:2rem; }
+.hero-nav-logo{ display:flex; align-items:center; gap:.6rem; color:#fff; text-decoration:none; }
+.hnl-mark{ height:34px; width:34px; flex:none; }
+.hnl-wm{ font-family:var(--serif); font-weight:600; font-size:1.18rem; letter-spacing:.12em; }
+.hero-nav-menu{ display:flex; align-items:center; gap:clamp(1.1rem,2.4vw,2.4rem); }
+.hero-nav-menu a{ font-family:var(--sans); font-size:.92rem; font-weight:500; letter-spacing:.04em; text-decoration:none; opacity:.92; transition:opacity .2s; }
+.hero-nav-menu a:hover{ opacity:1; }
+.hero-cta{ border:1px solid rgba(255,255,255,.78); border-radius:2px; padding:.6rem 1.25rem; transition:background .2s,border-color .2s; }
+.hero-cta:hover{ background:rgba(255,255,255,.12); border-color:#fff; }
+.hero-cta-bar{ display:none; }   /* 手机端バー専用 CTA：桌面では隠す（既存メニュー内 CTA はそのまま）*/
+@media(max-width:760px){
+  .hero-nav-menu{ gap:.85rem; }
+  .hero-nav-menu a:not(.hero-cta){ display:none; }
+  .hnl-wm{ font-size:1rem; }
+}
+
+/* 箭头 hover：蓄势待发（先后退蓄力 → 弹出·--aw＝各箭头の前进距離·点击後の追加動効なし）*/
+@keyframes arrowWindup{ 0%{ transform:translateX(0); } 30%{ transform:translateX(calc(var(--aw,6px) * -0.65)); } 100%{ transform:translateX(var(--aw,6px)); } }
+@media (prefers-reduced-motion:reduce){ .tlink2:hover .a, .card:hover .ca .a, .card:focus-visible .ca .a{ animation:none; } }
+.tlink2{ position:relative; display:inline-flex; align-items:center; gap:.55em; font-weight:600; font-size:clamp(1.25rem,1.6vw,1.45rem); text-decoration:none; color:var(--brand); }  /* 点2：強み標題と同級サイズ */
+.tlink2::after{ content:""; position:absolute; left:0; bottom:-5px; width:100%; height:1.5px; background:currentColor; transform:scaleX(0); transform-origin:left; transition:transform .5s var(--ease); }
+.tlink2:hover::after{ transform:scaleX(1); } .tlink2:focus-visible{ outline:2px solid currentColor; outline-offset:5px; }
+.tlink2 .a{ --aw:7px; transition:transform .3s var(--ease); } .tlink2:hover .a{ transform:translateX(var(--aw)); animation:arrowWindup .5s var(--ease-draw); }
+
+.card{ display:flex; flex-direction:column; background:var(--white); border:1px solid var(--bd); border-radius:var(--radius-md); padding:1.6rem 1.4rem; position:relative; text-decoration:none; color:inherit; }
+.card-bd{ position:absolute; inset:0; width:100%; height:100%; overflow:visible; pointer-events:none; }
+.card-bd rect{ x:1px; y:1px; width:calc(100% - 2px); height:calc(100% - 2px); rx:var(--radius-md); ry:var(--radius-md); fill:none; stroke:var(--brand); stroke-width:2; vector-effect:non-scaling-stroke; stroke-dasharray:100; opacity:0; }
+body[data-cardfx="draw"] .card-bd rect{ stroke-dashoffset:100; transition:stroke-dashoffset var(--dur-draw) var(--ease-draw), opacity var(--dur-fade) var(--ease); }
+body[data-cardfx="draw"] .card:hover .card-bd rect, body[data-cardfx="draw"] .card:focus-visible .card-bd rect{ stroke-dashoffset:0; opacity:1; }
+.card .ct{ font-family:var(--serif); font-weight:600; font-size:var(--fs-h3); color:var(--ink); line-height:1.4; }
+.card .cd{ font-size:.9rem; color:var(--ink2); line-height:1.7; margin-top:.55rem; flex:1; }
+.card .ca{ margin-top:.95rem; color:var(--brand); font-weight:700; font-size:.9rem; display:inline-flex; gap:.3em; }
+.card:hover .ca .a, .card:focus-visible .ca .a{ transform:translateX(var(--aw)); animation:arrowWindup .5s var(--ease-draw); } .card .ca .a{ --aw:4px; transition:transform .3s var(--ease); }
+@media (prefers-reduced-motion:reduce){ .card-bd rect{ transition:none !important; } }
+
+.footer-wf{ background:var(--brand); color:#fff; padding-block:clamp(2.5rem,5vw,4rem); }
+
+/* 0.5：解説モード ページング（左·圆形小按钮 1/2）*/
+.dm-nav{ display:flex; gap:.4rem; margin-bottom:.9rem; }
+.dm-nav button{ width:26px; height:26px; flex:none; border-radius:50%; font:inherit; font-size:.72rem; font-weight:700; cursor:pointer; border:1px solid rgba(255,255,255,.28); background:transparent; color:rgba(255,255,255,.7); display:grid; place-items:center; line-height:1; }
+.dm-nav button[aria-pressed="true"]{ background:#fff; color:var(--ink); border-color:#fff; }
+.dm-page[hidden]{ display:none; }
+.dm-replay{ display:flex; align-items:center; justify-content:center; gap:.45rem; width:100%; margin-top:.55rem; padding:.52rem .8rem; font:inherit; font-size:.74rem; font-weight:600; letter-spacing:.02em; color:#fff; background:transparent; border:1px solid rgba(255,255,255,.34); border-radius:9px; cursor:pointer; transition:background .18s, border-color .18s; }
+.dm-replay:hover{ background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.6); }
+.dm-replay .ic{ font-size:.62rem; line-height:1; }
+.dm-sw{ width:11px; height:11px; border-radius:50%; display:inline-block; margin-right:.4em; vertical-align:-1px; border:1px solid rgba(255,255,255,.5); }
+/* 3：辅助注釈は解説モード ON のみ表示（OFF＝クリーンな汇报ビュー）*/
+body:not(.dm-on) .asy-note{ display:none; }
+body:not(.dm-on) .sec-id{ display:none; }
+/* ===== 08 FOOTER 内部（260608_C 蒸馏·主色帯固定·logo/文字白）===== */
+.footer-wf .f-top{ display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-start; gap:clamp(2rem,5vw,4rem); margin-top:1.2rem; }
+.footer-wf .f-brand{ display:flex; align-items:center; gap:.6rem; margin-bottom:1.2rem; }
+.footer-wf .f-logo{ height:38px; width:38px; flex:none; color:#fff; }
+.footer-wf .f-wm{ font-family:var(--serif); font-weight:600; font-size:1.3rem; letter-spacing:.1em; color:#fff; }
+.footer-wf .f-dl{ display:grid; grid-template-columns:auto 1fr; gap:.4rem 1rem; font-size:.85rem; margin:0; max-width:34em; }
+.footer-wf .f-dl dt{ color:rgba(255,255,255,.75); } .footer-wf .f-dl dd{ margin:0; color:#fff; }
+.footer-wf .f-dl a{ color:#fff; text-decoration:none; } .footer-wf .f-dl a:hover{ text-decoration:underline; }
+.footer-wf .f-legal h4{ font-family:var(--sans); font-size:.82rem; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.75); margin:0 0 1rem; }
+.footer-wf .f-legal ul{ list-style:none; padding:0; margin:0; display:grid; gap:.7rem; font-size:.85rem; }
+.footer-wf .f-legal a{ color:#fff; text-decoration:none; } .footer-wf .f-legal a:hover{ text-decoration:underline; }
+.footer-wf .f-legal .soon{ color:rgba(255,255,255,.75); }
+.footer-wf .f-disc{ display:none; margin-top:clamp(1.6rem,3vw,2.4rem); padding-top:clamp(1.2rem,2.4vw,1.8rem); border-top:1px solid rgba(255,255,255,.18); font-size:.74rem; color:rgba(255,255,255,.75); line-height:1.9; max-width:62em; }
+body.dm-on .footer-wf .f-disc{ display:block; }
+.footer-wf .f-copy{ margin-top:clamp(1.2rem,2.4vw,1.8rem); font-size:.74rem; color:rgba(255,255,255,.75); }
+.kari{ display:none; } body.dm-on .kari{ display:inline; color:var(--accent-warm); }
+@media (max-width:760px){ .footer-wf .f-top{ flex-direction:column; gap:2rem; } }
+/* ===== 返回顶部（260608_C 完全照搬·色のみ var(--brand) 追従·z は v9 stack に合わせ190）===== */
+.to-top{ position:fixed; right:clamp(1rem,3vw,2rem); bottom:clamp(1rem,3vw,2rem); z-index:190; width:52px; height:52px; border-radius:50%; border:1px solid var(--brand); background:var(--warm); color:var(--brand); cursor:pointer; display:grid; place-items:center; opacity:0; transform:translateY(14px); pointer-events:none; transition:opacity .4s var(--ease), transform .4s var(--ease), background var(--dur-base), color var(--dur-base); }
+.to-top.show{ opacity:1; transform:none; pointer-events:auto; }
+.to-top:hover{ background:var(--brand); color:#fff; }
+.to-top svg{ width:20px; height:20px; transition:transform var(--dur-base) var(--ease); } .to-top:hover svg{ transform:translateY(-3px); }
+@media (max-width:760px){ .to-top{ bottom:clamp(4.5rem,30vh,20rem); } }   /* 手机：偏中下（拇指可达）·桌面は貼角 */
+
+/* 解説 page3：板块ごと ◀ ▶ 換図 */
+.imgseg{ display:flex; align-items:center; gap:.5rem; }
+.imgseg button{ width:30px; height:28px; flex:none; border-radius:5px; border:1px solid rgba(255,255,255,.28); background:transparent; color:rgba(255,255,255,.85); cursor:pointer; font-size:.78rem; line-height:1; display:grid; place-items:center; }
+.imgseg button:hover{ background:rgba(255,255,255,.12); }
+.imgseg .imgnow{ flex:1; min-width:0; text-align:center; font-size:.64rem; color:rgba(255,255,255,.72); letter-spacing:.02em; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+/* ===================== MOTION（動效パス · 260608_C 蒸馏 + Tishman 式吸顶 NAV）=====================
+   原則：克制 + 护栏（reduced-motion / mobile 关重 parallax）·色/字阶/間距 token 不变·只加動效。
+   無 JS 時：veil 不显示・reveal 全可见（html.jsm gate·防 FOUC & 防无JS卡死）。 */
+
+/* ---- 吸顶 NAV：absolute→fixed・半透明玻璃・滚动渐变（4 态·--navp は JS が更新）---- */
+.hero-nav{ position:fixed; top:0; left:0; right:0; z-index:60; background:color-mix(in srgb, var(--warm) calc(var(--navp,0)*88%), transparent); transition:background .12s linear; }
+/* L1 等・浅色 type-led 页頭（body[data-nav="solid"]）：NAV 常時実底。CSS 先行適用＝JS init 前の白字化なし
+   （挙動側＝shared.js init：.stuck 付与＋グラデ/白閃 skip。元 mtg_4 `.l1-page .hero-nav{--navp:1}` の単一ソース化）*/
+body[data-nav="solid"] .hero-nav{ --navp:1; }
+.hero-nav.stuck{ -webkit-backdrop-filter:blur(14px) saturate(106%); backdrop-filter:blur(14px) saturate(106%); border-bottom:1px solid color-mix(in srgb, var(--bd) calc(var(--navp,0)*100%), transparent); }
+.hero-nav-menu a:not(.hero-cta){ color:color-mix(in srgb, #fff calc(100% - var(--navp,0)*100%), var(--ink)); }
+.hero-nav-logo{ color:color-mix(in srgb, #fff calc(100% - var(--navp,0)*100%), var(--brand)); }
+.hero-nav::after{ content:""; position:absolute; inset:0; z-index:2; pointer-events:none; opacity:0; background:linear-gradient(180deg,#fff,rgba(255,255,255,.82)); }
+.hero-nav.flash::after{ animation:navFlash 1.35s cubic-bezier(.16,1,.3,1) both; }
+@keyframes navFlash{ 0%{ opacity:.92; } 100%{ opacity:0; } }
+
+/* ---- flow-fill（E-04·主题色左→右流水）：お問い合わせ CTA + 送信する ---- */
+.hero-cta{ --cta-bd-scrolled:var(--ink); position:relative; z-index:0; overflow:hidden; background:transparent; border:1px solid color-mix(in srgb, rgba(255,255,255,.78) calc(100% - var(--navp,0)*100%), var(--cta-bd-scrolled)); color:color-mix(in srgb, #fff calc(100% - var(--navp,0)*100%), var(--ink)); transition:color .34s var(--ease), border-color .38s var(--ease); }
+.hero-cta::before{ content:""; position:absolute; inset:0; z-index:-1; background:var(--brand); transform:scaleX(0); transform-origin:left center; transition:transform .38s var(--ease); }
+.hero-cta:hover::before{ transform:scaleX(1); }
+.hero-cta:hover{ background:transparent; border-color:var(--brand); color:#fff; }
+/* 桌面メニュー内 CTA：静止文字色を navp 連動に（.hero-nav-menu a の静的白＝特異度 0,1,1 を上書き＝スクロール後は黒で可読）*/
+.hero-nav-menu a.hero-cta{ color:color-mix(in srgb, #fff calc(100% - var(--navp,0)*100%), var(--ink)); }
+.hero-nav-menu a.hero-cta:hover{ color:#fff; }   /* hover は従来どおり：主色の流水充填→満ちたら白字 */
+
+/* ===== 桌面 nav hover 子菜单（mtg3 ホバープレビュー菜单·参考 Tishman）＋ 項目下線ドロー（編集インデックス一筆·L→R 流用）===== */
+.nav-item{ position:relative; display:inline-flex; align-items:center; }
+.nav-item > a{ position:relative; }
+/* 項目下線：2px 主色·scaleX 左→右（--dur-line / --ease-draw を編集インデックスから流用）*/
+.nav-item > a::after{ content:""; position:absolute; left:0; right:0; bottom:-5px; height:2px; background:var(--brand); transform:scaleX(0); transform-origin:left center; transition:transform var(--dur-line) var(--ease-draw); }
+.nav-item:hover > a::after, .nav-item:focus-within > a::after{ transform:scaleX(1); }
+/* 現在頁の標示（サブページ：shared.js mountChrome が付与。L1＝現頁一致 aria-current="page"／
+   L2＝所属親 L1 へ aria-current="true"〔2026-07-13 一般化・"page"限定→属性存在で両者を拾う・L1 挙動不変〕）*/
+.hero-nav-menu .nav-item > a[aria-current]{ color:var(--brand); }
+.hero-nav-menu .nav-item > a[aria-current]::after{ transform:scaleX(1); }
+.hero-nav-menu .nav-sub a[aria-current]{ color:#fff; cursor:default; }   /* 子菜単内の現頁（L2）標示 */
+/* 子菜单パネル：主色地·白字·淡入＋わずかに下降（漸進表示）。absolute は .nav-item 基準＝.hero-nav の backdrop-filter 包含块に拾われない */
+.nav-sub{ position:absolute; top:100%; left:-.85rem; margin-top:.7rem; min-width:268px; padding:1.55rem 1.75rem; display:grid; gap:1.15rem; background:var(--brand); border-radius:0 0 5px 5px; box-shadow:0 20px 46px rgba(0,0,0,.24); opacity:0; visibility:hidden; transform:translateY(8px); transition:opacity .32s var(--ease), transform .32s var(--ease), visibility 0s linear .32s; z-index:6; }
+.nav-sub::before{ content:""; position:absolute; top:-.7rem; left:0; right:0; height:.7rem; }  /* 透明桥：补 margin 间隙·维持 hover 连续 */
+.hero-nav-menu .nav-sub a{ color:rgba(255,255,255,.84); font-size:.96rem; font-weight:500; letter-spacing:.05em; line-height:1.4; white-space:nowrap; cursor:pointer; opacity:1; transition:color .18s, transform .18s; }
+.hero-nav-menu .nav-sub a:hover{ color:#fff; transform:translateX(3px); }
+.nav-item:hover .nav-sub, .nav-item:focus-within .nav-sub{ opacity:1; visibility:visible; transform:translateY(0); transition:opacity .32s var(--ease), transform .32s var(--ease), visibility 0s; }
+
+/* ---- 全板块 scroll reveal（統一フェードアップ·class 由 JS 付与·零改 content 标记）---- */
+html.jsm .reveal{ opacity:0; transform:translateY(26px); transition:opacity var(--dur-enter) var(--ease), transform var(--dur-enter) var(--ease); }
+html.jsm .reveal.in{ opacity:1; transform:none; }
+
+/* ---- reduced-motion：装飾モーション全停（scroll 連動の機能的 nav 変色は保留）---- */
+@media (prefers-reduced-motion:reduce){
+  html.jsm .reveal{ opacity:1 !important; transform:none !important; transition:none !important; }
+  .hero-nav.flash::after{ animation:none; }
+}
+
+/* ---- 手机端 汉堡 → 下拉抽屉（≤760px）。抽屉 = body 直下の独立要素 .nav-drawer：
+   .hero-nav は .stuck で backdrop-filter を持つ＝fixed 子要素の包含块になる。
+   旧实装は抽屉を .hero-nav 内に置いたため inset:0 が「導航条 ~60px」基準で解決され、
+   盒子が縮んで正文が透けた。抽屉を body 直下へ出すと fixed が視口基準に戻る（260608_C と同方式）。
+   桌面端：.hero-nav-menu はそのまま（不受影响）·CTA はバーへ移設 ---- */
+.nav-burger{ display:none; }
+.nav-drawer{ display:none; }
+@media(max-width:760px){
+  .hero-nav-in{ gap:.55rem; }                                     /* 手机：logo｜（余白）｜CTA·汉堡 */
+  .hero-nav-menu{ display:none; }                                 /* 桌面横排メニューは手机で隠す（抽屉が代替）*/
+
+  /* バー常駐 CTA（汉堡の外·折りたたまれない）。色は既存 .hero-cta の navp 連動を継承し再宣言 */
+  .hero-cta-bar{ display:inline-flex; align-items:center; white-space:nowrap; margin-left:auto; border-radius:2px; padding:.5rem .95rem; font-family:var(--sans); font-size:.85rem; font-weight:500; letter-spacing:.03em; text-decoration:none; border:1px solid #fff; border:1px solid color-mix(in srgb, #fff calc(100% - var(--navp,0)*100%), color-mix(in srgb, var(--ink) 26%, var(--accent-warm))); color:#fff; color:color-mix(in srgb, #fff calc(100% - var(--navp,0)*100%), var(--ink)); transition:color .12s linear, border-color .12s linear; }
+  .hero-cta-bar::before{ display:none; }                           /* 触摸端：流水填充 OFF */
+  .hero-cta-bar:hover{ background:transparent; border:1px solid #fff; border:1px solid color-mix(in srgb, #fff calc(100% - var(--navp,0)*100%), color-mix(in srgb, var(--ink) 26%, var(--accent-warm))); color:#fff; color:color-mix(in srgb, #fff calc(100% - var(--navp,0)*100%), var(--ink)); }  /* sticky-hover を無効化 */
+
+  .hero-nav-logo{ position:relative; z-index:3; }
+  .nav-burger{ display:flex; flex-direction:column; justify-content:center; gap:5px; width:36px; height:36px; padding:0; margin:0; background:transparent; border:0; cursor:pointer; position:relative; z-index:3; }
+  .nav-burger span{ display:block; width:24px; height:2px; border-radius:2px; background:#fff; background:color-mix(in srgb, #fff calc(100% - var(--navp,0)*100%), var(--ink)); transition:transform .3s var(--ease), opacity .2s var(--ease), background .2s linear; }
+
+  /* 抽屉＝导航条下缘から下拉する纯色面板（top は条高 ~69px より小さく＝条の下に潜り込ませ正文の隙間を作らない；条が不透明な間は隠れる）*/
+  .nav-drawer{ display:grid; gap:1.05rem; position:fixed; top:56px; left:0; right:0; z-index:55; padding:1.5rem var(--pad) 1.8rem; background:#FBFAF7; background:var(--warm); border-bottom:1px solid var(--bd); visibility:hidden; opacity:0; transform:translateY(-100%); transition:transform .42s var(--ease), opacity .42s var(--ease), visibility 0s linear .42s; }
+  .nav-drawer a{ color:var(--ink); text-decoration:none; font-size:1.1rem; font-weight:500; letter-spacing:.04em; }
+
+  body.menu-open .hero-nav{ background:#FBFAF7; background:var(--warm); }   /* 開いた間はバーを不透明な暖白に＝抽屉の潜り込み部を隠す */
+  body.menu-open .nav-drawer{ visibility:visible; opacity:1; transform:translateY(0); transition:transform .42s var(--ease), opacity .42s var(--ease), visibility 0s; }
+  body.menu-open .hero-nav-logo{ color:var(--brand); }
+  body.menu-open .hero-cta-bar{ border:1px solid var(--brand); color:var(--brand); }
+  body.menu-open .nav-burger span{ background:var(--ink); }
+  body.menu-open .nav-burger span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  body.menu-open .nav-burger span:nth-child(2){ opacity:0; }
+  body.menu-open .nav-burger span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+}
+/* ---- color-mix 非対応ブラウザ（旧 WebView 等）フォールバック：手机端 nav の滚动态可视性を確保（対応ブラウザは無視）---- */
+@supports not (background: color-mix(in srgb, #fff, #000)){
+  @media(max-width:760px){
+    .hero-nav.stuck{ background:#FBFAF7; background:var(--warm); }
+    .hero-nav.stuck .hero-nav-logo{ color:var(--brand); }
+    .hero-nav.stuck .nav-burger span{ background:var(--ink); }
+  }
+}
+
+/* ===== L1 共通（概览页骨架 · about/business/guide 三頁で共用 · 2026-07-10 L1 解耦で mtg_4 から上収・値は不変更）=====
+   構成：页頭の rule/title ＋ 注記 l1-note ＋ 結尾 CTA 段。頁固有（about の l1-hero/entry-card 等）は各頁 <style> 保持。
+   NAV 実底＝body[data-nav="solid"]（NAV 節）・現在頁標示＝aria-current（nav 下線節）。 */
+.l1-rule{ display:block; width:52px; height:2px; background:var(--brand); margin:0 0 1.3rem; }
+.l1-title{ font-family:var(--serif); font-weight:700; font-size:var(--fs-section); line-height:1.26; margin:0; color:var(--ink); }
+.l1-note{ font-size:.74rem; color:var(--ink2); margin:clamp(1.7rem,2.6vw,2.4rem) 0 0; line-height:1.65; max-width:64em; } .l1-note b{ color:var(--brand); }
+/* 結尾 CTA（暖白 tint·主 CTA＝E-04 flow-fill 模板版）*/
+.l1-cta-sec{ background:var(--warm); border-top:1px solid var(--bd); padding-block:clamp(3.2rem,7vw,5.5rem); text-align:center; }
+.l1-cta-sec .eyebrow{ color:var(--ink2); }
+.l1-cta-lead{ font-family:var(--serif); font-weight:600; font-size:clamp(1.5rem,2.6vw,2.2rem); color:var(--ink); line-height:1.5; margin:.55rem 0 0; }
+.l1-cta-btn{ --aw:5px; position:relative; z-index:0; overflow:hidden; display:inline-flex; align-items:center; gap:.5em; margin-top:1.8rem; padding:.85rem 2.1rem; border:1.5px solid var(--brand); border-radius:3px; color:var(--brand); font-weight:700; font-size:1rem; text-decoration:none; transition:color .34s var(--ease); }
+.l1-cta-btn::before{ content:""; position:absolute; inset:0; z-index:-1; background:var(--brand); transform:scaleX(0); transform-origin:left; transition:transform .42s var(--ease-draw); }
+.l1-cta-btn:hover{ color:#fff; } .l1-cta-btn:hover::before{ transform:scaleX(1); }
+.l1-cta-btn:focus-visible{ outline:2px solid var(--brand); outline-offset:3px; }
+.l1-cta-btn .a{ transition:transform .3s var(--ease); } .l1-cta-btn:hover .a{ transform:translateX(var(--aw)); }
+@media (prefers-reduced-motion:reduce){
+  .l1-cta-btn:hover .a{ animation:none; }
+  .l1-cta-btn::before{ transition:none; }
+}
+
+/* ===== L2 共通（子頁骨架 · about/business 系 全 8 頁で共用 · 2026-07-13 about-company 起）=====
+   構成：克制页頭 l2-hero（値＝L1 の l1-hero と同式・rule/title は既存 .l1-rule/.l1-title を再利用）＋
+   パンくず crumb（IA-v2 §3：L2 のみ・Home/L1 不要）＋ 頁下部 戻りリンク l2-back（同 §3）。
+   文言＝UI 微文案（design 域・IA-v2 例文準拠）。SEO 用 BreadcrumbList schema＝build 期。 */
+.l2-hero{ padding-top:calc(clamp(1.1rem,2.4vw,1.7rem) * 2 + 4.2rem); padding-bottom:clamp(1.9rem,4.5vw,3.6rem); }
+.crumb{ font-size:.78rem; color:var(--ink2); margin:0 0 1.25rem; }
+.crumb ol{ list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; align-items:center; gap:.2rem .55rem; }
+.crumb li{ display:inline-flex; align-items:center; gap:.55rem; }
+.crumb li + li::before{ content:"\203A"; color:var(--ink2); opacity:.55; }   /* › 分隔 */
+.crumb a{ color:var(--ink2); text-decoration:none; transition:color .2s; }
+.crumb a:hover{ color:var(--brand); text-decoration:underline; text-underline-offset:3px; }
+.crumb li[aria-current="page"]{ color:var(--ink); font-weight:600; }
+/* 関連ページ（.rel）＝全站統一 L2 底部リンク（07-15 About 兄弟統一で shared 化）*/
+.rel a{ display:inline-flex; align-items:center; gap:.5em; margin:0 2.2rem .6rem 0; color:var(--ink); font-weight:500; text-decoration:none; border-bottom:1px solid var(--accent-warm); padding-bottom:.15em; }
+.rel a .a{ color:var(--brand); transition:transform .3s var(--ease); }
+.rel a:hover{ color:var(--brand); }
+.rel a:hover .a{ transform:translateX(4px); }
+/* 淡出線 divider ＋ 偏移輪郭線框 ＝ 全站単一 L2 组件（07-15 統一·旧 .chp::after / .nw-div / .nw-*-ph::after を集約）*/
+.ry-divider{ width:min(50%,540px); height:1px; margin-inline:auto; background:linear-gradient(90deg, transparent, rgba(var(--brand-rgb),.32) 28%, rgba(var(--brand-rgb),.32) 72%, transparent); }
+body[data-line="none"] .ry-divider{ display:none; }
+.ry-frame{ position:relative; z-index:0; }
+.ry-frame img{ display:block; width:100%; aspect-ratio:4/3; object-fit:cover; }
+.ry-frame::after{ content:""; position:absolute; inset:0; border:3px solid var(--brand); pointer-events:none; z-index:-1; transform:translate(4%,-4%); }
+.ry-frame.fr-tl::after{ transform:translate(-4%,-4%); }
+.ry-frame.fr-bl::after{ transform:translate(-4%,4%); }
+.ry-frame.fr-br::after{ transform:translate(4%,4%); }
+.l2-back{ padding-block:0 clamp(2rem,4.5vw,3.4rem); }
+.l2-back a{ display:inline-flex; align-items:center; gap:.5em; color:var(--ink2); font-size:.95rem; font-weight:500; letter-spacing:.02em; text-decoration:none; transition:color .2s; }
+.l2-back a:hover{ color:var(--brand); }
+.l2-back .a{ transition:transform .3s var(--ease); }
+.l2-back a:hover .a{ transform:translateX(-4px); }   /* 戻り＝左方向・windup なし（前進動勢と区別） */
+
+/* ===== 画像グリッド picker（docmode 専用·生産版で strip）===== */
+.imggrid{ margin-left:6px; min-width:32px; min-height:32px; padding:0 8px; border:1px solid var(--line,#cfcfcf); background:transparent; border-radius:6px; cursor:pointer; font-size:15px; line-height:1; color:inherit; }
+.imggrid:hover{ background:rgba(0,0,0,.06); }
+.ry-grid[hidden]{ display:none !important; }
+.ry-grid{ position:fixed; inset:0; z-index:99999; display:flex; align-items:center; justify-content:center; }
+.ry-grid-bg{ position:absolute; inset:0; background:rgba(20,16,18,.72); }
+.ry-grid-box{ position:relative; width:min(960px,94vw); max-height:88vh; display:flex; flex-direction:column; background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 12px 48px rgba(0,0,0,.34); }
+.ry-grid-hd{ position:sticky; top:0; display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 16px; border-bottom:1px solid #ececec; background:#fff; }
+.ry-grid-t{ font-size:12px; font-weight:700; color:#333; word-break:break-all; }
+.ry-grid-x{ flex:0 0 auto; width:38px; height:38px; border:none; background:#f2f2f2; border-radius:8px; cursor:pointer; font-size:16px; line-height:1; }
+.ry-grid-x:hover{ background:#e6e6e6; }
+.ry-grid-list{ overflow-y:auto; padding:12px; display:grid; grid-template-columns:repeat(auto-fill,minmax(96px,1fr)); gap:8px; -webkit-overflow-scrolling:touch; }
+.ry-grid-cell{ display:flex; flex-direction:column; gap:3px; padding:3px; border:2px solid transparent; border-radius:8px; background:#fafafa; cursor:pointer; min-height:44px; text-align:left; }
+.ry-grid-cell img{ width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:5px; display:block; background:#eee; }
+.ry-grid-cell span{ font-size:9px; line-height:1.2; color:#8a8a8a; word-break:break-all; max-height:2.4em; overflow:hidden; }
+.ry-grid-cell:hover{ background:#f0eef0; }
+.ry-grid-cell.on{ border-color:var(--brand,#4C0018); background:#fff; }
+.ry-grid-cell.on span{ color:var(--brand,#4C0018); font-weight:700; }
+body.ry-grid-open{ overflow:hidden; }
+@media (max-width:480px){
+  .ry-grid-box{ width:100vw; max-height:100dvh; height:100dvh; border-radius:0; }
+  .ry-grid-list{ grid-template-columns:repeat(auto-fill,minmax(84px,1fr)); gap:6px; padding:10px; }
+  .ry-grid-cell span{ font-size:8px; }
+  .ry-grid-x{ width:44px; height:44px; }
+}

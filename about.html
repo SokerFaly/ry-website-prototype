@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RYについて ｜ 株式会社RY</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- ============================================================
+  mtg_5 準項目化（続・2026-07-10）：mtg_4/about.html → 解耦・mtg_5 基準へ換底
+  ・共通分（token/NAV/抽屉/footer/解説モード/reveal/矢印/imgseg）＝ assets/ 参照（本頁は頁固有分のみ）
+  ・L1 共通骨架（l1-rule/l1-title/l1-note/l1-cta-*・NAV 実底＝body[data-nav="solid"]・現頁標示＝aria-current）＝ assets 側「L1 共通」区
+  ・視覚/文言＝mtg_4 版に忠実（chrome のみ mtg_5 基準へ：footer 法務 3 頁・抽屉淡出 等）・旧頁の死 CSS は剪除
+  ・共通部分の修正＝assets 側を直す（二重修正禁止）。file:// 直開き可・JS 無効時は共通 chrome 非表示（評審用の既知制約）
+============================================================ -->
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/shared.css">
+<style>
+/* ==================== 頁固有様式（About/L1 のみ）====================
+   共通分＝assets/ に分離済（頭注参照）。以下は About 固有：克制页头（l1-hero）＋ 3 子页入口卡（entry-card）。
+   値＝mtg_4 版から不変更。 */
+/* —— 克制页头（fixed NAV 分の上端余白を確保·type-led·no hero image）—— */
+.l1-hero{ padding-top:calc(clamp(1.1rem,2.4vw,1.7rem) * 2 + 4.2rem); padding-bottom:clamp(2.2rem,5vw,4.2rem); }
+.l1-hero-lead{ margin-top:1.1rem; }
+
+/* —— 3 子页入口卡（image-top·border-draw hover·延续 .card 语言）—— */
+.l1-entries{ padding-block:clamp(.8rem,2.5vw,2rem) clamp(3.5rem,8vw,7rem); }
+.entry-grid{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(1.4rem,2.6vw,2.4rem); }
+.entry-grid > li{ display:flex; }
+.entry-grid > li:nth-child(2){ transition-delay:.09s; }
+.entry-grid > li:nth-child(3){ transition-delay:.18s; }
+@media (max-width:880px){ .entry-grid{ grid-template-columns:1fr; gap:1.5rem; max-width:560px; } .entry-grid > li:nth-child(n){ transition-delay:0s; } }
+.entry-card{ flex:1; display:flex; flex-direction:column; background:var(--white); border:1px solid var(--bd); border-radius:var(--radius-md); overflow:hidden; text-decoration:none; color:inherit; position:relative; transition:border-color .3s var(--ease), transform .42s var(--ease), box-shadow .42s var(--ease); }
+.entry-card:hover{ border-color:color-mix(in srgb, var(--brand) 48%, var(--bd)); transform:translateY(-3px); box-shadow:0 26px 52px -34px rgba(26,25,25,.42); }
+.entry-card:focus-visible{ outline:2px solid var(--brand); outline-offset:3px; }
+.ec-media{ display:block; }
+.entry-card .ph{ position:relative; display:block; aspect-ratio:4/3; overflow:hidden; background:linear-gradient(135deg,#F1EADF 0%,#E8DDCD 55%,#DDD0BC 100%); }
+.entry-card .ph img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.ec-body{ display:flex; flex-direction:column; flex:1; padding:clamp(1.3rem,1.8vw,1.6rem) clamp(1.3rem,1.6vw,1.5rem) clamp(1.4rem,1.8vw,1.65rem); }
+.ec-ttl{ font-family:var(--serif); font-weight:600; font-size:var(--fs-h3); color:var(--ink); line-height:1.42; margin-top:0; }
+.ec-ds{ font-size:.92rem; color:var(--ink2); line-height:1.8; margin-top:.62rem; flex:1; }
+.ec-cta{ margin-top:1.05rem; color:var(--brand); font-weight:700; font-size:.9rem; display:inline-flex; align-items:center; gap:.4em; }
+.ec-cta .a{ --aw:5px; transition:transform .3s var(--ease); }
+.entry-card:hover .ec-cta .a, .entry-card:focus-visible .ec-cta .a{ transform:translateX(var(--aw)); animation:arrowWindup .5s var(--ease-draw); }
+@media (prefers-reduced-motion:reduce){
+  .entry-card:hover .ec-cta .a{ animation:none; }
+  .entry-card{ transition:border-color .3s var(--ease); } .entry-card:hover{ transform:none; }
+}
+</style>
+<script>document.documentElement.classList.add('jsm');</script>
+</head>
+<body class="l1-page" data-nav="solid" data-palette="burgundy">
+
+<!-- 頁固有：解説モードの中身（shared.js が共通壳へ展開。palette 組＝共通側単一ソース、RY:PALETTE マーカー位置に注入）
+     L1 の解説モード＝2 機能のみ：① 板块画像の差替 ② テーマカラー切替 -->
+<template id="ry-dm-content">
+  <div class="dm-nav" role="group" aria-label="ページ切替"><button data-page="1" aria-pressed="true" aria-label="1ページ目 画像">1</button><button data-page="2" aria-label="2ページ目 配色">2</button></div>
+  <div class="dm-page" data-page="1">
+    <div class="dm-now" style="margin:0 0 .85rem">入口卡の画像を ◀ ▶ で差替（全候補·圧縮済）。本番＝各1枚に確定。</div>
+    <div class="dm-grp imgsw" data-sec="about-network"><span class="dm-lbl">03　多言語・NW</span><div class="imgseg"><button class="imgprev" aria-label="前の画像">◀</button><span class="imgnow"></span><button class="imgnext" aria-label="次の画像">▶</button></div></div>
+  </div>
+  <div class="dm-page" data-page="2" hidden>
+<!--RY:PALETTE-->
+    <div class="dm-now">変わる＝入口番号·矢印·下線·CTA·NAV active·Footer 帯 など主色連動分。恒定＝暖白底·本文色·border·字体(Noto)。</div>
+  </div>
+</template>
+
+<!-- 共通 chrome（#ry-mark symbol／NAV／手机抽屉／解説モード壳）＝ shared.js がこの位置に同期注入 -->
+<script src="assets/shared.js"></script>
+
+<!-- ===== L1 About｜RYについて（概览页 = 一句定位リード + 3 子页入口卡 → 各 L2）=====
+     頁規格（旧 legend 由来・mtg_5 で legend UI 廃止に合わせ注記化。原文＝mtg_4/about.html アーカイブ）：
+     ・L1 は「更安静」＝開場 veil なし・面包屑なし（IA-v2 §3：L1/Home 不要・L2 から付与）・NAV 常時実底
+     ・図＝暖の点缀（非 load-bearing・§5.5.1#2）・解説モード「画像」で差替
+     ・文案/数字＝content 占位（正本＝各 L2）・入口 href＝予定ルート（/ja/…・build 期に実リンク化） -->
+<main id="top">
+
+  <!-- 克制页头（type-led·no veil·吸顶 NAV 実底·institutional/orderly §8）-->
+  <section class="l1-hero">
+    <div class="wrap">
+      <span class="l1-rule" aria-hidden="true"></span>
+      <p class="eyebrow">About</p>
+      <h1 class="l1-title">RYについて</h1>
+      <p class="lead l1-hero-lead jp">会社のこと、強み、多言語の体制まで。<br>RYの全体像を、ここから。</p>
+    </div>
+  </section>
+
+  <!-- 3 子页入口卡（→ L2·href＝予定ルート·build 期に接続）-->
+  <section class="l1-entries" aria-label="RYについて の各ページ">
+    <div class="wrap">
+      <ol class="entry-grid">
+        <li class="reveal"><a class="entry-card" href="about-company.html" data-href="/ja/about/company">
+          <span class="ec-media"><span class="ph"><img id="img-about-company" src="images/13_faruktokluoglu.webp" alt="" loading="lazy" decoding="async"></span></span>
+          <span class="ec-body">
+            <span class="ec-ttl">会社概要</span>
+            <span class="ec-ds jp">設立・所在地・代表者・事業内容など、RY の基本情報。</span>
+            <span class="ec-cta">詳しく<span class="a" aria-hidden="true">→</span></span>
+          </span>
+        </a></li>
+        <li class="reveal"><a class="entry-card" href="about-strengths.html" data-href="/ja/about/strengths">
+          <span class="ec-media"><span class="ph"><img id="img-about-strengths" src="images/21_phc-software.webp" alt="" loading="lazy" decoding="async"></span></span>
+          <span class="ec-body">
+            <span class="ec-ttl">RYの強み・<span class="np">数字で見るRY</span></span>
+            <span class="ec-ds jp">RY の強みと、管理物件数・入居率などの数字で見る実績。</span>
+            <span class="ec-cta">詳しく<span class="a" aria-hidden="true">→</span></span>
+          </span>
+        </a></li>
+        <li class="reveal"><a class="entry-card" href="about-network.html" data-href="/ja/about/network">
+          <span class="ec-media"><span class="ph"><img id="img-about-network" src="images/yamato-yamaguchi-wIPTPTGbRuY-unsplash.webp" alt="" loading="lazy" decoding="async"></span></span>
+          <span class="ec-body">
+            <span class="ec-ttl">多言語対応・<span class="np">現地ネットワーク</span></span>
+            <span class="ec-ds jp">日・韓・中ネイティブ体制と、現地に根ざしたネットワーク。</span>
+            <span class="ec-cta">詳しく<span class="a" aria-hidden="true">→</span></span>
+          </span>
+        </a></li>
+      </ol>
+      <p class="l1-note asy-note"><b>L1 概览页</b>：リード + 3 子页入口卡（→ 各 L2）。文案/数字＝<b>content 占位</b>（正本は各 L2）。図＝暖の点缀（非 load-bearing·§5.5.1#2）·解説モードで差替可。<span class="arr">⚠</span> 入口 href＝予定ルート（jump 阶段で接続·連接前は仮）。</p>
+    </div>
+  </section>
+
+  <!-- 結尾导引 → お問い合わせ（Home #contact）-->
+  <section class="l1-cta-sec reveal" aria-label="お問い合わせ">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <p class="l1-cta-lead jp">ご相談は、<span class="np">検討段階から</span>どうぞ。</p>
+      <a class="l1-cta-btn" href="index.html#contact"><span class="t">お問い合わせ</span><span class="a" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+</main>
+
+<!-- 共通 footer ＋ 返回顶部（shared.js がこの位置に注入）→ 共通挙動 init -->
+<script>RY.mountFooter();RY.init();</script>
+
+<script>
+/* ===== 頁固有（L1 About）：入口卡 換図プール ＋ scroll reveal 起動 ===== */
+(function(){
+  "use strict";
+  /* 入口卡 候補画像プール（先頭＝既定·画框 4:3 に合わせ選定·mtg_4 版と同値）*/
+  RY.initImgPickers({
+    "about-network":   RY.poolAll("yamato-yamaguchi-wIPTPTGbRuY-unsplash")
+  });
+  RY.reveal([".reveal"]);   /* 対象＝markup 側 .reveal（入口卡 li ×3・結尾 CTA 段）*/
+})();
+</script>
+
+</body>
+</html>

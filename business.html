@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>事業紹介 ｜ 株式会社RY</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- ============================================================
+  mtg_5 準項目化（続・2026-07-10）：mtg_4/business.html → 解耦・mtg_5 基準へ換底
+  ・レイアウト＝A 大判バンド（社長選定済）。B 非対称ウォール＝案・切替器・CSS/JS とも撤去
+    （data-bizlayout 軸も廃止＝選択肢が 1 つの切替軸は保持しない。原文＝mtg_4/business.html アーカイブ）
+  ・共通分（token/NAV/抽屉/footer/解説モード/reveal/矢印/imgseg/L1 骨架）＝ assets/ 参照（本頁は頁固有分のみ）
+  ・視覚/文言＝mtg_4 版 A レイアウトに忠実（chrome のみ mtg_5 基準へ）・旧頁の死 CSS は剪除
+  ・共通部分の修正＝assets 側を直す（二重修正禁止）。file:// 直開き可・JS 無効時は共通 chrome 非表示（評審用の既知制約）
+============================================================ -->
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/shared.css">
+<style>
+/* ==================== 頁固有様式（Business/L1 のみ）====================
+   共通分＝assets/ に分離済（頭注参照）。以下は Business 固有：页头（biz-stage）＋ 5 事業入口＝大判オルタネート・バンド。
+   値＝mtg_4 版から不変更（B 撤去に伴い旧「共通＋[data-bizlayout=band]」の二段規則を単段に併合）。 */
+/* —— stage / 页头（type-led·克制）—— */
+.biz-stage{ padding-top:calc(clamp(1.1rem,2.4vw,1.7rem) * 2 + 4.2rem); padding-bottom:clamp(3rem,6vw,5rem); }
+.bs-head{ margin-bottom:clamp(2.4rem,5vw,4rem); }
+.bs-lead{ max-width:42em; margin-top:1.05rem; }
+
+/* —— 5 事業入口：大判オルタネート・バンド（大判 3/2 図＋テキストを左右交互·編集·映画的）—— */
+.bs-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:clamp(2.8rem,5.5vw,5rem); }
+.bs-entry{ display:grid; grid-template-columns:1.12fr .88fr; gap:clamp(1.6rem,4vw,3.6rem); align-items:center; text-decoration:none; color:inherit; }
+.bs-list > li:nth-child(even) .bs-entry{ grid-template-columns:.88fr 1.12fr; }
+.bs-list > li:nth-child(even) .bs-fig{ order:2; }
+.bs-fig{ display:block; }
+.bs-fig .ph{ position:relative; display:block; overflow:hidden; background:linear-gradient(135deg,#F1EADF 0%,#E8DDCD 55%,#DDD0BC 100%); aspect-ratio:3/2; border-radius:5px; box-shadow:0 30px 62px -40px rgba(26,25,25,.5); }
+.bs-fig .ph img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .6s var(--ease); }
+.bs-entry:hover .bs-fig .ph img{ transform:scale(1.04); }
+.bs-ttl{ font-family:var(--serif); font-weight:600; color:var(--ink); display:block; font-size:clamp(1.5rem,2.4vw,2.15rem); line-height:1.34; }
+.bs-ds{ color:var(--ink2); line-height:1.85; display:block; font-size:1rem; margin-top:.75rem; max-width:30em; }
+.bs-cta{ color:var(--brand); font-weight:700; font-size:.92rem; display:inline-flex; align-items:center; gap:.4em; margin-top:1.15rem; }
+.bs-cta .a{ --aw:5px; transition:transform .3s var(--ease); }
+.bs-entry:hover .bs-cta .a, .bs-entry:focus-visible .bs-cta .a{ transform:translateX(var(--aw)); animation:arrowWindup .5s var(--ease-draw); }
+.bs-entry:focus-visible{ outline:2px solid var(--brand); outline-offset:4px; }
+@media (max-width:760px){
+  .bs-entry, .bs-list > li:nth-child(even) .bs-entry{ grid-template-columns:1fr; gap:1.15rem; }
+  .bs-fig{ order:0 !important; }  /* !important＝上の nth-child(even) order:2 に勝つため（mtg_4 と同判断）*/
+}
+
+/* —— reveal stagger —— */
+.bs-list > li:nth-child(2){ transition-delay:.07s; }
+.bs-list > li:nth-child(3){ transition-delay:.14s; }
+.bs-list > li:nth-child(4){ transition-delay:.21s; }
+.bs-list > li:nth-child(5){ transition-delay:.28s; }
+@media (max-width:760px){ .bs-list > li:nth-child(n){ transition-delay:0s; } }
+
+/* —— l1-note 差分（本頁のみ：shared 基準より広め＝mtg_4 版の値を維持）—— */
+.biz-stage .l1-note{ margin:clamp(2rem,3vw,2.8rem) 0 0; max-width:70em; }
+
+@media (prefers-reduced-motion:reduce){
+  .bs-fig .ph img, .bs-entry:hover .bs-fig .ph img{ transform:none !important; }
+  .bs-entry:hover .bs-cta .a{ animation:none; }
+}
+</style>
+<script>document.documentElement.classList.add('jsm');</script>
+</head>
+<body class="l1-page" data-nav="solid" data-palette="burgundy">
+
+<!-- 頁固有：解説モードの中身（shared.js が共通壳へ展開。palette 組＝共通側単一ソース、RY:PALETTE マーカー位置に注入）
+     L1 の解説モード＝2 機能のみ：① 板块画像の差替 ② テーマカラー切替（旧「配置」頁＝A 選定済につき撤去）-->
+<template id="ry-dm-content">
+  <div class="dm-nav" role="group" aria-label="ページ切替"><button data-page="1" aria-pressed="true" aria-label="1ページ目 画像">1</button><button data-page="2" aria-label="2ページ目 配色">2</button></div>
+  <div class="dm-page" data-page="1">
+    <div class="dm-now" style="margin:0 0 .85rem">各事業の画像を ◀ ▶ で差替（全候補·圧縮済）。本番＝各1枚に確定。</div>
+    <div class="dm-grp imgsw" data-sec="biz-asset"><span class="dm-lbl">① 保有・管理・運営</span><div class="imgseg"><button class="imgprev" aria-label="前の画像">◀</button><span class="imgnow"></span><button class="imgnext" aria-label="次の画像">▶</button></div></div>
+    <div class="dm-grp imgsw" data-sec="biz-maint"><span class="dm-lbl">② 建物修繕</span><div class="imgseg"><button class="imgprev" aria-label="前の画像">◀</button><span class="imgnow"></span><button class="imgnext" aria-label="次の画像">▶</button></div></div>
+    <div class="dm-grp imgsw" data-sec="biz-info"><span class="dm-lbl">③ 情報提供</span><div class="imgseg"><button class="imgprev" aria-label="前の画像">◀</button><span class="imgnow"></span><button class="imgnext" aria-label="次の画像">▶</button></div></div>
+    <div class="dm-grp imgsw" data-sec="biz-overseas"><span class="dm-lbl">④ 投資側サポート</span><div class="imgseg"><button class="imgprev" aria-label="前の画像">◀</button><span class="imgnow"></span><button class="imgnext" aria-label="次の画像">▶</button></div></div>
+    <div class="dm-grp imgsw" data-sec="biz-record"><span class="dm-lbl">⑤ 実績・事例</span><div class="imgseg"><button class="imgprev" aria-label="前の画像">◀</button><span class="imgnow"></span><button class="imgnext" aria-label="次の画像">▶</button></div></div>
+  </div>
+  <div class="dm-page" data-page="2" hidden>
+<!--RY:PALETTE-->
+    <div class="dm-now">変わる＝矢印·下線·CTA·NAV active·Footer 帯 など主色連動分。恒定＝暖白底·本文色·字体(Noto)。</div>
+  </div>
+</template>
+
+<!-- 共通 chrome（#ry-mark symbol／NAV／手机抽屉／解説モード壳）＝ shared.js がこの位置に同期注入 -->
+<script src="assets/shared.js"></script>
+
+<!-- ===== L1 Business｜事業紹介（概览页 = リード + 5 事業入口 → 各 L2）＝ A 大判バンド（社長選定済・B 撤去）=====
+     頁規格（旧 legend 由来・mtg_5 で legend UI 廃止に合わせ注記化。原文＝mtg_4/business.html アーカイブ）：
+     ・順＝①〜⑤ 信任優先（既存・低牌照リスク事業を先・投資/海外を後・実績で締め・IA-v2 §3）
+     ・L1 は「更安静」＝開場 veil なし・面包屑なし（L2 から付与）・NAV 常時実底
+     ・③情報提供＝服务层（市場データは本頁で重複せず投資ガイドへ）
+     ・④海外サポート＝老板指定の唯一例外页（nav/パンくず短名＝海外のお客様サポート・页内 H1＝「日本での不動産・各種手続きサポート」）
+     ・⚠ ③④＝合规高危（公開前に行政書士・弁護士確認・詳細は L2）
+     ・図＝暖の点缀（非 load-bearing）・解説モード「画像」で差替・文案＝content 占位・入口 href＝予定ルート（build 期に実リンク化） -->
+<main id="top">
+
+  <section class="biz-stage">
+    <div class="wrap">
+      <!-- 页头（type-led·克制）-->
+      <div class="bs-head">
+        <span class="l1-rule" aria-hidden="true"></span>
+        <p class="eyebrow">Business</p>
+        <h1 class="l1-title">事業紹介</h1>
+        <p class="lead bs-lead jp">不動産の保有・管理から、建物の修繕、情報のご提供、海外のお客様の支援まで。RY の事業を、ひとつずつ。</p>
+      </div>
+
+      <!-- 5 子页入口（順=①〜⑤信任優先·大判オルタネート・バンド·→ L2）-->
+      <ol class="bs-list">
+        <li class="reveal"><a class="bs-entry" data-slot="biz-asset" data-href="/ja/business/asset-management">
+          <span class="bs-fig"><span class="ph"><img id="img-biz-asset" src="images/20_toki-no-ori.webp" alt="" loading="lazy" decoding="async"></span></span>
+          <span class="bs-txt">
+            <span class="bs-ttl">不動産保有・管理・運営サポート</span>
+            <span class="bs-ds jp">物件の保有から日々の管理・運営まで、トータルでサポート。</span>
+            <span class="bs-cta">詳しく<span class="a" aria-hidden="true">→</span></span>
+          </span>
+        </a></li>
+        <li class="reveal"><a class="bs-entry" data-slot="biz-maint" data-href="/ja/business/maintenance">
+          <span class="bs-fig"><span class="ph"><img id="img-biz-maint" src="images/beth-macdonald-ozc4SB3b8xs-unsplash.webp" alt="" loading="lazy" decoding="async"></span></span>
+          <span class="bs-txt">
+            <span class="bs-ttl">建物修繕</span>
+            <span class="bs-ds jp">退去立会・原状回復・内装工事・建物メンテナンス。</span>
+            <span class="bs-cta">詳しく<span class="a" aria-hidden="true">→</span></span>
+          </span>
+        </a></li>
+        <li class="reveal"><a class="bs-entry" data-slot="biz-info" data-href="/ja/business/investment-info">
+          <span class="bs-fig"><span class="ph"><img id="img-biz-info" src="images/getty-images-i1gRNqPHpiw-unsplash.webp" alt="" loading="lazy" decoding="async"></span></span>
+          <span class="bs-txt">
+            <span class="bs-ttl">不動産投資に関する情報提供</span>
+            <span class="bs-ds jp">情報・資料のご提供（市場や流れの詳しい解説は投資ガイドへ）。</span>
+            <span class="bs-cta">詳しく<span class="a" aria-hidden="true">→</span></span>
+          </span>
+        </a></li>
+        <li class="reveal"><a class="bs-entry" data-slot="biz-overseas" data-href="/ja/business/overseas-support">
+          <span class="bs-fig"><span class="ph"><img id="img-biz-overseas" src="images/getty-images-ySFV4eoiWfw-unsplash.webp" alt="" loading="lazy" decoding="async"></span></span>
+          <span class="bs-txt">
+            <span class="bs-ttl">投資側サポート</span>
+            <span class="bs-ds jp">日本での不動産・各種手続きを、言語と現地ネットワークの面から支援。</span>
+            <span class="bs-cta">詳しく<span class="a" aria-hidden="true">→</span></span>
+          </span>
+        </a></li>
+        <li class="reveal"><a class="bs-entry" data-slot="biz-record" data-href="/ja/business/track-record">
+          <span class="bs-fig"><span class="ph"><img id="img-biz-record" src="images/01_guide-plan-b.webp" alt="" loading="lazy" decoding="async"></span></span>
+          <span class="bs-txt">
+            <span class="bs-ttl">実績・事例</span>
+            <span class="bs-ds jp">これまでの管理・運営の実績と、具体的な事例。</span>
+            <span class="bs-cta">詳しく<span class="a" aria-hidden="true">→</span></span>
+          </span>
+        </a></li>
+      </ol>
+
+      <p class="l1-note asy-note"><b>L1 概览页</b>：レイアウト＝<b>A 大判バンド</b>（社長選定済·B 非対称ウォール案は撤去）。順＝①〜⑤ 信任優先。文案＝<b>content 占位</b>（正本は各 L2）。<span class="arr">⚠</span> ③情報提供・④投資側サポート＝<b>合规高危</b>（公開前に行政書士・弁護士確認·詳細は L2）。入口 href＝予定ルート（jump 阶段で接続）。</p>
+    </div>
+  </section>
+
+  <!-- 結尾导引 → お問い合わせ（Home #contact）-->
+  <section class="l1-cta-sec reveal" aria-label="お問い合わせ">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <p class="l1-cta-lead jp">事業について詳しくは、<span class="np">お気軽に</span>。</p>
+      <a class="l1-cta-btn" href="index.html#contact"><span class="t">お問い合わせ</span><span class="a" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+</main>
+
+<!-- 共通 footer ＋ 返回顶部（shared.js がこの位置に注入）→ 共通挙動 init -->
+<script>RY.mountFooter();RY.init();</script>
+
+<script>
+/* ===== 頁固有（L1 Business）：5 事業 換図プール ＋ scroll reveal 起動 ===== */
+(function(){
+  "use strict";
+  /* 入口 候補画像プール（先頭＝既定·画框 3/2 に合わせ選定·mtg_4 版と同値）*/
+  RY.initImgPickers({
+    "biz-asset":    RY.poolAll("20_toki-no-ori"),
+    "biz-maint":    ["beth-macdonald-ozc4SB3b8xs-unsplash","shraga-kopstein-E5S7Aks1fFY-unsplash","xinqi-yao-9f5M0KTl6Uc-unsplash","joseph-sullan-5Fc-dKWSUU8-unsplash"],
+    "biz-info":     ["getty-images-i1gRNqPHpiw-unsplash","curated-lifestyle-zd5CY2KWzHs-unsplash","getty-images-Wb4D-1wIpLI-unsplash","van-tay-media-TFFn3BYLc5s-unsplash","curated-lifestyle-uKh6BAovukk-unsplash","getty-images-WSFZHeBOicc-unsplash","christina-wocintechchat-com-m-eF7HN40WbAQ-unsplash","kobu-agency-7okkFhxrxNw-unsplash"],
+    "biz-overseas": ["getty-images-ySFV4eoiWfw-unsplash","the-jopwell-collection-_jfWNP86sNM-unsplash","curated-lifestyle-zd5CY2KWzHs-unsplash","getty-images-Wb4D-1wIpLI-unsplash"],
+    "biz-record":   RY.poolAll("01_guide-plan-b")
+  });
+  RY.reveal([".reveal"]);   /* 対象＝markup 側 .reveal（事業入口 li ×5・結尾 CTA 段）*/
+})();
+</script>
+
+</body>
+</html>

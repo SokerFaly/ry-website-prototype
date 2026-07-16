@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>強み・数字 ｜ 株式会社RY</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- ============================================================
+  L2 新設（2026-07-13）：強み・数字（生産 slug＝/ja/about/strengths・IA-v2 §1・数字の正本ページ）・評審集命名規約＝「親-子.html」
+  ・共通分＝assets/ 参照（L2 共通骨架含む）。設計＝比較草稿 about-strengths_draft_ab（07-13 PM「定死了」）より移植：
+    ① 強み 4 章＝編集式（文5fr/図7fr・②④縮進・区切り＝淡出線/線なし〔mtg5 選定・dock〕・図＝brand 3px 輪郭線を図の下層に右上/左下 4% オフセット）
+    ② 数字＝3 組×「1大+2小」交互錯位（GA 不等大×東急分組×Tishman 細線）・暖地
+  ・数字池（拡池 07-13 PM 決定・Home 3 枠は本頁の子集）：
+    正本 3＝管理物件数/入居率/累計取扱高（XX 仮・時点必須・「取扱」表記）
+    拡池＝修繕・原状回復件数（仮・要統計）／売上高 15億円（真実・Company_Overview・公開可——07-12「会社概要表不載」とは別枠・mtg5 で社長最終目視）／
+         設立 2021（既載事実）／ネイティブ tile（言葉を値にする設計＝数字列混在の墓碑理由に非該当・NG なら即撤去）／
+         海外対応 +XX%（前年比・件数非公開方針・基数は実データで再判断）／海外のお客様比率 XX%（要データ）
+  ・組名・数字の意味句・口径 caption＝content 未認領の仮文（頁面タグ表示は PM 指示で無し・認領＝sync 時 cross-agent 注記）
+  ・関連入口「多言語対応・現地ネットワークへ」→ about-network.html＝次頁（本批第 3 頁）建成予定——建成まで一時不通（既知）
+  ・mtg5 後 strip＝落選の区切り案・dock（線切替/換図）・図候補池
+  ・file:// 直開き可・JS 無効時＝chrome 非表示・線＝淡出線固定表示（評審用の既知制約）
+============================================================ -->
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/shared.css">
+<style>
+/* ==================== 頁固有様式（強み・数字/L2 のみ）====================
+   共通分＝assets/（L2 共通骨架含む）。以下＝① lead ② 強み編集式 4 章 ③ 数字 3 組。 */
+
+/* —— lead —— */
+.l2-lead{ max-width:38em; margin:.9rem 0 0; }
+
+/* —— ① 強み 4 章（編集式・定稿草稿より値移植）—— */
+.chp{ position:relative; display:grid; grid-template-columns:minmax(0,1fr); gap:1.2rem clamp(2rem,5vw,4.5rem); padding-block:clamp(2.4rem,5.5vw,4rem); align-items:center; }
+.a-str .chp:first-child{ padding-top:.6rem; }
+/* 区切り＝淡出線（幅 50%・中央・PNG 実測校正済）／線なし——mtg5 選定・dock 切替（既定＝淡出線） */
+/* 淡出線＝shared .ry-divider（下記 HTML の .ry-divider で章間に配置）*/
+
+
+.chp h3{ font-family:var(--serif); font-weight:700; font-size:clamp(1.35rem,2.3vw,1.9rem); line-height:1.5; margin:.5rem 0 .8rem; }
+.chp .tx p{ max-width:34em; margin:0; color:var(--ink); }
+/* 図＋輪郭線框：框＝図と同寸・brand 3px・図の【下層】・①右上/③左下へ 4% オフセット（07-13 定稿） */
+/* 図の框＝shared .ry-frame */
+
+
+
+@media (min-width:861px){
+  /* 図 40% 拡大済＝写真列 7fr（シェア 58.3%）・②④＝縮進（対角動線） */
+  .chp.has-ph{ grid-template-columns:minmax(0,5fr) minmax(0,7fr); }
+  .chp.ph-left{ grid-template-columns:minmax(0,7fr) minmax(0,5fr); }
+  .chp.ph-left .ph{ order:-1; }
+  .chp.indent .tx{ padding-left:clamp(2rem,10vw,9rem); }
+}
+
+/* —— ② 数字で見るRY（3 組×1大+2小・交互錯位・暖地）—— */
+.a-num{ background:var(--warm2); }
+.a-num .nb-h2{ font-family:var(--serif); font-weight:700; font-size:calc(var(--fs-section)*.72); line-height:1.3; margin:0; }
+.ngrp{ padding-block:clamp(1.7rem,3.8vw,2.6rem); border-top:1px solid var(--bd); }
+.ngrp:first-of-type{ border-top:none; margin-top:1.2rem; }
+.ngrp .gl{ font-size:.8rem; font-weight:700; letter-spacing:.22em; color:var(--brand); margin:0 0 1.3rem; }
+.nduo{ display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:1.2rem clamp(2.4rem,6vw,5rem); align-items:stretch; }
+.nbig .nl{ font-weight:700; font-size:.95rem; letter-spacing:.05em; margin:0; }
+.nbig .nv{ font-family:var(--serif); font-weight:700; font-size:calc(var(--fs-num)*.92); line-height:1.05; font-variant-numeric:tabular-nums; letter-spacing:-.01em; margin:.4rem 0 .5rem; }
+.nbig .nv small{ font-size:.4em; font-weight:600; margin-left:.1em; letter-spacing:.02em; }
+.nbig .nv.word{ font-size:calc(var(--fs-num)*.7); letter-spacing:.1em; }
+.nbig .nm{ max-width:24em; color:var(--ink); font-size:.9rem; margin:0 0 .3rem; }
+.nbig .nt, .nsm .nt{ color:var(--ink2); font-size:.76rem; margin:0; line-height:1.7; }
+.nsm{ display:flex; flex-direction:column; justify-content:center; gap:1.1rem; }
+.nsm .ntile+.ntile{ border-top:1px solid var(--bd); padding-top:1.1rem; }
+.nsm .nl{ font-weight:700; font-size:.88rem; letter-spacing:.05em; margin:0; }
+.nsm .nv{ font-family:var(--serif); font-weight:700; font-size:calc(var(--fs-num)*.5); line-height:1.1; font-variant-numeric:tabular-nums; letter-spacing:-.01em; margin:.25rem 0 .2rem; }
+.nsm .nv small{ font-size:.46em; font-weight:600; margin-left:.1em; }
+.ngrp.rev .nduo{ grid-template-columns:minmax(0,5fr) minmax(0,7fr); }
+.ngrp.rev .nbig{ order:2; text-align:right; } .ngrp.rev .nbig .nm{ margin-left:auto; }
+@media (max-width:760px){ .nduo, .ngrp.rev .nduo{ grid-template-columns:1fr; } .ngrp.rev .nbig{ order:0; text-align:left; } .ngrp.rev .nbig .nm{ margin-left:0; } }
+
+/* 関連入口（.rel）→ shared.css へ移設（全站統一）*/
+</style>
+<script>document.documentElement.classList.add('jsm');</script>
+</head>
+<body class="l2-page" data-nav="solid" data-palette="burgundy" data-line="fade">
+
+<!-- 頁固有：解説モードの中身（palette 組＝共通側単一ソース）
+     本頁の解説モード＝3 機能：① 強み区切り（淡出線/線なし・mtg5 選定）② 換図（第1章/第3章・候補池）③ テーマカラー -->
+<template id="ry-dm-content">
+  <div class="dm-nav" role="group" aria-label="ページ切替"><button data-page="1" aria-pressed="true" aria-label="1ページ目 強み表現">1</button><button data-page="2" aria-label="2ページ目 配色">2</button></div>
+  <div class="dm-page" data-page="1">
+    <div class="dm-grp"><span class="dm-lbl">強み 区切り（mtg5 選定）</span><div class="seg" role="group" aria-label="区切り"><button data-ln="fade" aria-pressed="true">淡出線</button><button data-ln="none">線なし</button></div></div>
+    <div class="dm-grp"><span class="dm-lbl">換図 ①ひとつの窓口（相談池）</span><div class="seg" role="group" aria-label="換図1"><button data-i1="getty-images-i1gRNqPHpiw-unsplash.webp" aria-pressed="true">i1gR</button><button data-i1="curated-lifestyle-zd5CY2KWzHs-unsplash.webp">zd5C</button><button data-i1="getty-images-Wb4D-1wIpLI-unsplash.webp">Wb4D</button><button data-i1="van-tay-media-TFFn3BYLc5s-unsplash.webp">vtay</button><button data-i1="curated-lifestyle-uKh6BAovukk-unsplash.webp">uKh6</button></div></div>
+    <div class="dm-grp"><span class="dm-lbl">換図 ③言葉の壁（都市池）</span><div class="seg" role="group" aria-label="換図3"><button data-i3="curated-lifestyle-uKh6BAovukk-unsplash.webp" aria-pressed="true">uKh6</button><button data-i3="curated-lifestyle-zd5CY2KWzHs-unsplash.webp">zd5C</button><button data-i3="getty-images-Wb4D-1wIpLI-unsplash.webp">Wb4D</button><button data-i3="van-tay-media-TFFn3BYLc5s-unsplash.webp">vtay</button><button data-i3="getty-images-i1gRNqPHpiw-unsplash.webp">i1gR</button></div></div>
+    <div class="dm-now">区切り＝淡出線【既定】／線なし の二択（PM 定稿 07-13・現場選定）。図＝候補池（mapping 準拠・最終は実配置で判断）。</div>
+  </div>
+  <div class="dm-page" data-page="2" hidden>
+<!--RY:PALETTE-->
+    <div class="dm-now">変わる＝輪郭線框・淡出線・数字組名・矢印・CTA・NAV active など主色連動分。恒定＝暖白底・本文色・border・字体(Noto)。</div>
+  </div>
+</template>
+
+<script src="assets/shared.js"></script>
+
+<!-- ===== L2 強み・数字（生産 /ja/about/strengths・数字の正本）＝ 頁頭 → 強み4章（編集式）→ 数字（暖地・峰＜Home）→ 関連入口 → 戻り → CTA -->
+<main id="top">
+
+  <section class="l2-hero">
+    <div class="wrap">
+      <nav class="crumb" aria-label="パンくず"><ol>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">RYについて</a></li>
+        <li aria-current="page">強み・数字</li>
+      </ol></nav>
+      <span class="l1-rule" aria-hidden="true"></span>
+      <p class="eyebrow">Strengths</p>
+      <h1 class="l1-title">RYの強み</h1>
+      <p class="l2-lead jp">ご相談の背景や検討段階に合わせて、必要な情報と<span class="np">次の一歩を、</span>ていねいに。</p>
+    </div>
+  </section>
+
+  <!-- ① 強み 4 章（別紙② 逐字・標題锁定）-->
+  <section class="a-str" style="padding-top:0">
+    <div class="wrap">
+      <article class="chp has-ph reveal">
+        <div class="tx"><h3 class="jp">ひとつの窓口で、すべてを。</h3><p class="jp">物件の保有・運営から各種お手続きのサポートまで。複数の会社をまわる必要はありません。</p></div>
+        <figure class="ph ry-frame"><img id="img-str1" src="images/getty-images-i1gRNqPHpiw-unsplash.webp" alt="担当者が資料をもとにご説明している様子" loading="lazy" decoding="async"></figure>
+      </article>
+      <div class="ry-divider" aria-hidden="true"></div>
+      <article class="chp indent reveal">
+        <div class="tx"><h3 class="jp">数字とデータで、ご説明します。</h3><p class="jp">「なんとなく」ではなく、実績とデータにもとづいて。初めての方にも、判断の材料が見えるように。</p></div>
+      </article>
+      <div class="ry-divider" aria-hidden="true"></div>
+      <article class="chp has-ph ph-left reveal">
+        <figure class="ph ry-frame fr-bl"><img id="img-str3" src="images/curated-lifestyle-uKh6BAovukk-unsplash.webp" alt="東京駅前を行き交う人々と街路樹" loading="lazy" decoding="async"></figure>
+        <div class="tx"><h3 class="jp">言葉の壁を、感じさせない。</h3><p class="jp">日・韓・中のネイティブ体制で対応。日本の現地に根ざしたネットワークで、現場までサポートします。</p></div>
+      </article>
+      <div class="ry-divider" aria-hidden="true"></div>
+      <article class="chp indent reveal">
+        <div class="tx"><h3 class="jp">迷わせない、ご案内。</h3><p class="jp">「興味はあるけれど、何から始めればいいか分からない」。そんな方に寄り添い、最初の一歩から。</p></div>
+      </article>
+      <p class="asy-note"><b>強み 4 枚</b>：標題・副文＝別紙② 逐字（標題锁定・副文面客打磨済）。区切り＝淡出線/線なし（mtg5 現場選定・dock）。図＝候補池（`RY_Image_Candidate_Mapping` 準拠・dock 換図）。<span class="arr">⚠</span> mtg5 選定後＝落選区切り案・dock を strip。</p>
+    </div>
+  </section>
+
+  <!-- ② 数字で見るRY（数字の正本・Home 3 枠は本頁の子集・峰＜Home）-->
+  <section class="a-num" id="numbers">
+    <div class="wrap reveal">
+      <p class="eyebrow">Numbers</p>
+      <h2 class="nb-h2">数字で見るRY</h2>
+      <div class="ngrp"><p class="gl">運営の実績</p><div class="nduo">
+        <div class="nbig"><p class="nl">管理物件数</p><p class="nv">XX<small>件</small></p><p class="nm jp">一つひとつの現場と向き合ってきた、運営の積み重ねです。</p><p class="nt">（20XX年XX月時点）</p></div>
+        <div class="nsm">
+          <div class="ntile"><p class="nl">入居率</p><p class="nv">XX<small>％</small></p><p class="nt">（20XX年XX月時点）</p></div>
+          <div class="ntile"><p class="nl">修繕・原状回復 対応実績</p><p class="nv">XX<small>件</small></p><p class="nt">年間・自社対応分（20XX年XX月時点）</p></div>
+        </div>
+      </div></div>
+      <div class="ngrp rev"><p class="gl">事業のあゆみ</p><div class="nduo">
+        <div class="nbig"><p class="nl">売上高</p><p class="nv">15<small>億円</small></p><p class="nm jp">規模ではなく、着実な歩みの結果です。</p><p class="nt">令和7年9月期</p></div>
+        <div class="nsm">
+          <div class="ntile"><p class="nl">累計取扱高</p><p class="nv">XX<small>億円</small></p><p class="nt">設立〜20XX年XX月・「取扱」実績の総計</p></div>
+          <div class="ntile"><p class="nl">設立</p><p class="nv">2021<small>年</small></p><p class="nt">東京・赤坂</p></div>
+        </div>
+      </div></div>
+      <div class="ngrp"><p class="gl">多言語・海外対応</p><div class="nduo">
+        <div class="nbig"><p class="nl">対応体制</p><p class="nv word">ネイティブ</p><p class="nm jp">日本語・韓国語・中国語はネイティブ体制。英語も対応可。</p><p class="nt">詳細＝多言語対応・現地ネットワークのページへ</p></div>
+        <div class="nsm">
+          <div class="ntile"><p class="nl">海外のお客様 対応実績</p><p class="nv">+XX<small>％</small></p><p class="nt">前年比（2025→2026年）</p></div>
+          <div class="ntile"><p class="nl">ご相談に占める海外のお客様</p><p class="nv">XX<small>％</small></p><p class="nt">（20XX年XX月時点）</p></div>
+        </div>
+      </div></div>
+      <p class="asy-note"><b>数字の正本（Home・事業＝抜粋再掲）</b>：正本 3 枠＋拡池 6（07-13 PM 決定・「先扩、mtg5 で老板が減法」）。<span class="arr">⚠</span> 全て仮データ・時点必須・「取扱」表記／組名・意味句・口径＝content 未認領（sync 時 cross-agent）／<b>売上高 15億円＝真実・公開可</b>（会社概要表不載 07-12 とは別枠・mtg5 社長最終目視）／+XX％＝基数を実データで再判断・件数非公開方針／ネイティブ tile＝言葉を値にする設計（NG なら即撤去）。</p>
+    </div>
+  </section>
+
+  <!-- 関連入口（text link）-->
+  <section class="rel" style="padding-bottom:1rem">
+    <div class="wrap">
+      <a href="about-company.html"><span class="jp">会社概要へ</span><span class="a" aria-hidden="true">→</span></a>
+      <a href="about-network.html"><span class="jp">多言語対応・現地ネットワークへ</span><span class="a" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <section class="l2-back">
+    <div class="wrap"><a href="about.html"><span class="a" aria-hidden="true">←</span>RYについて一覧へ</a></div>
+  </section>
+
+  <section class="l1-cta-sec reveal" aria-label="お問い合わせ">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <p class="l1-cta-lead jp">ご相談は、<span class="np">検討段階から</span>どうぞ。</p>
+      <a class="l1-cta-btn" href="index.html#contact"><span class="t">お問い合わせ</span><span class="a" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+</main>
+
+<script>RY.mountFooter();RY.init();</script>
+
+<script>
+/* ===== 頁固有（L2 強み・数字）：区切り切替＋換図＋reveal ===== */
+(function(){
+  "use strict";
+  var body=document.body;
+  RY.group(".dm-panel [data-ln]",function(b){ body.dataset.line=b.dataset.ln; });
+  RY.group(".dm-panel [data-i1]",function(b){ document.getElementById("img-str1").src="images/"+b.dataset.i1; });
+  RY.group(".dm-panel [data-i3]",function(b){ document.getElementById("img-str3").src="images/"+b.dataset.i3; });
+  RY.reveal([".reveal"]);
+})();
+</script>
+
+</body>
+</html>
