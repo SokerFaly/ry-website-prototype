@@ -68,9 +68,9 @@ var DM_HEAD_HTML = `  <div class="dm-head"><b>解説モード</b><button class="
 
 /* palette 組（全站単一ソース・4套は assets/tokens.css の data-palette と対）*/
 var PALETTE_HTML = `    <div class="dm-grp"><span class="dm-lbl">テーマカラー（配色·全站）</span><div class="seg" role="group" aria-label="テーマカラー">
-      <button data-palette="burgundy" aria-pressed="true"><span class="dm-sw" style="background:#4C0018"></span>バーガンディ</button>
+      <button data-palette="burgundy"><span class="dm-sw" style="background:#4C0018"></span>バーガンディ</button>
       <button data-palette="forest"><span class="dm-sw" style="background:#014421"></span>フォレストグリーン</button>
-      <button data-palette="deep"><span class="dm-sw" style="background:#0C3620"></span>ディープグリーン</button>
+      <button data-palette="deep" aria-pressed="true"><span class="dm-sw" style="background:#0C3620"></span>ディープグリーン</button>
       <button data-palette="bottle"><span class="dm-sw" style="background:#0F2A1D"></span>ボトルグリーン</button>
     </div></div>`;
 
@@ -146,14 +146,12 @@ var ALL_IMAGES = [
   "beth-macdonald-ozc4SB3b8xs-unsplash",
   "bo-peng-93tU5310sFo-unsplash",
   "chen-jack-SwOU27y-7Sk-unsplash",
-  "chris-barbalis-vVk1GxTaQ_E-unsplash",
   "christina-wocintechchat-com-m-eF7HN40WbAQ-unsplash",
   "christopher-politano-cUuQ-L7XlzM-unsplash",
   "curated-lifestyle-tFNOLyih_cw-unsplash",
   "curated-lifestyle-uKh6BAovukk-unsplash",
   "curated-lifestyle-zd5CY2KWzHs-unsplash",
   "freguesia-de-estrela-KGLXzxjq9G0-unsplash",
-  "getty-images-1NQ9e2pKawg-unsplash",
   "getty-images-HfwZGsly8bw-unsplash",
   "getty-images-JGbH69r09dU-unsplash",
   "getty-images-WSFZHeBOicc-unsplash",
@@ -184,7 +182,6 @@ var ALL_IMAGES = [
   "robert-ruggiero-X2bcQMMhaow-unsplash",
   "roman-davydko-l4jgRsJZ5DQ-unsplash",
   "ryan-wu-KCkCPCLwoVc-unsplash",
-  "serhii-butenko-TJvjMmrQW1k-unsplash",
   "shraga-kopstein-E5S7Aks1fFY-unsplash",
   "szymon-shields-23yvcQJoxBI-unsplash",
   "szymon-shields-KebaWH0BVCc-unsplash",

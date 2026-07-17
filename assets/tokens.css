@@ -5,7 +5,7 @@
    規約：組件内 hardcode 禁止・色/字/間距/動効値は必ず var(--token) 経由
    ============================================================ */
 :root{
-  --brand:#4C0018; --brand-rgb:76,0,24; --accent-warm:#D8C8B8; --warm:#FBFAF7; --warm2:#F4F1EA; --white:#fff;
+  --brand:#0C3620; --brand-rgb:12,54,32; /* 260717 PM：既定＝deep（ディープグリーン·社長 mtg5 選定）·旧既定 burgundy は下記 data-palette 覆盖に存置 */ --accent-warm:#D8C8B8; --warm:#FBFAF7; --warm2:#F4F1EA; --white:#fff;
   --ink:#1A1919; --ink-strong:#141110; --ink2:#6B6862; --bd:#E3E0DA; --ease:cubic-bezier(.22,.61,.36,1);
   --serif:'Noto Serif JP',serif; --sans:'Noto Sans JP',sans-serif; --ts:1.18;
   --fs-section:calc(clamp(2.4rem,4.2vw,3.7rem)*var(--ts));
