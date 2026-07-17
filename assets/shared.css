@@ -112,7 +112,7 @@ body.dm-on .footer-wf .f-disc{ display:block; }
 .to-top.show{ opacity:1; transform:none; pointer-events:auto; }
 .to-top:hover{ background:var(--brand); color:#fff; }
 .to-top svg{ width:20px; height:20px; transition:transform var(--dur-base) var(--ease); } .to-top:hover svg{ transform:translateY(-3px); }
-@media (max-width:760px){ .to-top{ bottom:clamp(4.5rem,30vh,20rem); } }   /* 手机：偏中下（拇指可达）·桌面は貼角 */
+@media (max-width:760px){ .to-top{ bottom:clamp(2.75rem,10.5vh,7rem); } }   /* 手机：下寄せ（PM 260717：旧 30vh 碍事 → 下移至約 35%＝10.5vh·截图未達·待 PM 実機確認）·桌面は貼角 */
 
 /* 解説 page3：板块ごと ◀ ▶ 換図 */
 .imgseg{ display:flex; align-items:center; gap:.5rem; }
