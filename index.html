@@ -626,12 +626,12 @@ body[data-mlang="off"] .mlang{ display:none; }
   }
   function playFull(){ clr(); resetChars(); paintHello();
     if(phrase){ phrase.style.display=''; phrase.style.transition='none'; phrase.classList.remove('absorb'); void phrase.offsetWidth; phrase.style.transition=''; }
-    typePhrase(function(){ timers.push(setTimeout(function(){ if(phrase) phrase.classList.add('absorb'); timers.push(setTimeout(overlap,520)); },600)); });
+    typePhrase(function(){ timers.push(setTimeout(function(){ if(phrase) phrase.classList.add('absorb'); timers.push(setTimeout(overlap,620)); },600)); });
   }
   function playHelloOnly(){ clr(); resetChars(); paintHello(); if(phrase) phrase.style.display='none'; overlap(); }
   var seen=false;
   function trig(){ if(document.body.dataset.mlang==='off') return; if(reduce) playHelloOnly(); else playFull(); }
-  if(phrase) split(phrase); /* 先に文字を隠す＝スクロールイン時の生テキストのちらつき防止 */
+  if(phrase) split(phrase); Array.prototype.forEach.call(host.querySelectorAll('.cw'),function(cw){ split(cw); }); /* 打字机句＋hello の生文字を先に隠す＝重なり/ちらつき防止 */
   var target=document.querySelector('.mlang-stage')||host;
   if('IntersectionObserver' in window){ var io=new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting && !seen){ seen=true; trig(); io.disconnect(); } }); },{threshold:.25}); io.observe(target); }
   else { seen=true; trig(); }
