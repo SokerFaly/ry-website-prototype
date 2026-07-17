@@ -123,7 +123,7 @@ body[data-facts="nodata"] .nb-head{ display:none; }   /* なし版＝過場：ey
 .contact .panel .row{ border-bottom:1px solid var(--bd); padding:1.05rem 0; font-size:.92rem; color:var(--ink2); } .contact .panel .row:last-of-type{ border-bottom:0; }
 .contact .panel .submit{ margin-top:1.8rem; display:inline-block; background:var(--brand); color:#fff; font-weight:700; font-size:.95rem; padding:.78rem 2rem; border-radius:3px; }
 
-@media (max-width:880px){ .about-stage{ grid-template-columns:1fr !important; gap:2rem; align-items:start; } .fig .ph{ width:100% !important; max-width:520px; aspect-ratio:4/3 !important; } .fig{ justify-content:flex-start; } }
+@media (max-width:880px){ .about-stage{ grid-template-columns:1fr !important; gap:2rem; align-items:start; } .fig .ph{ width:100% !important; max-width:520px; aspect-ratio:3/4 !important; } .fig{ justify-content:flex-start; } }
 @media (max-width:860px){ .overlap-img{ position:relative; left:auto; top:auto; transform:none !important; width:80%; margin:0 0 -34px; } .kotoba{ margin-left:0; margin-right:0; padding-left:clamp(1.6rem,6vw,2.6rem); } .figs{ grid-template-columns:repeat(3,1fr); gap:clamp(.5rem,2.5vw,1rem); margin-top:clamp(1.6rem,6vw,2.6rem); padding-top:0; } .fig2{ align-items:center; text-align:center; } .fig2 .v{ min-height:auto; font-size:clamp(1.6rem,7vw,2.5rem); } .fig2 .v .u{ font-size:.34em; } .fig2 .k{ font-size:clamp(.72rem,3vw,.95rem); margin-top:.4rem; } .fig2 .t{ font-size:clamp(.55rem,2.3vw,.72rem); margin-top:.18rem; line-height:1.3; } }
 /* ============================================================
    ===== v6 改修（micro 調整 ＋ Business 融合）=====
@@ -221,10 +221,25 @@ body.entered #img-hero{ animation:heroZoom 8s var(--ease) both; }
 @media(min-width:861px){
   .numbers-real .kotoba, .numbers-real .kotoba .quote, .numbers-real .overlap-img{ will-change:transform, opacity; }
 }
+/* ===== CTA 多言語 hello（C重叠·about-network より移植·解説で on/off·既定 on）===== */
+.cta-hello{ margin-top:clamp(1.6rem,3.5vw,2.8rem); display:flex; justify-content:center; }
+.cta-hello .v-c2{ position:relative; padding:.2em 0; }
+.cta-hello .cw{ margin:0; font-weight:700; font-size:clamp(2.2rem,5.5vw,4rem); line-height:1; font-family:'Noto Serif JP',serif; }
+.cta-hello .cw + .cw{ margin-top:-.26em; }
+.cta-hello .cw:nth-child(1){ margin-left:0; color:rgba(76,0,24,.82); }
+.cta-hello .cw:nth-child(2){ margin-left:1.6em; color:rgba(122,100,84,.85); }
+.cta-hello .cw:nth-child(3){ margin-left:.5em; color:rgba(166,74,98,.78); }
+.cta-hello .cw:nth-child(4){ margin-left:2.4em; color:rgba(125,120,112,.85); }
+.cta-hello .fk{ font-family:'Noto Serif KR','Noto Serif JP',serif; } .cta-hello .fc{ font-family:'Noto Serif SC','Noto Serif JP',serif; }
+.cta-hello .tw-ch{ opacity:0; transform:translate(var(--dx,0),var(--dy,0)); transition:opacity .55s ease, transform .6s cubic-bezier(.22,.61,.36,1); }
+.cta-hello .tw-ch.on{ opacity:1; transform:none; }
+body[data-ctahello="off"] .cta-hello{ display:none; }
+@media(max-width:600px){ .cta-hello .cw{ font-size:clamp(1.9rem,9vw,2.8rem); } .cta-hello .cw:nth-child(2){ margin-left:1em; } .cta-hello .cw:nth-child(4){ margin-left:1.5em; } }
+@media(prefers-reduced-motion:reduce){ .cta-hello .tw-ch{ opacity:1!important; transform:none!important; transition:none!important; } }
 </style>
 <script>document.documentElement.classList.add('jsm');</script>
 </head>
-<body data-dir="min" data-imgsize="1" data-cardfx="draw" data-gaimg="1" data-facts="data" data-palette="burgundy">
+<body data-dir="min" data-imgsize="1" data-cardfx="draw" data-gaimg="1" data-facts="data" data-palette="burgundy" data-ctahello="on">
 
 <!-- 頁固有：解説モードの中身（shared.js が共通壳へ展開。palette 組＝共通側単一ソース、RY:PALETTE マーカー位置に注入）-->
 <template id="ry-dm-content">
@@ -233,6 +248,7 @@ body.entered #img-hero{ animation:heroZoom 8s var(--ease) both; }
   <div class="dm-grp plansw"><span class="dm-lbl">キャッチ 案（5·社長選定用）</span><div class="imgseg"><button class="planprev" type="button" aria-label="前の案">◀</button><span class="imgnow plannow"></span><button class="plannext" type="button" aria-label="次の案">▶</button></div></div>
   <div class="dm-now" style="margin:.15rem 0 .55rem">◀ ▶ で 5 案を切替 ＝ Hero キャッチ（大見出し）を差替（リード・版面は不変）。本番＝社長が 1 案を確定（別紙①）。</div>
   <div class="dm-grp"><span class="dm-lbl">Facts 数字</span><div class="seg" role="group" aria-label="Facts 数字表示"><button data-facts="data" aria-pressed="true">数字あり</button><button data-facts="nodata">数字なし</button></div></div>
+  <div class="dm-grp"><span class="dm-lbl">CTA hello（C重叠）</span><div class="seg" role="group" aria-label="CTA hello 表示"><button data-ctahello="on" aria-pressed="true">重叠 ON</button><button data-ctahello="off">OFF</button></div></div>
   </div><!-- /dm-page 1 -->
   <div class="dm-page" data-page="2" hidden>
 <!--RY:PALETTE-->
@@ -332,7 +348,7 @@ body.entered #img-hero{ animation:heroZoom 8s var(--ease) both; }
   <h2 class="sec jp">事業のご案内</h2>
   <div class="biz-band">
     <div class="biz-fig">
-      <div class="ph"><img id="img-business" src="images/marco-kaufmann-0kbNh7XrJ7Q-unsplash.webp" alt="" loading="lazy" decoding="async"></div>
+      <div class="ph"><img id="img-business" src="images/van-tay-media-TFFn3BYLc5s-unsplash.webp" alt="" loading="lazy" decoding="async"></div>
     </div>
     <p class="biz-lead jp"><span class="np">保有・管理から</span>各種サポートまで。<br>RY にできることを、<span class="np">ひとつずつ。</span></p>
   </div>
@@ -367,7 +383,7 @@ body.entered #img-hero{ animation:heroZoom 8s var(--ease) both; }
       <p class="ga-lead jp">市場のこと、投資の流れ、考え方を、<span class="np">急かさず</span>、わかるまで。<br>判断は、いつも<span class="np">お客様自身</span>が。</p>
     </div>
     <div class="ga-fig">
-      <div class="ph"><img id="img-guide" src="images/robert-ruggiero-X2bcQMMhaow-unsplash.webp" alt="" loading="lazy" decoding="async"></div>
+      <div class="ph"><img id="img-guide" src="images/marco-kaufmann-0kbNh7XrJ7Q-unsplash.webp" alt="" loading="lazy" decoding="async"></div>
     </div>
     <ol class="ga-steps">
       <li class="ga-step"><span class="ga-num">1</span><span class="ga-main"><span class="ga-ttl jp">相談</span><span class="ga-ds jp">まずはお話を伺うことから。目的やご不安を、いっしょに整理します。</span></span></li>
@@ -382,6 +398,14 @@ body.entered #img-hero{ animation:heroZoom 8s var(--ease) both; }
 <!-- 06 余白の一句 休 -->
 <section class="inter-wf"><div class="wrap">
   <div class="qbox"><p class="q">その一歩、進みましょう</p></div>
+  <div class="cta-hello">
+    <div class="v-c2">
+      <p class="cw fj" lang="ja">こんにちは</p>
+      <p class="cw fk" lang="ko">안녕하세요</p>
+      <p class="cw fc" lang="zh-Hans">你好</p>
+      <p class="cw fe" lang="en">Hello</p>
+    </div>
+  </div>
   <p class="asy-note" style="text-align:center"><b>休符</b>：中央対称·余白最大·暖白 tint 地（確定）。<b>「」第2処</b>·装飾（社長指定文·濃暖黒）。</p>
 </div></section>
 
@@ -413,8 +437,8 @@ body.entered #img-hero{ animation:heroZoom 8s var(--ease) both; }
     hero:["32_kiki","25_aditya-anjagi","26_freguesia","27_getty-1NQ9","28_getty-HfwZ","29_getty-JGbH","30_guo-ziyu","31_huy-phan","33_michal-vrba","34_night-owl","35_niu","36_pourya-gohari","37_roman-davydko","38_ryan-wu","39_szymon-23yv","40_szymon-Keba","41_teng-yuhong","42_tsuyoshi-B7WW","43_tsuyoshi-sUnt","44_vanja-milicic","05_kazuo-ota","19_railgunbreaker","24_tsuyoshi-kozu","02_hanvin-cheong","13_faruktokluoglu","22_pjh","07_matt-mutlu"],
     about:RY.poolAll("serhii-butenko-TJvjMmrQW1k-unsplash"),
     facts:RY.poolAll("19_railgunbreaker"),
-    business:RY.poolAll("marco-kaufmann-0kbNh7XrJ7Q-unsplash"),
-    guide:RY.poolAll("robert-ruggiero-X2bcQMMhaow-unsplash")
+    business:RY.poolAll("van-tay-media-TFFn3BYLc5s-unsplash"),
+    guide:RY.poolAll("marco-kaufmann-0kbNh7XrJ7Q-unsplash")
   };
   RY.initImgPickers(IMG_POOLS);
 
@@ -548,6 +572,29 @@ body.entered #img-hero{ animation:heroZoom 8s var(--ease) both; }
 
   if(mqMobile.addEventListener){ mqMobile.addEventListener("change", function(){ if(mqMobile.matches && heroPh){ heroPh.style.transform = ""; } RY.requestFrame(); }); }
   if(stagedMq.addEventListener){ stagedMq.addEventListener("change", function(){ if(!stagedOn()){ clearStaged(); } RY.requestFrame(); }); }
+})();
+</script>
+<script>
+/* CTA 多言語 hello（C重叠）·about-network の overlap を移植·解説 on/off·既定 on */
+(function(){
+  var host=document.querySelector('.cta-hello'); if(!host) return;
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function split(el){ if(el.dataset.tw) return el.querySelectorAll('.tw-ch'); var t=el.textContent; el.textContent=''; Array.prototype.forEach.call(t,function(c){ var s=document.createElement('span'); s.className='tw-ch'; s.textContent=c; el.appendChild(s); }); el.dataset.tw='1'; return el.querySelectorAll('.tw-ch'); }
+  var timers=[];
+  function overlap(){ timers.forEach(clearTimeout); timers=[];
+    Array.prototype.forEach.call(host.querySelectorAll('.tw-ch.on'),function(x){ x.classList.remove('on'); });
+    var chs=[]; Array.prototype.forEach.call(host.querySelectorAll('.cw'),function(cw){ Array.prototype.forEach.call(split(cw),function(ch){ chs.push(ch); }); });
+    if(reduce){ chs.forEach(function(ch){ ch.classList.add('on'); }); return; }
+    var dirs=[[-44,0],[44,0],[0,-40],[0,40],[-32,-28],[32,28]];
+    chs.forEach(function(ch){ var d=dirs[(Math.random()*dirs.length)|0]; ch.style.setProperty('--dx',d[0]+'px'); ch.style.setProperty('--dy',d[1]+'px'); });
+    var ord=chs.slice(); for(var k=ord.length-1;k>0;k--){ var j=(Math.random()*(k+1))|0,t=ord[k]; ord[k]=ord[j]; ord[j]=t; }
+    ord.forEach(function(ch,idx){ timers.push(setTimeout(function(){ ch.classList.add('on'); },110+idx*90)); });
+  }
+  var seen=false;
+  function trig(){ if(document.body.dataset.ctahello!=='off'){ overlap(); } }
+  if('IntersectionObserver' in window){ var io=new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting && !seen){ seen=true; trig(); io.disconnect(); } }); },{threshold:.3}); io.observe(host); }
+  else { seen=true; trig(); }
+  if(window.RY&&RY.group){ RY.group('.dm-panel [data-ctahello]', function(b){ document.body.dataset.ctahello=b.dataset.ctahello; if(b.dataset.ctahello==='on'){ seen=true; overlap(); } }); }
 })();
 </script>
 </body>
