@@ -252,7 +252,7 @@ function openGrid(sec){
   pool.forEach(function(name,idx){
     var b=document.createElement("button"); b.className="ry-grid-cell"; b.type="button"; b.dataset.i=idx;
     if(idx===_pIdx[sec]) b.classList.add("on");
-    b.innerHTML='<img loading="lazy" decoding="async" src="images/_thumb/'+name+'.webp" alt=""><span>'+name+'</span>';
+    b.innerHTML='<img loading="lazy" decoding="async" src="images/thumb/'+name+'.webp" alt=""><span>'+name+'</span>';
     b.addEventListener("click",function(){ setImgTo(sec,idx); closeGrid(); });
     frag.appendChild(b);
   });
