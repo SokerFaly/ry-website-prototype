@@ -224,10 +224,10 @@ body.entered #img-hero{ animation:heroZoom 8s var(--ease) both; }
 /* ===== 多言語 hello 板块（C重叠·about-network より移植·About「言葉の壁を」の証明位·解説 on/off·既定 on）===== */
 .mlang{ padding-block:clamp(4rem,8vw,7rem); }
 body[data-mlang="off"] .mlang{ display:none; }
-.mlang-stage{ display:grid; place-items:center; min-height:clamp(220px,32vw,360px); text-align:center; }
+.mlang-stage{ display:grid; place-items:center; min-height:clamp(280px,40vw,450px); text-align:center; }
 .mlang-stage > *{ grid-area:1/1; }
 /* 打字机の一文（墨＝テーマ色 var(--brand)·吸収式に淡出）*/
-.mlang-type{ margin:0; max-width:24em; font-family:'Noto Serif JP',serif; font-weight:600; font-size:clamp(1.25rem,3vw,2rem); line-height:1.55; color:var(--brand); transition:opacity .6s ease-in, transform .6s ease-in, filter .6s ease-in; }
+.mlang-type{ margin:0; max-width:24em; font-family:'Noto Serif JP',serif; font-weight:600; font-size:clamp(1.55rem,3.7vw,2.5rem); line-height:1.55; color:var(--brand); transition:opacity .6s ease-in, transform .6s ease-in, filter .6s ease-in; }
 .mlang-type.absorb{ opacity:0; transform:translateY(7px); filter:blur(2px); }
 .mlang-type .tw-ch{ opacity:0; } .mlang-type .tw-ch.on{ opacity:1; }
 .mlang-type .tw-cursor{ display:inline-block; width:.06em; height:.95em; background:var(--brand); margin:0 .04em; vertical-align:-.1em; }
@@ -235,7 +235,7 @@ body[data-mlang="off"] .mlang{ display:none; }
 /* 交叠 hello：色＝--brand から派生する family 変体（浅/基/深）＋1暖中性·JS が毎回ランダム洗牌·半透明で交叠 */
 .mlang-hello{ display:flex; justify-content:center; }
 .mlang-hello .v-c2{ position:relative; padding:.2em 0; }
-.mlang-hello .cw{ margin:0; font-weight:700; font-size:clamp(2.6rem,6.5vw,5rem); line-height:1; font-family:'Noto Serif JP',serif; opacity:.86; color:var(--brand); }
+.mlang-hello .cw{ margin:0; font-weight:700; font-size:clamp(3.25rem,8vw,6.25rem); line-height:1; font-family:'Noto Serif JP',serif; opacity:.86; color:var(--brand); }
 .mlang-hello .cw + .cw{ margin-top:-.26em; }
 .mlang-hello .cw:nth-child(1){ margin-left:0; } .mlang-hello .cw:nth-child(2){ margin-left:1.6em; } .mlang-hello .cw:nth-child(3){ margin-left:.5em; } .mlang-hello .cw:nth-child(4){ margin-left:2.4em; }
 /* ★上线 fallback：color-mix 非対応の旧ブラウザ(2023 以前: Chrome<111 / Safari<16.2 / Firefox<113)向けに、下記各 .fam-* の color 行の直前へ burgundy 固定色を一行足す —— fam-light 前:「color:rgba(166,74,98,1);」/ fam-deep 前:「color:rgba(52,0,17,1);」（fam-base は var(--brand) のまま）。※固定色ゆえ palette 切替では変化せず"表示できる"保証のみ。preview 段階では不要。 */
@@ -246,7 +246,7 @@ body[data-mlang="off"] .mlang{ display:none; }
 .mlang-hello .fk{ font-family:'Noto Serif KR','Noto Serif JP',serif; } .mlang-hello .fc{ font-family:'Noto Serif SC','Noto Serif JP',serif; }
 .mlang-hello .tw-ch{ opacity:0; transform:translate(var(--dx,0),var(--dy,0)); transition:opacity .55s ease, transform .6s cubic-bezier(.22,.61,.36,1); }
 .mlang-hello .tw-ch.on{ opacity:1; transform:none; }
-@media(max-width:600px){ .mlang-hello .cw{ font-size:clamp(2rem,10vw,3.2rem); } .mlang-hello .cw:nth-child(2){ margin-left:1em; } .mlang-hello .cw:nth-child(4){ margin-left:1.5em; } .mlang-type{ font-size:clamp(1.1rem,4.5vw,1.5rem); } .mlang-stage{ min-height:clamp(200px,52vw,300px); } }
+@media(max-width:600px){ .mlang-hello .cw{ font-size:clamp(2.5rem,12vw,4rem); } .mlang-hello .cw:nth-child(2){ margin-left:1em; } .mlang-hello .cw:nth-child(4){ margin-left:1.5em; } .mlang-type{ font-size:clamp(1.35rem,5.5vw,1.85rem); } .mlang-stage{ min-height:clamp(250px,62vw,370px); } }
 @media(prefers-reduced-motion:reduce){ .mlang-hello .tw-ch,.mlang-type .tw-ch{ opacity:1!important; transform:none!important; transition:none!important; } .mlang-type{ display:none; } .mlang-type .tw-cursor{ display:none!important; } }
 </style>
 <script>document.documentElement.classList.add('jsm');</script>
@@ -336,7 +336,7 @@ body[data-mlang="off"] .mlang{ display:none; }
 <!-- 多言語 hello（C重叠·白·中央·解説 on/off）-->
 <section class="mlang"><div class="wrap">
   <div class="mlang-stage">
-    <p class="mlang-type jp" aria-hidden="true">多言語と地域ネットワークを活かし、丁寧にサポートします。</p>
+    <p class="mlang-type jp" aria-hidden="true">丁寧に、サポートを</p>
     <div class="mlang-hello">
       <div class="v-c2">
         <p class="cw fj" lang="ja">こんにちは</p>
@@ -622,7 +622,7 @@ body[data-mlang="off"] .mlang{ display:none; }
   function typePhrase(done){ if(!phrase){ done(); return; }
     var chs=split(phrase), cur=document.createElement('span'); cur.className='tw-cursor blink';
     if(phrase.firstChild) phrase.insertBefore(cur, phrase.firstChild);
-    var i=0; (function step(){ if(i>=chs.length){ timers.push(setTimeout(function(){ if(cur.parentNode) cur.remove(); done(); },240)); return; } chs[i].classList.add('on'); chs[i].after(cur); i++; timers.push(setTimeout(step,48)); })();
+    var i=0; (function step(){ if(i>=chs.length){ timers.push(setTimeout(function(){ cur.classList.remove('blink'); cur.style.opacity='0'; done(); },240)); return; } chs[i].classList.add('on'); chs[i].after(cur); i++; timers.push(setTimeout(step,48)); })();
   }
   function playFull(){ clr(); resetChars(); paintHello();
     if(phrase){ phrase.style.display=''; phrase.style.transition='none'; phrase.classList.remove('absorb'); void phrase.offsetWidth; phrase.style.transition=''; }
