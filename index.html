@@ -221,25 +221,37 @@ body.entered #img-hero{ animation:heroZoom 8s var(--ease) both; }
 @media(min-width:861px){
   .numbers-real .kotoba, .numbers-real .kotoba .quote, .numbers-real .overlap-img{ will-change:transform, opacity; }
 }
-/* ===== CTA 多言語 hello（C重叠·about-network より移植·解説で on/off·既定 on）===== */
-.cta-hello{ margin-top:clamp(1.6rem,3.5vw,2.8rem); display:flex; justify-content:center; }
-.cta-hello .v-c2{ position:relative; padding:.2em 0; }
-.cta-hello .cw{ margin:0; font-weight:700; font-size:clamp(2.2rem,5.5vw,4rem); line-height:1; font-family:'Noto Serif JP',serif; }
-.cta-hello .cw + .cw{ margin-top:-.26em; }
-.cta-hello .cw:nth-child(1){ margin-left:0; color:rgba(76,0,24,.82); }
-.cta-hello .cw:nth-child(2){ margin-left:1.6em; color:rgba(122,100,84,.85); }
-.cta-hello .cw:nth-child(3){ margin-left:.5em; color:rgba(166,74,98,.78); }
-.cta-hello .cw:nth-child(4){ margin-left:2.4em; color:rgba(125,120,112,.85); }
-.cta-hello .fk{ font-family:'Noto Serif KR','Noto Serif JP',serif; } .cta-hello .fc{ font-family:'Noto Serif SC','Noto Serif JP',serif; }
-.cta-hello .tw-ch{ opacity:0; transform:translate(var(--dx,0),var(--dy,0)); transition:opacity .55s ease, transform .6s cubic-bezier(.22,.61,.36,1); }
-.cta-hello .tw-ch.on{ opacity:1; transform:none; }
-body[data-ctahello="off"] .cta-hello{ display:none; }
-@media(max-width:600px){ .cta-hello .cw{ font-size:clamp(1.9rem,9vw,2.8rem); } .cta-hello .cw:nth-child(2){ margin-left:1em; } .cta-hello .cw:nth-child(4){ margin-left:1.5em; } }
-@media(prefers-reduced-motion:reduce){ .cta-hello .tw-ch{ opacity:1!important; transform:none!important; transition:none!important; } }
+/* ===== 多言語 hello 板块（C重叠·about-network より移植·About「言葉の壁を」の証明位·解説 on/off·既定 on）===== */
+.mlang{ padding-block:clamp(4rem,8vw,7rem); }
+body[data-mlang="off"] .mlang{ display:none; }
+.mlang-stage{ display:grid; place-items:center; min-height:clamp(220px,32vw,360px); text-align:center; }
+.mlang-stage > *{ grid-area:1/1; }
+/* 打字机の一文（墨＝テーマ色 var(--brand)·吸収式に淡出）*/
+.mlang-type{ margin:0; max-width:24em; font-family:'Noto Serif JP',serif; font-weight:600; font-size:clamp(1.25rem,3vw,2rem); line-height:1.55; color:var(--brand); transition:opacity .6s ease-in, transform .6s ease-in, filter .6s ease-in; }
+.mlang-type.absorb{ opacity:0; transform:translateY(7px); filter:blur(2px); }
+.mlang-type .tw-ch{ opacity:0; } .mlang-type .tw-ch.on{ opacity:1; }
+.mlang-type .tw-cursor{ display:inline-block; width:.06em; height:.95em; background:var(--brand); margin:0 .04em; vertical-align:-.1em; }
+.mlang-type .tw-cursor.blink{ animation:mlblink .53s steps(1) infinite; } @keyframes mlblink{ 50%{ opacity:0; } }
+/* 交叠 hello：色＝--brand から派生する family 変体（浅/基/深）＋1暖中性·JS が毎回ランダム洗牌·半透明で交叠 */
+.mlang-hello{ display:flex; justify-content:center; }
+.mlang-hello .v-c2{ position:relative; padding:.2em 0; }
+.mlang-hello .cw{ margin:0; font-weight:700; font-size:clamp(2.6rem,6.5vw,5rem); line-height:1; font-family:'Noto Serif JP',serif; opacity:.86; color:var(--brand); }
+.mlang-hello .cw + .cw{ margin-top:-.26em; }
+.mlang-hello .cw:nth-child(1){ margin-left:0; } .mlang-hello .cw:nth-child(2){ margin-left:1.6em; } .mlang-hello .cw:nth-child(3){ margin-left:.5em; } .mlang-hello .cw:nth-child(4){ margin-left:2.4em; }
+/* ★上线 fallback：color-mix 非対応の旧ブラウザ(2023 以前: Chrome<111 / Safari<16.2 / Firefox<113)向けに、下記各 .fam-* の color 行の直前へ burgundy 固定色を一行足す —— fam-light 前:「color:rgba(166,74,98,1);」/ fam-deep 前:「color:rgba(52,0,17,1);」（fam-base は var(--brand) のまま）。※固定色ゆえ palette 切替では変化せず"表示できる"保証のみ。preview 段階では不要。 */
+.mlang-hello .cw.fam-light{ color:color-mix(in srgb, var(--brand), #fff 40%); }
+.mlang-hello .cw.fam-base{ color:var(--brand); }
+.mlang-hello .cw.fam-deep{ color:color-mix(in srgb, var(--brand), #000 24%); }
+.mlang-hello .cw.fam-neut{ color:#7a6454; }
+.mlang-hello .fk{ font-family:'Noto Serif KR','Noto Serif JP',serif; } .mlang-hello .fc{ font-family:'Noto Serif SC','Noto Serif JP',serif; }
+.mlang-hello .tw-ch{ opacity:0; transform:translate(var(--dx,0),var(--dy,0)); transition:opacity .55s ease, transform .6s cubic-bezier(.22,.61,.36,1); }
+.mlang-hello .tw-ch.on{ opacity:1; transform:none; }
+@media(max-width:600px){ .mlang-hello .cw{ font-size:clamp(2rem,10vw,3.2rem); } .mlang-hello .cw:nth-child(2){ margin-left:1em; } .mlang-hello .cw:nth-child(4){ margin-left:1.5em; } .mlang-type{ font-size:clamp(1.1rem,4.5vw,1.5rem); } .mlang-stage{ min-height:clamp(200px,52vw,300px); } }
+@media(prefers-reduced-motion:reduce){ .mlang-hello .tw-ch,.mlang-type .tw-ch{ opacity:1!important; transform:none!important; transition:none!important; } .mlang-type{ display:none; } .mlang-type .tw-cursor{ display:none!important; } }
 </style>
 <script>document.documentElement.classList.add('jsm');</script>
 </head>
-<body data-dir="min" data-imgsize="1" data-cardfx="draw" data-gaimg="1" data-facts="data" data-palette="burgundy" data-ctahello="on">
+<body data-dir="min" data-imgsize="1" data-cardfx="draw" data-gaimg="1" data-facts="data" data-palette="burgundy" data-mlang="on">
 
 <!-- 頁固有：解説モードの中身（shared.js が共通壳へ展開。palette 組＝共通側単一ソース、RY:PALETTE マーカー位置に注入）-->
 <template id="ry-dm-content">
@@ -248,7 +260,7 @@ body[data-ctahello="off"] .cta-hello{ display:none; }
   <div class="dm-grp plansw"><span class="dm-lbl">キャッチ 案（5·社長選定用）</span><div class="imgseg"><button class="planprev" type="button" aria-label="前の案">◀</button><span class="imgnow plannow"></span><button class="plannext" type="button" aria-label="次の案">▶</button></div></div>
   <div class="dm-now" style="margin:.15rem 0 .55rem">◀ ▶ で 5 案を切替 ＝ Hero キャッチ（大見出し）を差替（リード・版面は不変）。本番＝社長が 1 案を確定（別紙①）。</div>
   <div class="dm-grp"><span class="dm-lbl">Facts 数字</span><div class="seg" role="group" aria-label="Facts 数字表示"><button data-facts="data" aria-pressed="true">数字あり</button><button data-facts="nodata">数字なし</button></div></div>
-  <div class="dm-grp"><span class="dm-lbl">CTA hello（C重叠）</span><div class="seg" role="group" aria-label="CTA hello 表示"><button data-ctahello="on" aria-pressed="true">重叠 ON</button><button data-ctahello="off">OFF</button></div></div>
+  <div class="dm-grp"><span class="dm-lbl">多言語 hello（C重叠）</span><div class="seg" role="group" aria-label="多言語 hello 表示"><button data-mlang="on" aria-pressed="true">重叠 ON</button><button data-mlang="off">OFF</button></div></div>
   </div><!-- /dm-page 1 -->
   <div class="dm-page" data-page="2" hidden>
 <!--RY:PALETTE-->
@@ -264,6 +276,7 @@ body[data-ctahello="off"] .cta-hello{ display:none; }
     <div class="dm-grp imgsw" data-sec="facts"><span class="dm-lbl">Facts（数字）</span><div class="imgseg"><button class="imgprev" aria-label="前の画像">◀</button><span class="imgnow"></span><button class="imgnext" aria-label="次の画像">▶</button></div></div>
     <div class="dm-grp imgsw" data-sec="business"><span class="dm-lbl">Business</span><div class="imgseg"><button class="imgprev" aria-label="前の画像">◀</button><span class="imgnow"></span><button class="imgnext" aria-label="次の画像">▶</button></div></div>
     <div class="dm-grp imgsw" data-sec="guide"><span class="dm-lbl">Investment Guide</span><div class="imgseg"><button class="imgprev" aria-label="前の画像">◀</button><span class="imgnow"></span><button class="imgnext" aria-label="次の画像">▶</button></div></div>
+    <div class="dm-grp imgsw" data-sec="contact"><span class="dm-lbl">Contact</span><div class="imgseg"><button class="imgprev" aria-label="前の画像">◀</button><span class="imgnow"></span><button class="imgnext" aria-label="次の画像">▶</button></div></div>
   </div>
 </template>
 
@@ -318,6 +331,21 @@ body[data-ctahello="off"] .cta-hello{ display:none; }
     </div>
   </div>
   <p class="asy-note"><b>谷寄り（吸収済）</b>：レイアウト＝② ミニマル（確定）・画像 大（確定）。標題級 +25%。强み枚数·lead 正本＝content。</p>
+</div></section>
+
+<!-- 多言語 hello（C重叠·白·中央·解説 on/off）-->
+<section class="mlang"><div class="wrap">
+  <div class="mlang-stage">
+    <p class="mlang-type jp" aria-hidden="true">多言語と地域ネットワークを活かし、丁寧にサポートします。</p>
+    <div class="mlang-hello">
+      <div class="v-c2">
+        <p class="cw fj" lang="ja">こんにちは</p>
+        <p class="cw fk" lang="ko">안녕하세요</p>
+        <p class="cw fc" lang="zh-Hans">你好</p>
+        <p class="cw fe" lang="en">Hello</p>
+      </div>
+    </div>
+  </div>
 </div></section>
 
 <!-- 03 Numbers 峰（v6 融合·くわしく＝強み・数字行き·なし版＝過場）-->
@@ -398,14 +426,6 @@ body[data-ctahello="off"] .cta-hello{ display:none; }
 <!-- 06 余白の一句 休 -->
 <section class="inter-wf"><div class="wrap">
   <div class="qbox"><p class="q">その一歩、進みましょう</p></div>
-  <div class="cta-hello">
-    <div class="v-c2">
-      <p class="cw fj" lang="ja">こんにちは</p>
-      <p class="cw fk" lang="ko">안녕하세요</p>
-      <p class="cw fc" lang="zh-Hans">你好</p>
-      <p class="cw fe" lang="en">Hello</p>
-    </div>
-  </div>
   <p class="asy-note" style="text-align:center"><b>休符</b>：中央対称·余白最大·暖白 tint 地（確定）。<b>「」第2処</b>·装飾（社長指定文·濃暖黒）。</p>
 </div></section>
 
@@ -438,7 +458,8 @@ body[data-ctahello="off"] .cta-hello{ display:none; }
     about:RY.poolAll("serhii-butenko-TJvjMmrQW1k-unsplash"),
     facts:RY.poolAll("19_railgunbreaker"),
     business:RY.poolAll("van-tay-media-TFFn3BYLc5s-unsplash"),
-    guide:RY.poolAll("marco-kaufmann-0kbNh7XrJ7Q-unsplash")
+    guide:RY.poolAll("marco-kaufmann-0kbNh7XrJ7Q-unsplash"),
+    contact:RY.poolAll("23_trac-vu")
   };
   RY.initImgPickers(IMG_POOLS);
 
@@ -575,26 +596,46 @@ body[data-ctahello="off"] .cta-hello{ display:none; }
 })();
 </script>
 <script>
-/* CTA 多言語 hello（C重叠）·about-network の overlap を移植·解説 on/off·既定 on */
+/* 多言語 hello 板块：打字机の一文（墨＝brand）→吸収式淡出→family 変体 hello 交叠·JS 毎回ランダム色洗牌·解説 on/off·reduced-motion 兜底 */
 (function(){
-  var host=document.querySelector('.cta-hello'); if(!host) return;
+  var host=document.querySelector('.mlang-hello'); if(!host) return;
+  var phrase=document.querySelector('.mlang-type');
   var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  function split(el){ if(el.dataset.tw) return el.querySelectorAll('.tw-ch'); var t=el.textContent; el.textContent=''; Array.prototype.forEach.call(t,function(c){ var s=document.createElement('span'); s.className='tw-ch'; s.textContent=c; el.appendChild(s); }); el.dataset.tw='1'; return el.querySelectorAll('.tw-ch'); }
-  var timers=[];
-  function overlap(){ timers.forEach(clearTimeout); timers=[];
-    Array.prototype.forEach.call(host.querySelectorAll('.tw-ch.on'),function(x){ x.classList.remove('on'); });
-    var chs=[]; Array.prototype.forEach.call(host.querySelectorAll('.cw'),function(cw){ Array.prototype.forEach.call(split(cw),function(ch){ chs.push(ch); }); });
+  function split(el){ if(!el) return []; if(el.dataset.tw) return el.querySelectorAll('.tw-ch'); var t=el.textContent; el.textContent=''; Array.prototype.forEach.call(t,function(c){ var s=document.createElement('span'); s.className='tw-ch'; s.textContent=c; el.appendChild(s); }); el.dataset.tw='1'; return el.querySelectorAll('.tw-ch'); }
+  var timers=[]; function clr(){ timers.forEach(clearTimeout); timers=[]; }
+  var FAMS=['fam-light','fam-base','fam-deep','fam-neut'];
+  function paintHello(){ /* 暗(base/deep)と明(light/neut)を交互＝隣接で明暗が糊つかない·毎回シャッフル */
+    var dk=['fam-base','fam-deep'], lt=['fam-light','fam-neut'];
+    function sh(a){ for(var i=a.length-1;i>0;i--){ var j=(Math.random()*(i+1))|0,t=a[i];a[i]=a[j];a[j]=t; } return a; }
+    sh(dk); sh(lt);
+    var seq=(Math.random()<.5)?[dk[0],lt[0],dk[1],lt[1]]:[lt[0],dk[0],lt[1],dk[1]];
+    Array.prototype.forEach.call(host.querySelectorAll('.cw'),function(cw,i){ FAMS.forEach(function(f){ cw.classList.remove(f); }); cw.classList.add(seq[i]||'fam-base'); });
+  }
+  function resetChars(){ Array.prototype.forEach.call(document.querySelectorAll('.mlang .tw-ch.on'),function(x){ x.classList.remove('on'); }); Array.prototype.forEach.call(document.querySelectorAll('.mlang .tw-cursor'),function(c){ c.remove(); }); }
+  function overlap(){ var chs=[]; Array.prototype.forEach.call(host.querySelectorAll('.cw'),function(cw){ Array.prototype.forEach.call(split(cw),function(ch){ chs.push(ch); }); });
     if(reduce){ chs.forEach(function(ch){ ch.classList.add('on'); }); return; }
     var dirs=[[-44,0],[44,0],[0,-40],[0,40],[-32,-28],[32,28]];
     chs.forEach(function(ch){ var d=dirs[(Math.random()*dirs.length)|0]; ch.style.setProperty('--dx',d[0]+'px'); ch.style.setProperty('--dy',d[1]+'px'); });
-    var ord=chs.slice(); for(var k=ord.length-1;k>0;k--){ var j=(Math.random()*(k+1))|0,t=ord[k]; ord[k]=ord[j]; ord[j]=t; }
+    var ord=chs.slice(); for(var k=ord.length-1;k>0;k--){ var j=(Math.random()*(k+1))|0,t=ord[k];ord[k]=ord[j];ord[j]=t; }
     ord.forEach(function(ch,idx){ timers.push(setTimeout(function(){ ch.classList.add('on'); },110+idx*90)); });
   }
+  function typePhrase(done){ if(!phrase){ done(); return; }
+    var chs=split(phrase), cur=document.createElement('span'); cur.className='tw-cursor blink';
+    if(phrase.firstChild) phrase.insertBefore(cur, phrase.firstChild);
+    var i=0; (function step(){ if(i>=chs.length){ timers.push(setTimeout(function(){ if(cur.parentNode) cur.remove(); done(); },240)); return; } chs[i].classList.add('on'); chs[i].after(cur); i++; timers.push(setTimeout(step,48)); })();
+  }
+  function playFull(){ clr(); resetChars(); paintHello();
+    if(phrase){ phrase.style.display=''; phrase.style.transition='none'; phrase.classList.remove('absorb'); void phrase.offsetWidth; phrase.style.transition=''; }
+    typePhrase(function(){ timers.push(setTimeout(function(){ if(phrase) phrase.classList.add('absorb'); timers.push(setTimeout(overlap,520)); },600)); });
+  }
+  function playHelloOnly(){ clr(); resetChars(); paintHello(); if(phrase) phrase.style.display='none'; overlap(); }
   var seen=false;
-  function trig(){ if(document.body.dataset.ctahello!=='off'){ overlap(); } }
-  if('IntersectionObserver' in window){ var io=new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting && !seen){ seen=true; trig(); io.disconnect(); } }); },{threshold:.3}); io.observe(host); }
+  function trig(){ if(document.body.dataset.mlang==='off') return; if(reduce) playHelloOnly(); else playFull(); }
+  if(phrase) split(phrase); /* 先に文字を隠す＝スクロールイン時の生テキストのちらつき防止 */
+  var target=document.querySelector('.mlang-stage')||host;
+  if('IntersectionObserver' in window){ var io=new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting && !seen){ seen=true; trig(); io.disconnect(); } }); },{threshold:.25}); io.observe(target); }
   else { seen=true; trig(); }
-  if(window.RY&&RY.group){ RY.group('.dm-panel [data-ctahello]', function(b){ document.body.dataset.ctahello=b.dataset.ctahello; if(b.dataset.ctahello==='on'){ seen=true; overlap(); } }); }
+  if(window.RY&&RY.group){ RY.group('.dm-panel [data-mlang]', function(b){ document.body.dataset.mlang=b.dataset.mlang; if(b.dataset.mlang==='on'){ seen=true; trig(); } }); }
 })();
 </script>
 </body>
