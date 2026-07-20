@@ -27,9 +27,8 @@
 /* scrims：上＝NAV 可読性·下＝見出し可読性（暖め·控えめ）*/
 .hero-shade-top{ position:absolute; left:0; right:0; top:0; height:34%; z-index:1; background:linear-gradient(to bottom,rgba(28,16,12,.46),transparent); pointer-events:none; }
 .hero-scrim{ position:absolute; inset:0; z-index:1; background:linear-gradient(180deg,rgba(28,17,17,0) 40%,rgba(28,17,17,.14) 62%,rgba(28,17,17,.6) 100%); pointer-events:none; }
-/* 内容（左下·eyebrow 削除·細罫＋見出し＋lead）*/
+/* 内容（左下·eyebrow 削除·見出し＋lead〔細罫 hero-hr＝260720 PM 指示で削除〕）*/
 .hero-in{ position:relative; z-index:2; width:100%; max-width:var(--max); margin-inline:auto; padding-inline:var(--pad); padding-block:clamp(3rem,9vh,6.2rem); display:flex; flex-direction:column; align-items:flex-start; }
-.hero-hr{ display:block; width:52px; height:2px; background:var(--accent-warm); margin:0 0 1.4rem; }
 .hero-h1{ font-family:var(--serif); font-weight:700; font-size:var(--fs-hero); line-height:1.42; color:#fff; text-shadow:0 2px 30px rgba(0,0,0,.38); margin:0; max-width:16em; line-break:strict; }
 .hero-h1 .ln{ display:block; }
 .hero-lead{ color:rgba(255,255,255,.94); font-size:var(--fs-lead); line-height:1.85; text-shadow:0 1px 16px rgba(0,0,0,.34); margin:1.5rem 0 0; max-width:26em; }
@@ -85,7 +84,8 @@ body[data-dir="min"][data-imgsize="1"] .fig .ph{ width:100%; aspect-ratio:3/4; }
   .nb[data-kotoba="A"] .overlap{ min-height:0; display:flex; flex-direction:column; }
   .nb[data-kotoba="A"] .kotoba{ position:static; width:100%; min-height:0; padding:clamp(1.8rem,6vw,2.6rem); order:2; }
   .nb[data-kotoba="A"] .kotoba .quote{ margin-left:0; max-width:none; }
-  .nb[data-kotoba="A"] .overlap-img{ position:relative; inset:auto; transform:none; width:100%; height:auto; aspect-ratio:4/3; order:1; margin-bottom:-26px; }
+  .nb[data-kotoba="A"] .overlap-img{ position:relative; inset:auto; transform:none; width:100%; height:auto; order:1; margin-bottom:-26px; }
+  .nb[data-kotoba="A"] .overlap-img .ph{ height:auto; aspect-ratio:4/3; }   /* 260720 PM：SP 裁切修正——旧構造〔外箱 aspect-ratio→.ph height:100%〕は Safari で %高度が不安定＝上端スライス表示。aspect-ratio を .ph（img の直接クリップ容器）へ移設＝%連鎖ゼロの定番型。object-position 50% 75%（既定図の下段保護）は基底規則のまま有効 */
   .nb[data-kotoba="A"] .facts-more{ position:static; order:3; width:100%; margin-top:clamp(1.2rem,4vw,1.8rem); }
 }
 .figs{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(1.4rem,3vw,2.6rem); margin-top:clamp(3.5rem,7vw,6rem); padding-top:clamp(1.6rem,3vw,2.4rem); }   /* 点4：数字グリッド上の細線削除 */
@@ -124,7 +124,7 @@ body[data-facts="nodata"] .nb-head{ display:none; }   /* なし版＝過場：ey
 .contact .panel .submit{ margin-top:1.8rem; display:inline-block; background:var(--brand); color:#fff; font-weight:700; font-size:.95rem; padding:.78rem 2rem; border-radius:3px; }
 
 @media (max-width:880px){ .about-stage{ grid-template-columns:1fr !important; gap:2rem; align-items:start; } .fig .ph{ width:100% !important; max-width:520px; aspect-ratio:3/4 !important; } .fig{ justify-content:flex-start; } }
-@media (max-width:860px){ .overlap-img{ position:relative; left:auto; top:auto; transform:none !important; width:80%; margin:0 0 -34px; } .kotoba{ margin-left:0; margin-right:0; padding-left:clamp(1.6rem,6vw,2.6rem); } .figs{ grid-template-columns:repeat(3,1fr); gap:clamp(.5rem,2.5vw,1rem); margin-top:clamp(1.6rem,6vw,2.6rem); padding-top:0; } .fig2{ align-items:center; text-align:center; } .fig2 .v{ min-height:auto; font-size:clamp(1.6rem,7vw,2.5rem); } .fig2 .v .u{ font-size:.34em; } .fig2 .k{ font-size:clamp(.72rem,3vw,.95rem); margin-top:.4rem; } .fig2 .t{ font-size:clamp(.55rem,2.3vw,.72rem); margin-top:.18rem; line-height:1.3; } }
+@media (max-width:860px){ /* 260720 PM：旧レイアウト残の .overlap-img{width:80%…}・.kotoba{margin…} を削除（v6 A 変体の SP 規則〔上記 860px 块〕と同断点で衝突＝死代码）。以下＝数字グリッドの SP 現行規則のみ */ .figs{ grid-template-columns:repeat(3,1fr); gap:clamp(.5rem,2.5vw,1rem); margin-top:clamp(1.6rem,6vw,2.6rem); padding-top:0; } .fig2{ align-items:center; text-align:center; } .fig2 .v{ min-height:auto; font-size:clamp(1.6rem,7vw,2.5rem); } .fig2 .v .u{ font-size:.34em; } .fig2 .k{ font-size:clamp(.72rem,3vw,.95rem); margin-top:.4rem; } .fig2 .t{ font-size:clamp(.55rem,2.3vw,.72rem); margin-top:.18rem; line-height:1.3; } }
 /* ============================================================
    ===== v6 改修（micro 調整 ＋ Business 融合）=====
    ============================================================ */
@@ -167,6 +167,7 @@ body[data-gaimg="1"] .ga-grid{ grid-template-columns:minmax(0,1fr) clamp(280px,3
 /* 占位框を object-fit:cover で埋める（朝向は各框に合わせて既定図を選定済）*/
 .hero-ph img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
 .fig .ph img,.biz-fig .ph img,.ga-fig .ph img,.overlap-img .ph img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.overlap-img .ph img{ object-position:50% 75%; } /* 260717 PM：Numbers 槽·裁切窗下偏（既定図 10_asia-culture＝ほぼ正方形→横框で下段〔机・人・緑〕が切れる対策·槽ローカル旋钮·換図時は要再確認）*/
 .contact .bigimg{ overflow:hidden; } .contact .bigimg img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; } .contact .bigimg .ov{ z-index:1; }
 
 /* ---- 開場幕 veil（brand 底·白 #ry-mark + 株式会社RY·accent-warm 線·sub）---- */
@@ -193,10 +194,8 @@ body.veil-reset #veil, body.veil-reset #veil *{ transition:none !important; anim
 .contact .panel .submit:hover .a{ transform:translateX(5px); }   /* = about --aw:5px 同値 */
 
 /* ---- hero 入場（veil 退場 → body.entered）+ ken-burns ---- */
-html.jsm .hero-hr{ transform:scaleX(0); transform-origin:left; }
 html.jsm .hero-h1 .ln{ opacity:0; transform:translateY(18px); }
 html.jsm .hero-lead, html.jsm .hero-cue{ opacity:0; transform:translateY(18px); }
-body.entered .hero-hr{ transform:none; transition:transform .8s var(--ease) .1s; }
 body.entered .hero-h1 .ln{ opacity:1; transform:none; transition:opacity .9s var(--ease), transform .9s var(--ease); }
 body.entered .hero-h1 .ln:nth-child(2){ transition-delay:.16s; }
 body.entered .hero-lead{ opacity:1; transform:none; transition:opacity .9s var(--ease) .28s, transform .9s var(--ease) .28s; }
@@ -211,7 +210,7 @@ body.entered #img-hero{ animation:heroZoom 8s var(--ease) both; }
 @media (prefers-reduced-motion:reduce){
   html.jsm #veil{ transition:none; }
   #veil .v-logo, #veil .v-line, #veil .v-sub{ transition:none !important; }
-  html.jsm .hero-h1 .ln, html.jsm .hero-lead, html.jsm .hero-cue, html.jsm .hero-hr{ opacity:1 !important; transform:none !important; transition:none !important; }
+  html.jsm .hero-h1 .ln, html.jsm .hero-lead, html.jsm .hero-cue{ opacity:1 !important; transform:none !important; transition:none !important; }
   .hero-cue::after{ animation:none; }   /* reduce：SCROLL 線 loop 停止（260608_C 同方針）*/
   html.jsm #img-hero{ animation:none; transform:none; }   /* reduce：拡大せず·静止 scale 1 */
   .hero-ph{ transform:none !important; }
@@ -222,9 +221,9 @@ body.entered #img-hero{ animation:heroZoom 8s var(--ease) both; }
   .numbers-real .kotoba, .numbers-real .kotoba .quote, .numbers-real .overlap-img{ will-change:transform, opacity; }
 }
 /* ===== 多言語 hello 板块（C重叠·about-network より移植·About「言葉の壁を」の証明位·解説 on/off·既定 on）===== */
-.mlang{ padding-block:clamp(4rem,8vw,7rem); }
+.mlang{ padding-block:0; }   /* 260720 PM：転換演出に「専属一屏の空舞台」——余白は下記 stage の 100svh が担う（多くも少なくもなく丁度一画面・上下の隣接情報が出画） */
 body[data-mlang="off"] .mlang{ display:none; }
-.mlang-stage{ display:grid; place-items:center; min-height:clamp(280px,40vw,450px); text-align:center; }
+.mlang-stage{ display:grid; place-items:center; min-height:100vh; min-height:100svh; text-align:center; }   /* 旧 min-height:clamp(280px,40vw,450px)→一屏。svh＝URL バー変動対策・旧環境は 100vh fallback */
 .mlang-stage > *{ grid-area:1/1; }
 /* 打字机の一文（墨＝テーマ色 var(--brand)·吸収式に淡出）*/
 .mlang-type{ margin:0; max-width:24em; font-family:'Noto Serif JP',serif; font-weight:600; font-size:clamp(1.55rem,3.7vw,2.5rem); line-height:1.55; color:var(--brand); transition:opacity .6s ease-in, transform .6s ease-in, filter .6s ease-in; }
@@ -302,14 +301,13 @@ body[data-mlang="off"] .mlang{ display:none; }
 
   <!-- 内容：260608_C 蒸馏（eyebrow 削除·細罫＋見出し＋lead）-->
   <div class="hero-in">
-    <span class="hero-hr"></span>
     <h1 class="hero-h1"><span class="ln">豊かさは、生まれつきより、</span><span class="ln">準備から。</span></h1>
     <p class="hero-lead">はじめての一歩を、RYがおそばで。</p>
   </div>
 
   <div class="hero-cue" aria-hidden="true">SCROLL</div>
 </section>
-<div class="wrap"><p class="asy-note" style="margin:.55rem 0 0"><b>01 HERO 峰·全面ブリード</b>：260608_C 蒸馏（細罫＋見出し＋中央 SCROLL）·<b>白 NAV を hero に融合</b>（実 logo[#ry-mark]＋株式会社RY·白枠 お問い合わせ CTA）·eyebrow 削除·V2 廃止。<b>静止のみ</b>——開場演出·parallax(≤10px)·NAV 下滑半透明化は後段の<b>動効パス</b>。画像＝自然光・暖の placeholder（実画像差替）。<span class="arr">⚠</span> catchcopy 選定／合规＝content・structure 領域。姿勢は homepage から会社概要へ移設・catch とは解耦済。</p></div>
+<div class="wrap"><p class="asy-note" style="margin:.55rem 0 0"><b>01 HERO 峰·全面ブリード</b>：260608_C 蒸馏（見出し＋中央 SCROLL〔細罫＝260720 PM 指示で削除〕）·<b>白 NAV を hero に融合</b>（実 logo[#ry-mark]＋株式会社RY·白枠 お問い合わせ CTA）·eyebrow 削除·V2 廃止。<b>静止のみ</b>——開場演出·parallax(≤10px)·NAV 下滑半透明化は後段の<b>動効パス</b>。画像＝自然光・暖の placeholder（実画像差替）。<span class="arr">⚠</span> catchcopy 選定／合规＝content・structure 領域。姿勢は homepage から会社概要へ移設・catch とは解耦済。</p></div>
 
 <!-- 02 About 谷寄り（吸収·全保真）-->
 <section class="about"><div class="wrap">
@@ -596,7 +594,8 @@ body[data-mlang="off"] .mlang{ display:none; }
 })();
 </script>
 <script>
-/* 多言語 hello 板块：打字机の一文（墨＝brand）→吸収式淡出→family 変体 hello 交叠·JS 毎回ランダム色洗牌·解説 on/off·reduced-motion 兜底 */
+/* 多言語 hello 板块：打字机の一文（墨＝brand）→吸収式淡出→family 変体 hello 交叠·JS 毎回ランダム色洗牌·解説 on/off·reduced-motion 兜底
+   260720 PM：到場開始へ改修——待機＝点滅光標のみ（B案）／舞台＝専属一屏（stage 100svh）／触発＝到着式（舞台占有≥85%＋到着後 0.8s 光標のみ）／節奏＝90ms/字。後続シーケンス（吸収→hello 交叠）不変。正本＝Recipes §30.6（sync 時更新） */
 (function(){
   var host=document.querySelector('.mlang-hello'); if(!host) return;
   var phrase=document.querySelector('.mlang-type');
@@ -620,9 +619,9 @@ body[data-mlang="off"] .mlang{ display:none; }
     ord.forEach(function(ch,idx){ timers.push(setTimeout(function(){ ch.classList.add('on'); },110+idx*90)); });
   }
   function typePhrase(done){ if(!phrase){ done(); return; }
-    var chs=split(phrase), cur=document.createElement('span'); cur.className='tw-cursor blink';
-    if(phrase.firstChild) phrase.insertBefore(cur, phrase.firstChild);
-    var i=0; (function step(){ if(i>=chs.length){ timers.push(setTimeout(function(){ cur.classList.remove('blink'); cur.style.opacity='0'; done(); },240)); return; } chs[i].classList.add('on'); chs[i].after(cur); i++; timers.push(setTimeout(step,48)); })();
+    var chs=split(phrase), cur=idleCur||(idleCur=document.createElement('span')); cur.className='tw-cursor blink'; cur.style.opacity='';
+    phrase.insertBefore(cur, phrase.firstChild);   /* 待機光標をそのまま起用（再生時は先頭へ戻す・insertBefore＝既存 node は移動） */
+    var i=0; (function step(){ if(i>=chs.length){ timers.push(setTimeout(function(){ cur.classList.remove('blink'); cur.style.opacity='0'; done(); },240)); return; } chs[i].classList.add('on'); chs[i].after(cur); i++; timers.push(setTimeout(step,90)); })();   /* 260720 PM：節奏 48→90ms/字（9字 0.43s→0.81s・議論済） */
   }
   function playFull(){ clr(); resetChars(); paintHello();
     if(phrase){ phrase.style.display=''; phrase.style.transition='none'; phrase.classList.remove('absorb'); void phrase.offsetWidth; phrase.style.transition=''; }
@@ -631,9 +630,11 @@ body[data-mlang="off"] .mlang{ display:none; }
   function playHelloOnly(){ clr(); resetChars(); paintHello(); if(phrase) phrase.style.display='none'; overlap(); }
   var seen=false;
   function trig(){ if(document.body.dataset.mlang==='off') return; if(reduce) playHelloOnly(); else playFull(); }
-  if(phrase) split(phrase); Array.prototype.forEach.call(host.querySelectorAll('.cw'),function(cw){ split(cw); }); /* 打字机句＋hello の生文字を先に隠す＝重なり/ちらつき防止 */
-  var target=document.querySelector('.mlang-stage')||host;
-  if('IntersectionObserver' in window){ var io=new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting && !seen){ seen=true; trig(); io.disconnect(); } }); },{threshold:.25}); io.observe(target); }
+  var idleCur=null;
+  if(phrase){ split(phrase); idleCur=document.createElement('span'); idleCur.className='tw-cursor blink'; phrase.insertBefore(idleCur, phrase.firstChild); }   /* 260720 PM：待機態＝点滅光標のみ（B案・「予告」）。reduce 時は既存 CSS .mlang-type{display:none} で自動非表示 */
+  Array.prototype.forEach.call(host.querySelectorAll('.cw'),function(cw){ split(cw); }); /* 打字机句＋hello の生文字を先に隠す＝重なり/ちらつき防止 */
+  var target=document.querySelector('.mlang-stage')||host;   /* 260720 PM-3：観察＝舞台全体に戻す（判定を「線越え」から「到着」へ書換のため） */
+  if('IntersectionObserver' in window){ var io=new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting && e.intersectionRatio>=0.85 && !seen){ seen=true; io.disconnect(); if(reduce){ trig(); } else { timers.push(setTimeout(trig,800)); } } }); },{threshold:[0.85]}); io.observe(target); }   /* 260720 PM-3：発火条件＝「舞台が視野の85%以上を占有」＝隣接セクションが出画し目前が空白になった時点（スクロール途中の線越えでは発火しない）。到着後も 0.8s（点滅約1.5周期）は光標のみ→それから打字。reduce＝即時静的表示 */
   else { seen=true; trig(); }
   if(window.RY&&RY.group){ RY.group('.dm-panel [data-mlang]', function(b){ document.body.dataset.mlang=b.dataset.mlang; if(b.dataset.mlang==='on'){ seen=true; trig(); } }); }
 })();

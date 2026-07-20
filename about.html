@@ -57,6 +57,7 @@
   <div class="dm-nav" role="group" aria-label="ページ切替"><button data-page="1" aria-pressed="true" aria-label="1ページ目 画像">1</button><button data-page="2" aria-label="2ページ目 配色">2</button></div>
   <div class="dm-page" data-page="1">
     <div class="dm-now" style="margin:0 0 .85rem">入口卡の画像を ◀ ▶ で差替（全候補·圧縮済）。本番＝各1枚に確定。</div>
+    <div class="dm-grp imgsw" data-sec="about-company"><span class="dm-lbl">01　会社概要</span><div class="imgseg"><button class="imgprev" aria-label="前の画像">◀</button><span class="imgnow"></span><button class="imgnext" aria-label="次の画像">▶</button></div></div>
     <div class="dm-grp imgsw" data-sec="about-strengths"><span class="dm-lbl">02　強み・数字</span><div class="imgseg"><button class="imgprev" aria-label="前の画像">◀</button><span class="imgnow"></span><button class="imgnext" aria-label="次の画像">▶</button></div></div>
     <div class="dm-grp imgsw" data-sec="about-network"><span class="dm-lbl">03　多言語・NW</span><div class="imgseg"><button class="imgprev" aria-label="前の画像">◀</button><span class="imgnow"></span><button class="imgnext" aria-label="次の画像">▶</button></div></div>
   </div>
@@ -99,7 +100,7 @@
           </span>
         </a></li>
         <li class="reveal"><a class="entry-card" href="about-strengths.html" data-href="/ja/about/strengths">
-          <span class="ec-media"><span class="ph"><img id="img-about-strengths" src="images/19_railgunbreaker.webp" alt="" loading="lazy" decoding="async"></span></span>
+          <span class="ec-media"><span class="ph"><img id="img-about-strengths" src="images/21_phc-software.webp" alt="" loading="lazy" decoding="async"></span></span>
           <span class="ec-body">
             <span class="ec-ttl">RYの強み・<span class="np">数字で見るRY</span></span>
             <span class="ec-ds jp">RY の強みと、管理物件数・入居率などの数字で見る実績。</span>
@@ -107,7 +108,7 @@
           </span>
         </a></li>
         <li class="reveal"><a class="entry-card" href="about-network.html" data-href="/ja/about/network">
-          <span class="ec-media"><span class="ph"><img id="img-about-network" src="images/yamato-yamaguchi-wIPTPTGbRuY-unsplash.webp" alt="" loading="lazy" decoding="async"></span></span>
+          <span class="ec-media"><span class="ph"><img id="img-about-network" src="images/12_ellusionist.webp" alt="" loading="lazy" decoding="async"></span></span>
           <span class="ec-body">
             <span class="ec-ttl">多言語対応・<span class="np">現地ネットワーク</span></span>
             <span class="ec-ds jp">日・韓・中ネイティブ体制と、現地に根ざしたネットワーク。</span>
@@ -137,10 +138,11 @@
 /* ===== 頁固有（L1 About）：入口卡 換図プール ＋ scroll reveal 起動 ===== */
 (function(){
   "use strict";
-  /* 入口卡 候補画像プール（先頭＝既定·画框 4:3 に合わせ選定·mtg_4 版と同値）*/
+  /* 入口卡 候補画像プール（先頭＝既定·画框 4:3 に合わせ選定·260717 PM：既定＝社長選定に更新＋01 会社概要 picker 追加〔全庫·既定は現行図のまま〕）*/
   RY.initImgPickers({
-    "about-network":   RY.poolAll("yamato-yamaguchi-wIPTPTGbRuY-unsplash"),
-    "about-strengths": RY.poolAll("19_railgunbreaker")
+    "about-company":   RY.poolAll("13_faruktokluoglu"),
+    "about-network":   RY.poolAll("12_ellusionist"),
+    "about-strengths": RY.poolAll("21_phc-software")
   });
   RY.reveal([".reveal"]);   /* 対象＝markup 側 .reveal（入口卡 li ×3・結尾 CTA 段）*/
 })();

@@ -11,7 +11,7 @@
 <!-- ============================================================
   L2 新設（2026-07-15）：多言語対応・現地ネットワーク（生産 slug＝/ja/about/network・IA-v2 §1・第3頁）・命名＝「親-子.html」
   ・共通分＝assets/（tokens.css＋shared.css＋shared.js）。base/tokens/chrome は共通側·本ページ style は頁固有のみ。
-  ・多言語対応＝「hello 四語（こんにちは/안녕하세요/你好/Hello）」の 4 表現を解説モードで切替（既定 B 会話流·A普通/C重叠/D竖排）＋入場動画（打字机/聊天上浮/随机浮现）。
+  ・多言語対応＝「hello 四語」表現＝<D 竖排> 確定（mtg5 選定・260720 PM 落账）・入場＝打字机。落選 A普通/B会話流/C重叠＝markup・CSS・picker・JS 分岐 strip 済。
   ・文案＝content 定稿版（言葉の壁 412万＝出入国在留管理庁·令和7年末·出典リンク）。Hello＝装飾の国際挨拶（要 content/法務 最終確認）。
   ・図＝images/（flow＝15_kampus-662／現地＝05_kazuo-ota·右下輪郭線框）。淡出線＝2 本（言葉の壁↕流程／FAQ↕現地）。
   ・NAV 子菜単「多言語・ネットワーク」→ 本頁 href 接線（shared.js）。§12.7 回帰＝6→7。
@@ -96,31 +96,9 @@
 .nw-more a .a{ display:inline-block; transition:transform .3s var(--ease); margin-left:.15em; } .nw-more a:hover .a{ transform:translateX(3px); }
 /* 関連入口（.rel）→ shared.css へ移設（全站統一）*/
 /* ===== 多言語ブロック：4 版本切替（プレビュー·default B·普通/B/C/D）===== */
-.nwv{ display:none; }
-body[data-nwmode="A"] .v-a{ display:block; } body[data-nwmode="B"] .v-b{ display:block; } body[data-nwmode="C"] .v-c2{ display:block; } body[data-nwmode="D"] .v-c3{ display:flex; }
+.nwv.v-c3{ display:flex; }   /* 260720 PM：D 竖排 確定——data-nwmode 切替機構・落選 A/B/C の CSS＝strip 済 */
 .fj,.fe{ font-family:'Noto Serif JP',serif; } .fk{ font-family:'Noto Serif KR','Noto Serif JP',serif; } .fc{ font-family:'Noto Serif SC','Noto Serif JP',serif; }
-/* 普通 */
-.v-a .grow{ margin:0; display:flex; align-items:center; gap:.5em; font-weight:700; color:var(--ink); font-size:clamp(2.4rem,5.6vw,4.4rem); line-height:1.16; }
-.v-a .grow + .grow{ margin-top:clamp(.55rem,1.5vw,1.1rem); }
-.v-a .grow:nth-child(2){ padding-left:clamp(.6rem,2vw,1.5rem); } .v-a .grow:nth-child(3){ padding-left:clamp(1.2rem,4vw,3rem); } .v-a .grow:nth-child(4){ padding-left:clamp(1.8rem,6vw,4.5rem); }
-.v-a .tick{ flex:none; width:clamp(1.2rem,2.4vw,1.9rem); height:2px; background:var(--brand); }
-@media(max-width:600px){ .v-a .grow{ font-size:clamp(2.2rem,11vw,3.2rem); } .v-a .grow:nth-child(n){ padding-left:0; } }
-/* B 会話流 */
-.v-b .msg{ display:flex; } .v-b .msg + .msg{ margin-top:clamp(.7rem,1.9vw,1.25rem); }
-.v-b .msg.left{ justify-content:flex-start; } .v-b .msg.right{ justify-content:flex-end; }
-.v-b .bubble{ position:relative; display:inline-block; font-weight:700; font-size:clamp(1.9rem,4.4vw,3.2rem); line-height:1.26; padding:.16em .55em .24em; border-radius:.44em; max-width:92%; }
-.v-b .bubble.recv{ background:var(--warm2); color:var(--ink); border:1px solid var(--bd); } .v-b .bubble.send{ background:var(--accent-warm); color:var(--ink); }
-.v-b .msg.left .bubble::after{ content:""; position:absolute; left:.75em; bottom:-.12em; width:.34em; height:.34em; background:inherit; border:inherit; border-top:0; border-left:0; transform:rotate(45deg); }
-.v-b .msg.right .bubble::after{ content:""; position:absolute; right:.75em; bottom:-.12em; width:.34em; height:.34em; background:inherit; border:inherit; border-top:0; border-right:0; transform:rotate(45deg); }
-/* C 重叠（颜色·半透明交叠·排版不变）*/
-.v-c2{ position:relative; padding:.2em 0; }
-.v-c2 .cw{ margin:0; font-weight:700; font-size:clamp(3rem,7vw,5.4rem); line-height:1; }
-.v-c2 .cw + .cw{ margin-top:-.26em; }
-.v-c2 .cw:nth-child(1){ margin-left:0; color:rgba(76,0,24,.82); }
-.v-c2 .cw:nth-child(2){ margin-left:1.6em; color:rgba(122,100,84,.85); }
-.v-c2 .cw:nth-child(3){ margin-left:.5em; color:rgba(166,74,98,.78); }
-.v-c2 .cw:nth-child(4){ margin-left:2.4em; color:rgba(125,120,112,.85); }
-/* D 竖排（こんにちは 竖排酒红锚·横排三行 紧凑间距·垂直居中）*/
+/* D 竖排 確定（こんにちは 竖排 brand 锚·横排三行 紧凑间距·垂直居中）*/
 .v-c3{ align-items:center; gap:clamp(1.6rem,4vw,3.4rem); }
 .v-c3 .c3-v{ writing-mode:vertical-rl; margin:0; font-weight:700; font-size:clamp(2.5rem,5.6vw,4.1rem); line-height:1.04; color:var(--brand); letter-spacing:.02em; }
 .v-c3 .c3-h{ display:grid; gap:clamp(.55rem,1.5vw,1rem); }
@@ -128,27 +106,23 @@ body[data-nwmode="A"] .v-a{ display:block; } body[data-nwmode="B"] .v-b{ display
 .v-c3 .c3-h p::before{ content:""; width:.5em; height:2px; background:var(--brand); flex:none; }
 @media(max-width:600px){ .v-c3{ align-items:flex-start; gap:1.2rem; } .v-c3 .c3-h{ justify-content:flex-start; gap:.7rem; } }
 
-/* ===== 入场动画（打字机 A/D · 聊天上浮 B · 随机浮现 C · プレビュー·decouple 時に整理）===== */
+/* ===== 入场动画（打字机＝D 確定のみ・260720 strip 後）===== */
 .tw-ch{ opacity:0; } .tw-ch.on{ opacity:1; }
 .tw-cursor{ display:inline-block; width:.07em; height:.9em; background:var(--brand); margin:0 .05em; vertical-align:-.08em; }
 .tw-cursor.blink{ animation:twblink .53s steps(1) infinite; }
 @keyframes twblink{ 50%{ opacity:0; } }
-.v-b .msg{ opacity:0; transform:translateY(16px); transition:opacity .5s ease, transform .6s cubic-bezier(.22,.61,.36,1); }
-.v-b .msg.on{ opacity:1; transform:none; }
-.v-c2 .tw-ch{ transform:translate(var(--dx,0),var(--dy,0)); transition:opacity .55s ease, transform .6s cubic-bezier(.22,.61,.36,1); }
-.v-c2 .tw-ch.on{ transform:none; }
-@media(prefers-reduced-motion:reduce){ .tw-ch,.v-b .msg{ opacity:1!important; transform:none!important; transition:none!important; } .tw-cursor{ display:none!important; } }
+@media(prefers-reduced-motion:reduce){ .tw-ch{ opacity:1!important; transform:none!important; transition:none!important; } .tw-cursor{ display:none!important; } }
 </style>
 <script>document.documentElement.classList.add('jsm');</script>
 </head>
-<body class="l2-page" data-nav="solid" data-palette="deep" data-nwmode="B">
+<body class="l2-page" data-nav="solid" data-palette="deep">
 <template id="ry-dm-content">
-<div class="dm-nav" role="group" aria-label="ページ切替"><button data-page="1" aria-pressed="true" aria-label="1ページ目 多言語表現">1</button><button data-page="2" aria-label="2ページ目 配色">2</button></div>
+<div class="dm-nav" role="group" aria-label="ページ切替"><button data-page="1" aria-pressed="true" aria-label="1ページ目 換図">1</button><button data-page="2" aria-label="2ページ目 配色">2</button></div>
 <div class="dm-page" data-page="1">
-<div class="dm-grp"><span class="dm-lbl">多言語 表現（4 案・既定 B）</span><div class="seg seg-nw" role="group" aria-label="多言語表現"><button data-nw="B" aria-pressed="true">B 会話流</button><button data-nw="A" aria-pressed="false">普通</button><button data-nw="C" aria-pressed="false">C 重叠</button><button data-nw="D" aria-pressed="false">D 竖排</button></div></div>
-<div class="dm-now">「hello 四語」の 4 表現＝既定 B 会話流。切替で入場動画も再生。<span class="arr">✎</span> Hello＝装飾の国際挨拶（本文＝日韓中 Native·要 content/法務 最終確認）。</div>
-<div class="dm-grp"><span class="dm-lbl">換図 ①伝わるまで（相談池）</span><div class="seg" role="group" aria-label="換図nw1"><button data-inw1="getty-images-WSFZHeBOicc-unsplash.webp" aria-pressed="true">WSFZ</button><button data-inw1="christina-wocintechchat-com-m-eF7HN40WbAQ-unsplash.webp">chri</button><button data-inw1="kobu-agency-7okkFhxrxNw-unsplash.webp">kobu</button></div></div>
-<div class="dm-grp"><span class="dm-lbl">換図 ②現地ネットワーク（都市池）</span><div class="seg" role="group" aria-label="換図nw2"><button data-inw2="curated-lifestyle-tFNOLyih_cw-unsplash.webp" aria-pressed="true">tFNO</button><button data-inw2="05_kazuo-ota.webp">kazuo</button></div></div>
+<div class="dm-now">多言語 表現＝<b>D 竖排 確定</b>（mtg5 選定・260720 PM 落账・落選 A/B/C strip 済・入場＝打字机）。<span class="arr">✎</span> Hello＝装飾の国際挨拶（本文＝日韓中 Native·要 content/法務 最終確認）。</div>
+<div class="dm-grp imgsw" data-sec="nw1"><span class="dm-lbl">換図 ①伝わるまで</span><div class="imgseg"><button class="imgprev" aria-label="前の画像">◀</button><span class="imgnow"></span><button class="imgnext" aria-label="次の画像">▶</button></div></div>
+<div class="dm-grp imgsw" data-sec="nw2"><span class="dm-lbl">換図 ②現地ネットワーク</span><div class="imgseg"><button class="imgprev" aria-label="前の画像">◀</button><span class="imgnow"></span><button class="imgnext" aria-label="次の画像">▶</button></div></div>
+<div class="dm-now">図＝既定＝社長選定（①chri ②tFNO・260720）・範囲＝全庫（◀▶ / ⊞ グリッド）。</div>
 </div>
 <div class="dm-page" data-page="2" hidden>
 <!--RY:PALETTE-->
@@ -183,28 +157,7 @@ body[data-nwmode="A"] .v-a{ display:block; } body[data-nwmode="B"] .v-b{ display
           <p class="nw-body jp">日本語・韓国語・中国語は、各言語のネイティブスタッフがお話をうかがいます。</p>
         </div>
         <div class="nw-words">
-          <!-- 普通（順：こんにちは→안녕하세요→Hello→你好）-->
-          <div class="nwv v-a">
-            <p class="grow"><span class="tick" aria-hidden="true"></span><span class="fj" lang="ja">こんにちは</span></p>
-            <p class="grow"><span class="tick" aria-hidden="true"></span><span class="fk" lang="ko">안녕하세요</span></p>
-            <p class="grow"><span class="tick" aria-hidden="true"></span><span class="fe" lang="en">Hello</span></p>
-            <p class="grow"><span class="tick" aria-hidden="true"></span><span class="fc" lang="zh-Hans">你好</span></p>
-          </div>
-          <!-- B 会話流（左右左右·暖色二色）-->
-          <div class="nwv v-b">
-            <div class="msg left"><span class="bubble recv fj" lang="ja">こんにちは</span></div>
-            <div class="msg right"><span class="bubble send fk" lang="ko">안녕하세요</span></div>
-            <div class="msg left"><span class="bubble recv fc" lang="zh-Hans">你好</span></div>
-            <div class="msg right"><span class="bubble send fe" lang="en">Hello</span></div>
-          </div>
-          <!-- C 重叠（颜色·半透明交叠）-->
-          <div class="nwv v-c2">
-            <p class="cw fj" lang="ja">こんにちは</p>
-            <p class="cw fk" lang="ko">안녕하세요</p>
-            <p class="cw fc" lang="zh-Hans">你好</p>
-            <p class="cw fe" lang="en">Hello</p>
-          </div>
-          <!-- D 竖排（こんにちは 竖·横排三行填满高度）-->
+          <!-- D 竖排 確定（mtg5 選定・260720 PM 落账）——落選 A普通/B会話流/C重叠＝markup・CSS・picker strip 済 -->
           <div class="nwv v-c3">
             <p class="c3-v fj" lang="ja">こんにちは</p>
             <div class="c3-h"><p class="fk" lang="ko"><span class="c3t">안녕하세요</span></p><p class="fc" lang="zh-Hans"><span class="c3t">你好</span></p><p class="fe" lang="en"><span class="c3t">Hello</span></p></div>
@@ -249,7 +202,7 @@ body[data-nwmode="A"] .v-a{ display:block; } body[data-nwmode="B"] .v-b{ display
           <li class="nw-step"><span class="nw-step-n">3</span><span><b class="nw-step-t">行き違いを減らす</b><span class="nw-step-d jp">言葉や商習慣のちがいを踏まえ、大事な点を明確にします。</span></span></li>
           <li class="nw-step"><span class="nw-step-n">4</span><span><b class="nw-step-t">次の窓口へつなぐ</b><span class="nw-step-d jp">ご要望に応じて、RYの各事業や日本国内の関係先へ、要点を引き継ぎます。</span></span></li>
         </ol>
-        <figure class="nw-flow-ph ry-frame fr-tl reveal"><img id="img-nw1" src="images/getty-images-WSFZHeBOicc-unsplash.webp" alt="ご相談・ご説明の様子（イメージ）" loading="lazy" decoding="async"></figure>
+        <figure class="nw-flow-ph ry-frame fr-tl reveal"><img id="img-nw1" src="images/christina-wocintechchat-com-m-eF7HN40WbAQ-unsplash.webp" alt="ご相談・ご説明の様子（イメージ）" loading="lazy" decoding="async"></figure>
       </div>
     </div>
   </section>
@@ -343,8 +296,7 @@ body[data-nwmode="A"] .v-a{ display:block; } body[data-nwmode="B"] .v-b{ display
   var timers=[]; function clr(){ timers.forEach(clearTimeout); timers=[]; }
   function reset(){ clr(); Array.prototype.forEach.call(words.querySelectorAll('.tw-cursor'), function(c){ c.remove(); }); Array.prototype.forEach.call(words.querySelectorAll('.tw-ch.on,.msg.on'), function(x){ x.classList.remove('on'); }); }
   function typew(cont){
-    var els = cont.classList.contains('v-a') ? Array.prototype.slice.call(cont.querySelectorAll('.grow > span:last-child'))
-              : [cont.querySelector('.c3-v')].concat(Array.prototype.slice.call(cont.querySelectorAll('.c3-h .c3t')));
+    var els = [cont.querySelector('.c3-v')].concat(Array.prototype.slice.call(cont.querySelectorAll('.c3-h .c3t')));   /* 260720：D 専用（v-a 分岐＝strip） */
     var seq=[]; els.forEach(function(el){ Array.prototype.forEach.call(split(el), function(ch){ seq.push(ch); }); seq.push(null); });
     var cur=document.createElement('span'); cur.className='tw-cursor blink'; var i=0, iv=88;
     var first=els[0]; if(first){ first.insertBefore(cur, first.firstChild); } /* 開場：光标先在起点闪一会儿（准备感）*/
@@ -356,22 +308,14 @@ body[data-nwmode="A"] .v-a{ display:block; } body[data-nwmode="B"] .v-b{ display
     }
     timers.push(setTimeout(step, 1600)); /* 開場ブリンク ~1.6s（Lottie 1120ms を +≈50%）*/
   }
-  function chat(cont){ Array.prototype.forEach.call(cont.querySelectorAll('.msg'), function(m,idx){ timers.push(setTimeout(function(){ m.classList.add('on'); }, 180+idx*250)); }); }
-  function overlap(cont){
-    var chs=[]; Array.prototype.forEach.call(cont.querySelectorAll('.cw'), function(cw){ Array.prototype.forEach.call(split(cw), function(ch){ chs.push(ch); }); });
-    var dirs=[[-44,0],[44,0],[0,-40],[0,40],[-32,-28],[32,28]];
-    chs.forEach(function(ch){ var d=dirs[(Math.random()*dirs.length)|0]; ch.style.setProperty('--dx',d[0]+'px'); ch.style.setProperty('--dy',d[1]+'px'); });
-    var ord=chs.slice(); for(var k=ord.length-1;k>0;k--){ var j=(Math.random()*(k+1))|0, t=ord[k]; ord[k]=ord[j]; ord[j]=t; }
-    ord.forEach(function(ch,idx){ timers.push(setTimeout(function(){ ch.classList.add('on'); }, 110+idx*90)); });
-  }
-  function play(mode){ if(reduce) return; reset(); var sel={A:'.v-a',B:'.v-b',C:'.v-c2',D:'.v-c3'}[mode]||'.v-b'; var c=words.querySelector(sel); if(!c) return; if(mode==='A'||mode==='D') typew(c); else if(mode==='B') chat(c); else overlap(c); }
+  function play(){ if(reduce) return; reset(); var c=words.querySelector('.v-c3'); if(c) typew(c); }   /* 260720：D 確定——mode 分岐・chat/overlap（B/C 用）・seg-nw 切替＝strip */
   var done=false;
-  if('IntersectionObserver' in window){ var io=new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting && !done){ done=true; play(body.dataset.nwmode||'B'); io.disconnect(); } }); },{threshold:.3}); io.observe(words); }
-  else { play(body.dataset.nwmode||'B'); }
-  if(window.RY&&RY.group){ RY.group('#dmPanel .seg-nw button', function(b){ body.dataset.nwmode=b.dataset.nw; play(b.dataset.nw); });
-    RY.group('.dm-panel [data-inw1]', function(b){ var el=document.getElementById('img-nw1'); if(el) el.src='images/'+b.dataset.inw1; });
-    RY.group('.dm-panel [data-inw2]', function(b){ var el=document.getElementById('img-nw2'); if(el) el.src='images/'+b.dataset.inw2; });
-  }
+  if('IntersectionObserver' in window){ var io=new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting && !done){ done=true; play(); io.disconnect(); } }); },{threshold:.3}); io.observe(words); }
+  else { play(); }
+  RY.initImgPickers({
+    "nw1": RY.poolAll("christina-wocintechchat-com-m-eF7HN40WbAQ-unsplash"),
+    "nw2": RY.poolAll("curated-lifestyle-tFNOLyih_cw-unsplash")
+  });   /* 260720 PM：換図＝旧 dock（相談池/都市池）→全庫標準 picker・既定＝社長選定 */
 })();
 </script>
 </body>

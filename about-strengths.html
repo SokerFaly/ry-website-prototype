@@ -9,7 +9,7 @@
 <!-- ============================================================
   L2 新設（2026-07-13）：強み・数字（生産 slug＝/ja/about/strengths・IA-v2 §1・数字の正本ページ）・評審集命名規約＝「親-子.html」
   ・共通分＝assets/ 参照（L2 共通骨架含む）。設計＝比較草稿 about-strengths_draft_ab（07-13 PM「定死了」）より移植：
-    ① 強み 4 章＝編集式（文5fr/図7fr・②④縮進・区切り＝淡出線/線なし〔mtg5 選定・dock〕・図＝brand 3px 輪郭線を図の下層に右上/左下 4% オフセット）
+    ① 強み 4 章＝編集式（文5fr/図7fr・②④縮進・区切り＝淡出線 確定〔mtg5 選定・260720 PM 落账〕・図＝brand 3px 輪郭線を図の下層に右上/左下 4% オフセット）
     ② 数字＝3 組×「1大+2小」交互錯位（GA 不等大×東急分組×Tishman 細線）・暖地
   ・数字池（拡池 07-13 PM 決定・Home 3 枠は本頁の子集）：
     正本 3＝管理物件数/入居率/累計取扱高（XX 仮・時点必須・「取扱」表記）
@@ -18,7 +18,7 @@
          海外対応 +XX%（前年比・件数非公開方針・基数は実データで再判断）／海外のお客様比率 XX%（要データ）
   ・組名・数字の意味句・口径 caption＝content 未認領の仮文（頁面タグ表示は PM 指示で無し・認領＝sync 時 cross-agent 注記）
   ・関連入口「多言語対応・現地ネットワークへ」→ about-network.html＝次頁（本批第 3 頁）建成予定——建成まで一時不通（既知）
-  ・mtg5 後 strip＝落選の区切り案・dock（線切替/換図）・図候補池
+  ・mtg5 後 strip＝260720 済（線なし案・線切替 dock・旧候補池→全庫標準 picker 化）
   ・file:// 直開き可・JS 無効時＝chrome 非表示・線＝淡出線固定表示（評審用の既知制約）
 ============================================================ -->
 <link rel="stylesheet" href="assets/tokens.css">
@@ -33,7 +33,7 @@
 /* —— ① 強み 4 章（編集式・定稿草稿より値移植）—— */
 .chp{ position:relative; display:grid; grid-template-columns:minmax(0,1fr); gap:1.2rem clamp(2rem,5vw,4.5rem); padding-block:clamp(2.4rem,5.5vw,4rem); align-items:center; }
 .a-str .chp:first-child{ padding-top:.6rem; }
-/* 区切り＝淡出線（幅 50%・中央・PNG 実測校正済）／線なし——mtg5 選定・dock 切替（既定＝淡出線） */
+/* 区切り＝淡出線 確定（幅 50%・中央・PNG 実測校正済）——mtg5 選定・260720 PM 落账・線なし/切替機構 strip 済 */
 /* 淡出線＝shared .ry-divider（下記 HTML の .ry-divider で章間に配置）*/
 
 
@@ -78,17 +78,16 @@
 </style>
 <script>document.documentElement.classList.add('jsm');</script>
 </head>
-<body class="l2-page" data-nav="solid" data-palette="deep" data-line="fade">
+<body class="l2-page" data-nav="solid" data-palette="deep">
 
 <!-- 頁固有：解説モードの中身（palette 組＝共通側単一ソース）
-     本頁の解説モード＝3 機能：① 強み区切り（淡出線/線なし・mtg5 選定）② 換図（第1章/第3章・候補池）③ テーマカラー -->
+     本頁の解説モード＝2 機能：① 換図（第1章/第3章・全庫）② テーマカラー〔強み区切り＝淡出線 確定・mtg5→260720 PM 落账・picker strip 済〕 -->
 <template id="ry-dm-content">
-  <div class="dm-nav" role="group" aria-label="ページ切替"><button data-page="1" aria-pressed="true" aria-label="1ページ目 強み表現">1</button><button data-page="2" aria-label="2ページ目 配色">2</button></div>
+  <div class="dm-nav" role="group" aria-label="ページ切替"><button data-page="1" aria-pressed="true" aria-label="1ページ目 換図">1</button><button data-page="2" aria-label="2ページ目 配色">2</button></div>
   <div class="dm-page" data-page="1">
-    <div class="dm-grp"><span class="dm-lbl">強み 区切り（mtg5 選定）</span><div class="seg" role="group" aria-label="区切り"><button data-ln="fade" aria-pressed="true">淡出線</button><button data-ln="none">線なし</button></div></div>
-    <div class="dm-grp"><span class="dm-lbl">換図 ①ひとつの窓口（相談池）</span><div class="seg" role="group" aria-label="換図1"><button data-i1="getty-images-i1gRNqPHpiw-unsplash.webp" aria-pressed="true">i1gR</button><button data-i1="curated-lifestyle-zd5CY2KWzHs-unsplash.webp">zd5C</button><button data-i1="getty-images-Wb4D-1wIpLI-unsplash.webp">Wb4D</button><button data-i1="van-tay-media-TFFn3BYLc5s-unsplash.webp">vtay</button><button data-i1="curated-lifestyle-uKh6BAovukk-unsplash.webp">uKh6</button></div></div>
-    <div class="dm-grp"><span class="dm-lbl">換図 ③言葉の壁（都市池）</span><div class="seg" role="group" aria-label="換図3"><button data-i3="curated-lifestyle-uKh6BAovukk-unsplash.webp" aria-pressed="true">uKh6</button><button data-i3="curated-lifestyle-zd5CY2KWzHs-unsplash.webp">zd5C</button><button data-i3="getty-images-Wb4D-1wIpLI-unsplash.webp">Wb4D</button><button data-i3="van-tay-media-TFFn3BYLc5s-unsplash.webp">vtay</button><button data-i3="getty-images-i1gRNqPHpiw-unsplash.webp">i1gR</button></div></div>
-    <div class="dm-now">区切り＝淡出線【既定】／線なし の二択（PM 定稿 07-13・現場選定）。図＝候補池（mapping 準拠・最終は実配置で判断）。</div>
+    <div class="dm-grp imgsw" data-sec="str1"><span class="dm-lbl">換図 ①ひとつの窓口</span><div class="imgseg"><button class="imgprev" aria-label="前の画像">◀</button><span class="imgnow"></span><button class="imgnext" aria-label="次の画像">▶</button></div></div>
+    <div class="dm-grp imgsw" data-sec="str3"><span class="dm-lbl">換図 ③言葉の壁</span><div class="imgseg"><button class="imgprev" aria-label="前の画像">◀</button><span class="imgnow"></span><button class="imgnext" aria-label="次の画像">▶</button></div></div>
+    <div class="dm-now">区切り＝<b>淡出線 確定</b>（mtg5 選定・260720 PM 落账・線なし strip 済）。図＝既定＝社長選定（260720）・範囲＝全庫（◀▶ / ⊞ グリッド）。</div>
   </div>
   <div class="dm-page" data-page="2" hidden>
 <!--RY:PALETTE-->
@@ -128,14 +127,14 @@
       </article>
       <div class="ry-divider" aria-hidden="true"></div>
       <article class="chp has-ph ph-left reveal">
-        <figure class="ph ry-frame fr-bl"><img id="img-str3" src="images/curated-lifestyle-uKh6BAovukk-unsplash.webp" alt="東京駅前を行き交う人々と街路樹" loading="lazy" decoding="async"></figure>
+        <figure class="ph ry-frame fr-bl"><img id="img-str3" src="images/getty-images-Wb4D-1wIpLI-unsplash.webp" alt="東京駅前を行き交う人々と街路樹" loading="lazy" decoding="async"></figure>
         <div class="tx"><h3 class="jp">言葉の壁を、感じさせない。</h3><p class="jp">日・韓・中のネイティブ体制で対応。日本の現地に根ざしたネットワークで、現場までサポートします。</p></div>
       </article>
       <div class="ry-divider" aria-hidden="true"></div>
       <article class="chp indent reveal">
         <div class="tx"><h3 class="jp">迷わせない、ご案内。</h3><p class="jp">「興味はあるけれど、何から始めればいいか分からない」。そんな方に寄り添い、最初の一歩から。</p></div>
       </article>
-      <p class="asy-note"><b>強み 4 枚</b>：標題・副文＝別紙② 逐字（標題锁定・副文面客打磨済）。区切り＝淡出線/線なし（mtg5 現場選定・dock）。図＝候補池（`RY_Image_Candidate_Mapping` 準拠・dock 換図）。<span class="arr">⚠</span> mtg5 選定後＝落選区切り案・dock を strip。</p>
+      <p class="asy-note"><b>強み 4 枚</b>：標題・副文＝別紙② 逐字（標題锁定・副文面客打磨済）。区切り＝<b>淡出線 確定</b>（mtg5 選定・260720 PM 落账・strip 済）。図＝既定＝社長選定（①i1gR ③Wb4D・260720）・換図範囲＝全庫（標準 picker）。</p>
     </div>
   </section>
 
@@ -194,13 +193,14 @@
 <script>RY.mountFooter();RY.init();</script>
 
 <script>
-/* ===== 頁固有（L2 強み・数字）：区切り切替＋換図＋reveal ===== */
+/* ===== 頁固有（L2 強み・数字）：換図（全庫・標準 picker）＋reveal =====
+   260720 PM：区切り＝淡出線 確定→data-line 機構・dock（線切替/旧候補池）strip。既定図＝社長選定（①i1gR ③Wb4D）・範囲＝全庫 */
 (function(){
   "use strict";
-  var body=document.body;
-  RY.group(".dm-panel [data-ln]",function(b){ body.dataset.line=b.dataset.ln; });
-  RY.group(".dm-panel [data-i1]",function(b){ document.getElementById("img-str1").src="images/"+b.dataset.i1; });
-  RY.group(".dm-panel [data-i3]",function(b){ document.getElementById("img-str3").src="images/"+b.dataset.i3; });
+  RY.initImgPickers({
+    "str1": RY.poolAll("getty-images-i1gRNqPHpiw-unsplash"),
+    "str3": RY.poolAll("getty-images-Wb4D-1wIpLI-unsplash")
+  });
   RY.reveal([".reveal"]);
 })();
 </script>

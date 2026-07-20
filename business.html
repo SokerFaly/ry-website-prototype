@@ -108,7 +108,7 @@
       <!-- 5 子页入口（順=①〜⑤信任優先·大判オルタネート・バンド·→ L2）-->
       <ol class="bs-list">
         <li class="reveal"><a class="bs-entry" data-slot="biz-asset" data-href="/ja/business/asset-management">
-          <span class="bs-fig"><span class="ph"><img id="img-biz-asset" src="images/20_toki-no-ori.webp" alt="" loading="lazy" decoding="async"></span></span>
+          <span class="bs-fig"><span class="ph"><img id="img-biz-asset" src="images/getty-images-HfwZGsly8bw-unsplash.webp" alt="" loading="lazy" decoding="async"></span></span>
           <span class="bs-txt">
             <span class="bs-ttl">不動産保有・管理・運営サポート</span>
             <span class="bs-ds jp">物件の保有から日々の管理・運営まで、トータルでサポート。</span>
@@ -124,7 +124,7 @@
           </span>
         </a></li>
         <li class="reveal"><a class="bs-entry" data-slot="biz-info" data-href="/ja/business/investment-info">
-          <span class="bs-fig"><span class="ph"><img id="img-biz-info" src="images/getty-images-i1gRNqPHpiw-unsplash.webp" alt="" loading="lazy" decoding="async"></span></span>
+          <span class="bs-fig"><span class="ph"><img id="img-biz-info" src="images/curated-lifestyle-uKh6BAovukk-unsplash.webp" alt="" loading="lazy" decoding="async"></span></span>
           <span class="bs-txt">
             <span class="bs-ttl">不動産投資に関する情報提供</span>
             <span class="bs-ds jp">情報・資料のご提供（市場や流れの詳しい解説は投資ガイドへ）。</span>
@@ -172,11 +172,12 @@
 (function(){
   "use strict";
   /* 入口 候補画像プール（先頭＝既定·画框 3/2 に合わせ選定·mtg_4 版と同値）*/
+  /* 260720 PM：既定＝社長選定（①HfwZ ②beth ③uKh6 ④ySFV ⑤01_guide-plan-b）・全 5 槽の範囲＝全庫（旧 限定池 strip） */
   RY.initImgPickers({
-    "biz-asset":    RY.poolAll("20_toki-no-ori"),
-    "biz-maint":    ["beth-macdonald-ozc4SB3b8xs-unsplash","shraga-kopstein-E5S7Aks1fFY-unsplash","xinqi-yao-9f5M0KTl6Uc-unsplash","joseph-sullan-5Fc-dKWSUU8-unsplash"],
-    "biz-info":     ["getty-images-i1gRNqPHpiw-unsplash","curated-lifestyle-zd5CY2KWzHs-unsplash","getty-images-Wb4D-1wIpLI-unsplash","van-tay-media-TFFn3BYLc5s-unsplash","curated-lifestyle-uKh6BAovukk-unsplash","getty-images-WSFZHeBOicc-unsplash","christina-wocintechchat-com-m-eF7HN40WbAQ-unsplash","kobu-agency-7okkFhxrxNw-unsplash"],
-    "biz-overseas": ["getty-images-ySFV4eoiWfw-unsplash","the-jopwell-collection-_jfWNP86sNM-unsplash","curated-lifestyle-zd5CY2KWzHs-unsplash","getty-images-Wb4D-1wIpLI-unsplash"],
+    "biz-asset":    RY.poolAll("getty-images-HfwZGsly8bw-unsplash"),
+    "biz-maint":    RY.poolAll("beth-macdonald-ozc4SB3b8xs-unsplash"),
+    "biz-info":     RY.poolAll("curated-lifestyle-uKh6BAovukk-unsplash"),
+    "biz-overseas": RY.poolAll("getty-images-ySFV4eoiWfw-unsplash"),
     "biz-record":   RY.poolAll("01_guide-plan-b")
   });
   RY.reveal([".reveal"]);   /* 対象＝markup 側 .reveal（事業入口 li ×5・結尾 CTA 段）*/
