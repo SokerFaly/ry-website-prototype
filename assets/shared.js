@@ -13,7 +13,7 @@
      aria-current="true" 付与を追加 ② NAV 子菜単「会社概要」へ href 接線（既建の評審頁のみ・他項は頁建成時に順次）。
    変更（2026-07-13・L2 追加 about-strengths）：NAV 子菜単「強み・数字」へ href 接線。
    解説モードの中身：頁の <template id="ry-dm-content"> を共通壳へ展開。
-   palette 組は共通側が単一ソース＝テンプレ内の <!--RY:PALETTE--> マーカー位置に注入。
+   palette 組＝260720 strip（deep 本採用・選定機構撤去）。
    ============================================================ */
 (function(){
 "use strict";
@@ -66,13 +66,7 @@ var DM_TOGGLE_HTML = `<button class="dm-toggle" id="dmToggle" aria-expanded="fal
 var DM_OPEN_HTML = `<aside class="dm-panel" id="dmPanel" hidden aria-label="解説モード">`;
 var DM_HEAD_HTML = `  <div class="dm-head"><b>解説モード</b><button class="dm-close" id="dmClose" aria-label="閉じる">×</button></div>`;
 
-/* palette 組（全站単一ソース・4套は assets/tokens.css の data-palette と対）*/
-var PALETTE_HTML = `    <div class="dm-grp"><span class="dm-lbl">テーマカラー（配色·全站）</span><div class="seg" role="group" aria-label="テーマカラー">
-      <button data-palette="burgundy"><span class="dm-sw" style="background:#4C0018"></span>バーガンディ</button>
-      <button data-palette="forest"><span class="dm-sw" style="background:#014421"></span>フォレストグリーン</button>
-      <button data-palette="deep" aria-pressed="true"><span class="dm-sw" style="background:#0C3620"></span>ディープグリーン</button>
-      <button data-palette="bottle"><span class="dm-sw" style="background:#0F2A1D"></span>ボトルグリーン</button>
-    </div></div>`;
+/* palette 組＝260720 PM strip（deep 本採用・選定機構撤去） */
 
 var FOOTER_HTML = `<!-- 08 FOOTER 帯 -->
 <div class="footer-wf"><div class="wrap">
@@ -80,7 +74,7 @@ var FOOTER_HTML = `<!-- 08 FOOTER 帯 -->
   <div class="f-top">
     <div>
       <div class="f-brand"><svg class="f-logo" viewBox="0 0 176.19898 176.13703"><use href="#ry-mark"/></svg><span class="f-wm">株式会社RY</span></div>
-      <dl class="f-dl"><dt>設立</dt><dd>2021年11月</dd><dt>所在地</dt><dd>東京都港区赤坂（ヒューリックJP赤坂ビル）</dd><dt>代表者</dt><dd>清水 梛央</dd><dt>TEL</dt><dd><a href="tel:0368247009">03-6824-7009</a></dd></dl>
+      <dl class="f-dl"><dt>設立</dt><dd>2021年11月</dd><dt>所在地</dt><dd>東京都港区赤坂2丁目5番8号 ヒューリックJP赤坂ビル3F-6F</dd><dt>代表者</dt><dd>清水 梛央</dd><dt>TEL</dt><dd><a href="tel:0344000809">03-4400-0809</a></dd></dl>
     </div>
     <div class="f-legal"><h4>Legal</h4><ul>
       <li><a href="#">サイトマップ</a></li>
@@ -283,7 +277,7 @@ function mountChrome(){
   var here = document.currentScript;
   if(!here){ return; }
   var tpl = document.getElementById("ry-dm-content");
-  var dmContent = tpl ? tpl.innerHTML.replace("<!--RY:PALETTE-->", PALETTE_HTML) : PALETTE_HTML;
+  var dmContent = tpl ? tpl.innerHTML : "";
   var html = SYMBOL_HTML + "\n\n" + NAV_HTML + "\n\n" + DRAWER_HTML + "\n\n" +
     DM_TOGGLE_HTML + "\n" + DM_OPEN_HTML + "\n" + DM_HEAD_HTML + "\n" + dmContent + "\n</aside>";
   here.insertAdjacentHTML("beforebegin", html);
@@ -326,7 +320,6 @@ function init(){
   function openPanel(o){ panel.hidden=!o; document.body.classList.toggle("dm-on", !!o); tgl.setAttribute("aria-expanded",o?"true":"false"); }
   tgl.addEventListener("click",function(){ openPanel(panel.hidden); });
   cls.addEventListener("click",function(){ openPanel(false); });
-  group(".dm-panel [data-palette]",function(b){ body.dataset.palette=b.dataset.palette; });
 
   /* 解説モード ページング（1=レイアウト / 2=配色）*/
   var dmPages=panel.querySelectorAll(".dm-page"), dmNav=panel.querySelectorAll(".dm-nav button");
