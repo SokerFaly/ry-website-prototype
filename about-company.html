@@ -13,7 +13,7 @@
   ・私たちの姿勢＝版面 **左·縦組 確定（mtg5 選定・260717 PM）**——落選 2 排版（中央/右·軸）CSS・markup・picker＝strip 済。
     文字池＝第3世代 S1–S5（content 別紙①・逐字・暫定 S5）——旧第2世代文字列は不搬（mtg4 全廃・墓碑）。
     旧 on/off トグル廃（常設格上げ＝mtg4 社長指定）・旧 stancebg トグル廃→背景固定 --warm2（サブ背景＝区块交替用途・PM 承認）。
-  ・会社情報＝content 2 会社概要（2026-07-13 版）基。260717 PM 指示＝建物修繕の括弧内詳細・従業員数行を非表示（content 側同期＝PM→content）。許認可＝行を設けない（content 3）・売上高＝V1 不載（PM 07-12）。
+  ・会社情報＝content 2 会社概要（2026-07-13 版）基。260717 PM 指示＝建物修繕の括弧内詳細・従業員数行を非表示（content 側同期＝PM→content）。許認可＝行を設けない（content 3）・売上高＝暫定掲載（✅ 260722 PM 反転·mtg_6 社長目視で最終判断·🪦 旧「V1 不載」07-12）。
   ・所在地行に Google マップ埋め込み（PM 拍板 2026-07-13・lazy・hairline 枠＝mtg_5 語彙・下に外部リンク兜底）。
     ピン＝q=住所 の検索埋め込み——ズレる場合は Google マップ「共有→地図を埋め込む」生成の公式 iframe src へ差替
     （生産期 build も公式串推奨）。合规＝外部送信規律／プライバシーポリシー記載→公開前専門家確認（sync 時 content へ注記）。
@@ -62,19 +62,15 @@
 </style>
 <script>document.documentElement.classList.add('jsm');</script>
 </head>
-<body class="l2-page" data-nav="solid" data-palette="deep">
+<body class="l2-page" data-nav="solid">
 
 <!-- 頁固有：解説モードの中身（shared.js が共通壳へ展開。palette 組＝共通側単一ソース）
-     本頁の解説モード＝2 機能のみ：① 姿勢 文（池5・mtg5 選定用／版面＝確定済）② テーマカラー切替 -->
+     本頁の解説モード＝1 機能のみ：① 姿勢 文（池5・mtg5 選定用／版面＝確定済）〔配色頁＝260722 削除〕 -->
 <template id="ry-dm-content">
-  <div class="dm-nav" role="group" aria-label="ページ切替"><button data-page="1" aria-pressed="true" aria-label="1ページ目 姿勢">1</button><button data-page="2" aria-label="2ページ目 配色">2</button></div>
+  <div class="dm-nav" role="group" aria-label="ページ切替"><button data-page="1" aria-pressed="true" aria-label="1ページ目 姿勢">1</button></div>
   <div class="dm-page" data-page="1">
     <div class="dm-grp"><span class="dm-lbl">姿勢 文（池5・別紙①・mtg5 選定）</span><div class="seg" role="group" aria-label="姿勢 文"><button data-st="1">S1</button><button data-st="2">S2</button><button data-st="3">S3</button><button data-st="4">S4</button><button data-st="5" aria-pressed="true">S5</button></div></div>
     <div class="dm-now">版面＝<b>左·縦組（mtg5 確定・260717）</b>。文＝池5より選定（catch と綁定なし・mtg4）・暫定 S5【仮】。<b>S1/S2/S4＝amber</b>（利益直結系）——選定文は公開前に行政書士・弁護士確認、amber は最高審級（content 別紙①）。</div>
-  </div>
-  <div class="dm-page" data-page="2" hidden>
-<!--RY:PALETTE-->
-    <div class="dm-now">変わる＝パンくず hover・矢印・CTA・NAV active・Footer 帯 など主色連動分。恒定＝暖白底・本文色・border・字体(Noto)。</div>
   </div>
 </template>
 
@@ -126,10 +122,11 @@
           <tr><th scope="row">代表者</th><td>清水 梛央</td></tr>
           <tr><th scope="row">事業内容</th><td class="jp">不動産の保有・管理・運営／建物修繕／不動産投資に関する情報提供／投資サポート</td></tr>
           <tr><th scope="row">資本金</th><td>500万円</td></tr>
+          <tr><th scope="row">売上高</th><td>15億円（令和7年9月期）</td></tr>
           <tr><th scope="row">連絡先</th><td><a href="tel:0344000809">TEL 03-4400-0809</a></td></tr>
         </tbody>
       </table>
-      <p class="asy-note"><b>会社情報</b>：値源＝content 2 会社概要（2026-07-13 版）基——<b>260717 PM 指示＝建物修繕の括弧内詳細・従業員数行 非表示</b>（content 側同期＝PM→content）。<span class="arr">⚠</span> 許認可＝未取得のため<b>行を設けない</b>（content 3）／売上高＝V1 不載（PM 2026-07-12）／連絡先＝tap-to-call。表の hairline＝内容内部の構造線（line-free 対象外）。地図＝Google 埋め込み（lazy・PM 拍板 07-13）——<b>外部送信規律・プライバシーポリシー記載＝公開前専門家確認</b>（sync 時 content へ注記）／オフライン・遮断時は空枠＝予期／ピンずれ時＝頁頭注の差替手順。</p>
+      <p class="asy-note"><b>会社情報</b>：値源＝content 2 会社概要（2026-07-13 版）基——<b>260717 PM 指示＝建物修繕の括弧内詳細・従業員数行 非表示</b>（content 側同期＝PM→content）。<span class="arr">⚠</span> 許認可＝未取得のため<b>行を設けない</b>（content 3）／売上高＝<b>暫定掲載</b>（✅ 260722 PM 反転·mtg_6 社長目視で最終判断·🪦 旧「V1 不載」260712）／連絡先＝tap-to-call。表の hairline＝内容内部の構造線（line-free 対象外）。地図＝Google 埋め込み（lazy・PM 拍板 07-13）——<b>外部送信規律・プライバシーポリシー記載＝公開前専門家確認</b>（sync 時 content へ注記）／オフライン・遮断時は空枠＝予期／ピンずれ時＝頁頭注の差替手順。</p>
     </div>
   </section>
 

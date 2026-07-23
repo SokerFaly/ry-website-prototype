@@ -83,10 +83,6 @@ body[data-cardfx="draw"] .card:hover .card-bd rect, body[data-cardfx="draw"] .ca
 .dm-nav button{ width:26px; height:26px; flex:none; border-radius:50%; font:inherit; font-size:.72rem; font-weight:700; cursor:pointer; border:1px solid rgba(255,255,255,.28); background:transparent; color:rgba(255,255,255,.7); display:grid; place-items:center; line-height:1; }
 .dm-nav button[aria-pressed="true"]{ background:#fff; color:var(--ink); border-color:#fff; }
 .dm-page[hidden]{ display:none; }
-.dm-replay{ display:flex; align-items:center; justify-content:center; gap:.45rem; width:100%; margin-top:.55rem; padding:.52rem .8rem; font:inherit; font-size:.74rem; font-weight:600; letter-spacing:.02em; color:#fff; background:transparent; border:1px solid rgba(255,255,255,.34); border-radius:9px; cursor:pointer; transition:background .18s, border-color .18s; }
-.dm-replay:hover{ background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.6); }
-.dm-replay .ic{ font-size:.62rem; line-height:1; }
-.dm-sw{ width:11px; height:11px; border-radius:50%; display:inline-block; margin-right:.4em; vertical-align:-1px; border:1px solid rgba(255,255,255,.5); }
 /* 3：辅助注釈は解説モード ON のみ表示（OFF＝クリーンな汇报ビュー）*/
 body:not(.dm-on) .asy-note{ display:none; }
 body:not(.dm-on) .sec-id{ display:none; }
@@ -282,8 +278,8 @@ html.jsm .reveal.in{ opacity:1; transform:none; }
 .ry-grid-cell img{ width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:5px; display:block; background:#eee; }
 .ry-grid-cell span{ font-size:10px; line-height:1.2; color:#8a8a8a; word-break:break-all; max-height:2.4em; overflow:hidden; }
 .ry-grid-cell:hover{ background:#f0eef0; }
-.ry-grid-cell.on{ border-color:var(--brand,#4C0018); background:#fff; }
-.ry-grid-cell.on span{ color:var(--brand,#4C0018); font-weight:700; }
+.ry-grid-cell.on{ border-color:var(--brand,#0C3620); background:#fff; }
+.ry-grid-cell.on span{ color:var(--brand,#0C3620); font-weight:700; }
 body.ry-grid-open{ overflow:hidden; }
 @media (max-width:480px){
   .ry-grid-box{ width:100vw; max-height:100dvh; height:100dvh; border-radius:0; }

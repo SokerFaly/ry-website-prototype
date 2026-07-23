@@ -36,15 +36,6 @@
 .nw-reassure{ margin:1.05rem 0 0; max-width:21em; font-family:var(--serif); font-weight:600; color:var(--ink); font-size:clamp(1.14rem,1.5vw,1.42rem); line-height:1.85; }
 .nw-body{ margin:.85rem 0 0; max-width:24em; color:var(--ink2); font-size:clamp(.98rem,1.05vw,1.06rem); line-height:1.9; }
 .nw-words{ position:relative; }
-.nw-word{ display:flex; align-items:center; gap:.55em; margin:0; font-weight:700; line-height:1.12; color:var(--ink); font-size:clamp(2.7rem,6.4vw,5rem); }
-.nw-word + .nw-word{ margin-top:clamp(.55rem,1.5vw,1.15rem); }
-.nw-word:nth-child(2){ padding-left:clamp(.6rem,2.4vw,1.8rem); }
-.nw-word:nth-child(3){ padding-left:clamp(1.2rem,4.8vw,3.6rem); }
-.nw-word[lang="ja"]{ font-family:'Noto Serif JP',serif; }
-.nw-word[lang="ko"]{ font-family:'Noto Serif KR','Noto Serif JP',serif; }
-.nw-word[lang="zh-Hans"]{ font-family:'Noto Serif SC','Noto Serif JP',serif; }
-.nw-word .mk{ flex:none; width:clamp(1.3rem,2.6vw,2.1rem); height:2px; background:var(--brand); }
-@media(max-width:600px){ .nw-word{ padding-left:0!important; font-size:clamp(2.5rem,13vw,3.5rem); } }
 
 /* ===== ② 市場データ / 412万（大 serif 数字·非対称·全白）===== */
 .nw-ctx-grid{ display:grid; grid-template-columns:minmax(0,1fr); gap:clamp(1.8rem,4vw,2.8rem); align-items:center; }
@@ -115,18 +106,14 @@
 </style>
 <script>document.documentElement.classList.add('jsm');</script>
 </head>
-<body class="l2-page" data-nav="solid" data-palette="deep">
+<body class="l2-page" data-nav="solid">
 <template id="ry-dm-content">
-<div class="dm-nav" role="group" aria-label="ページ切替"><button data-page="1" aria-pressed="true" aria-label="1ページ目 換図">1</button><button data-page="2" aria-label="2ページ目 配色">2</button></div>
+<div class="dm-nav" role="group" aria-label="ページ切替"><button data-page="1" aria-pressed="true" aria-label="1ページ目 換図">1</button></div>
 <div class="dm-page" data-page="1">
 <div class="dm-now">多言語 表現＝<b>D 竖排 確定</b>（mtg5 選定・260720 PM 落账・落選 A/B/C strip 済・入場＝打字机）。<span class="arr">✎</span> Hello＝装飾の国際挨拶（本文＝日韓中 Native·要 content/法務 最終確認）。</div>
 <div class="dm-grp imgsw" data-sec="nw1"><span class="dm-lbl">換図 ①伝わるまで</span><div class="imgseg"><button class="imgprev" aria-label="前の画像">◀</button><span class="imgnow"></span><button class="imgnext" aria-label="次の画像">▶</button></div></div>
 <div class="dm-grp imgsw" data-sec="nw2"><span class="dm-lbl">換図 ②現地ネットワーク</span><div class="imgseg"><button class="imgprev" aria-label="前の画像">◀</button><span class="imgnow"></span><button class="imgnext" aria-label="次の画像">▶</button></div></div>
 <div class="dm-now">図＝既定＝社長選定（①chri ②tFNO・260720）・範囲＝全庫（◀▶ / ⊞ グリッド）。</div>
-</div>
-<div class="dm-page" data-page="2" hidden>
-<!--RY:PALETTE-->
-<div class="dm-now">変わる＝三語 tick·矢印·CTA·NAV active·Footer 帯·気泡/数字の主色連動分。恒定＝暖白底·本文色·border·字体(Noto)。</div>
 </div>
 </template>
 <script src="assets/shared.js"></script>

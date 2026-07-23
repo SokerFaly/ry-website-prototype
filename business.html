@@ -62,12 +62,12 @@
 </style>
 <script>document.documentElement.classList.add('jsm');</script>
 </head>
-<body class="l1-page" data-nav="solid" data-palette="deep">
+<body class="l1-page" data-nav="solid">
 
-<!-- 頁固有：解説モードの中身（shared.js が共通壳へ展開。palette 組＝共通側単一ソース、RY:PALETTE マーカー位置に注入）
-     L1 の解説モード＝2 機能のみ：① 板块画像の差替 ② テーマカラー切替（旧「配置」頁＝A 選定済につき撤去）-->
+<!-- 頁固有：解説モードの中身（shared.js が共通壳へ展開）
+     L1 の解説モード＝1 機能のみ：① 板块画像の差替〔旧「配置」頁＝A 選定済で撤去·配色頁＝260722 削除〕-->
 <template id="ry-dm-content">
-  <div class="dm-nav" role="group" aria-label="ページ切替"><button data-page="1" aria-pressed="true" aria-label="1ページ目 画像">1</button><button data-page="2" aria-label="2ページ目 配色">2</button></div>
+  <div class="dm-nav" role="group" aria-label="ページ切替"><button data-page="1" aria-pressed="true" aria-label="1ページ目 画像">1</button></div>
   <div class="dm-page" data-page="1">
     <div class="dm-now" style="margin:0 0 .85rem">各事業の画像を ◀ ▶ で差替（全候補·圧縮済）。本番＝各1枚に確定。</div>
     <div class="dm-grp imgsw" data-sec="biz-asset"><span class="dm-lbl">① 保有・管理・運営</span><div class="imgseg"><button class="imgprev" aria-label="前の画像">◀</button><span class="imgnow"></span><button class="imgnext" aria-label="次の画像">▶</button></div></div>
@@ -75,10 +75,6 @@
     <div class="dm-grp imgsw" data-sec="biz-info"><span class="dm-lbl">③ 情報提供</span><div class="imgseg"><button class="imgprev" aria-label="前の画像">◀</button><span class="imgnow"></span><button class="imgnext" aria-label="次の画像">▶</button></div></div>
     <div class="dm-grp imgsw" data-sec="biz-overseas"><span class="dm-lbl">④ 投資サポート</span><div class="imgseg"><button class="imgprev" aria-label="前の画像">◀</button><span class="imgnow"></span><button class="imgnext" aria-label="次の画像">▶</button></div></div>
     <div class="dm-grp imgsw" data-sec="biz-record"><span class="dm-lbl">⑤ 実績・事例</span><div class="imgseg"><button class="imgprev" aria-label="前の画像">◀</button><span class="imgnow"></span><button class="imgnext" aria-label="次の画像">▶</button></div></div>
-  </div>
-  <div class="dm-page" data-page="2" hidden>
-<!--RY:PALETTE-->
-    <div class="dm-now">変わる＝矢印·下線·CTA·NAV active·Footer 帯 など主色連動分。恒定＝暖白底·本文色·字体(Noto)。</div>
   </div>
 </template>
 
@@ -102,7 +98,7 @@
         <span class="l1-rule" aria-hidden="true"></span>
         <p class="eyebrow">Business</p>
         <h1 class="l1-title">事業紹介</h1>
-        <p class="lead bs-lead jp">不動産の保有・管理から、建物の修繕、情報のご提供、海外のお客様の支援まで。RY の事業を、ひとつずつ。</p>
+        <p class="lead bs-lead jp">保有・管理から各種サポートまで。RYにできることを、ひとつずつ。</p>
       </div>
 
       <!-- 5 子页入口（順=①〜⑤信任優先·大判オルタネート・バンド·→ L2）-->

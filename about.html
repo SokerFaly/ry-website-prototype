@@ -49,21 +49,17 @@
 </style>
 <script>document.documentElement.classList.add('jsm');</script>
 </head>
-<body class="l1-page" data-nav="solid" data-palette="deep">
+<body class="l1-page" data-nav="solid">
 
-<!-- 頁固有：解説モードの中身（shared.js が共通壳へ展開。palette 組＝共通側単一ソース、RY:PALETTE マーカー位置に注入）
-     L1 の解説モード＝2 機能のみ：① 板块画像の差替 ② テーマカラー切替 -->
+<!-- 頁固有：解説モードの中身（shared.js が共通壳へ展開）
+     L1 の解説モード＝1 機能のみ：① 板块画像の差替〔配色頁＝260722 削除·mtg5 で deep 本採用·選定機構退役〕 -->
 <template id="ry-dm-content">
-  <div class="dm-nav" role="group" aria-label="ページ切替"><button data-page="1" aria-pressed="true" aria-label="1ページ目 画像">1</button><button data-page="2" aria-label="2ページ目 配色">2</button></div>
+  <div class="dm-nav" role="group" aria-label="ページ切替"><button data-page="1" aria-pressed="true" aria-label="1ページ目 画像">1</button></div>
   <div class="dm-page" data-page="1">
     <div class="dm-now" style="margin:0 0 .85rem">入口卡の画像を ◀ ▶ で差替（全候補·圧縮済）。本番＝各1枚に確定。</div>
     <div class="dm-grp imgsw" data-sec="about-company"><span class="dm-lbl">01　会社概要</span><div class="imgseg"><button class="imgprev" aria-label="前の画像">◀</button><span class="imgnow"></span><button class="imgnext" aria-label="次の画像">▶</button></div></div>
     <div class="dm-grp imgsw" data-sec="about-strengths"><span class="dm-lbl">02　強み・数字</span><div class="imgseg"><button class="imgprev" aria-label="前の画像">◀</button><span class="imgnow"></span><button class="imgnext" aria-label="次の画像">▶</button></div></div>
     <div class="dm-grp imgsw" data-sec="about-network"><span class="dm-lbl">03　多言語・NW</span><div class="imgseg"><button class="imgprev" aria-label="前の画像">◀</button><span class="imgnow"></span><button class="imgnext" aria-label="次の画像">▶</button></div></div>
-  </div>
-  <div class="dm-page" data-page="2" hidden>
-<!--RY:PALETTE-->
-    <div class="dm-now">変わる＝入口番号·矢印·下線·CTA·NAV active·Footer 帯 など主色連動分。恒定＝暖白底·本文色·border·字体(Noto)。</div>
   </div>
 </template>
 
