@@ -5,7 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>株式会社RY ｜ 不動産投資サポート</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;600;700&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- 多言語 hello の 3 字形（KR/SC/TC）＝1 家族 1 link ＋ text 子集（about-network.html と同方式·CJK 全体を落とさない）。
+     260723 修正：KR/SC は CSS で宣言済みなのに読込が無く、端末に無い環境ではゴシック等へ回落していた（移植時の取りこぼし）。
+     ⚠️ text= は「この字だけ」を配信する＝hello の語を変更したら本 URL の text も要更新。 -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@700&text=%EC%95%88%EB%85%95%ED%95%98%EC%84%B8%EC%9A%94&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700&text=%E4%BD%A0%E5%A5%BD&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700&text=%E5%93%88%E5%9B%89&display=swap" rel="stylesheet">
 <!-- ============================================================
   mtg_5 準項目化（step0・2026-07-09）：共通分は assets/ へ分離済
   ・全站 token（色/字/間距/動効値）＝ assets/tokens.css（数値正本＝RY_Design_Tokens.md）
@@ -228,10 +234,14 @@ body[data-mlang="off"] .mlang{ display:none; }
 .mlang-hello{ display:flex; justify-content:center; width:100%; }   /* 260722：wrap 幅いっぱいに伸ばす＝散布の余白源（旧＝max-content で縮んでいた）*/
 .mlang-hello .v-c2{ position:relative; padding:.2em 0; width:100%; }
 .mlang-hello .cw{ margin:0; position:relative; width:max-content; max-width:100%; font-weight:700; font-size:clamp(2.28rem,min(12.6vw,18.2vh),9.8rem); line-height:1; font-family:'Noto Serif JP',serif; color:var(--brand);
-  transform:translate3d(0,calc(var(--in,0px) + var(--px,0px)),0);
-  transition:opacity .55s ease, transform .62s cubic-bezier(.22,.61,.36,1); }   /* 大きさ/色/不透明度/重ね順＝JS の深度層。--in＝出場·--px＝スクロール視差の 2 変数合成（互いに上書きしない）。🪦 抜き文字＝260722 PM 撤去 */
+  transform:translate3d(0,var(--in,0px),0);   /* 出場のみ（transition あり）*/
+  translate:0 var(--px,0px);                  /* 視差のみ（transition なし＝即追従）*/
+  transition:opacity .55s ease, transform .62s cubic-bezier(.22,.61,.36,1); }
+/* 260723 修正：出場と視差を別プロパティへ分離。旧＝両方を 1 つの transform に calc で合成していたため、
+   ①視差が毎フレーム transform を書換→transition が再スタートし続ける ②出場完了時に .settled で transform の
+   transition を外した瞬間、進行中の補間値から実値へ一気に飛ぶ＝終端で 1〜3px スナップ（スクロール中だけ出る＝再現が不安定）。
+   translate は独立プロパティで transition 対象外＝視差は即追従、transform は出場だけを担当。.settled は不要になり撤去。 */
 .jsm .mlang-hello .cw{ opacity:0; }   /* 初態＝JS 有効時のみ隠す（JS 無効なら静的表示） */
-.mlang-hello .cw.settled{ transition:opacity .55s ease; }   /* 出場完了後は transform の transition を外す＝視差が遅れず追従（残すとゴム感が出る） */
 .mlang-hello .cw + .cw{ margin-top:-.34em; }   /* 260722 PM：字面の実重なり＝(値−0.12)em。-.14em では実質 0.02em＝重なり消失だったため -.34em（実重なり 0.22em）へ */
 /* 横位置＝JS 実測（layoutHello）：語ごとの余白（舞台幅 − 語幅）内でランダム＝はみ出し不可。旧 nth-child 固定オフセット＝260722 撤去 */
 /* 5 変体＝Tokens の --hello-*（✅ 260722 PM 方案 B·装飾層例外·適用は本ブロックのみ）。
@@ -242,8 +252,12 @@ body[data-mlang="off"] .mlang{ display:none; }
 .mlang-hello .cw.fam-olive{  color:var(--hello-olive); }
 .mlang-hello .cw.fam-neut{   color:var(--hello-neut); }
 .mlang-hello .fk{ font-family:'Noto Serif KR','Noto Serif JP',serif; } .mlang-hello .fc{ font-family:'Noto Serif SC','Noto Serif JP',serif; } .mlang-hello .ft{ font-family:'Noto Serif TC','Noto Serif SC','Noto Serif JP',serif; }
-@media(max-width:600px){ .mlang-hello .cw{ font-size:clamp(1.75rem,9.1vw,3.15rem); } }
-@media(prefers-reduced-motion:reduce){ .mlang-hello .cw{ transition:none!important; transform:none!important; } }
+/* 260723 PM：×0.7 は電脳画面での判断＝手機は巻き添えだった。最長語の占有率を電脳（≈70%）に揃え直す（🪦 9.1vw） */
+@media(max-width:600px){ .mlang-hello .cw{ font-size:clamp(2.35rem,12.8vw,4.2rem); }
+  /* 260723 PM：手機のみ上下余白を約 2 倍（10vh→21vh）。ブロックが小さい手機では既定の余白だと窮屈に見えるため。電脳は 7rem 上限のまま＝手つかず */
+  .mlang-stage{ padding-block:clamp(5.5rem,21vh,12rem); }
+}
+@media(prefers-reduced-motion:reduce){ .mlang-hello .cw{ transition:none!important; transform:none!important; translate:none!important; } }
 </style>
 <script>document.documentElement.classList.add('jsm');</script>
 </head>
@@ -590,28 +604,32 @@ body[data-mlang="off"] .mlang{ display:none; }
      区間は重ならない＝「手前 > 中 > 奥」の大小関係だけは常に成立（関係まで乱数にすると奥行きが逆転して読めなくなる）。
      ⚠️ Tokens 5「他 section の parallax ≤約10px」を超える＝装飾層の例外·次 sync で Tokens 5 に一行追記が必要 */
   function rnd(a,b){ return a+Math.random()*(b-a); }
-  function tierOf(s){ return s===1 ? {o:'1',z:'3',step:2,dy:18,amp:rnd(34,46)}
-                    : (s>.7   ? {o:'.93',z:'2',step:1,dy:12,amp:rnd(20,28)}
-                              : {o:'.82',z:'1',step:0,dy:8, amp:rnd(8,14)}); }   /* step＝出場順（0＝奥が先）·dy＝出場の初期オフセット·amp＝スクロール視差幅 */
+  /* ROLE_SETS の s＝「役の識別キー」·実スケールは sc（画面幅で変わる）。
+     260723 PM：手機は層差を圧縮（1/.86/.74）——小画面では色と重なりだけで奥行きは読めるので、
+     大きさ差まで電脳と同じ（1/.80/.64）にすると最奥が小さすぎて「小気」に見える。 */
+  function tierOf(s,mob){ return s===1 ? {o:'1',  z:'3',step:2,dy:18,amp:rnd(34,46),sc:1}
+                    : (s>.7   ? {o:'.93',z:'2',step:1,dy:12,amp:rnd(20,28),sc:mob?.86:.80}
+                              : {o:'.82',z:'1',step:0,dy:8, amp:rnd(8,14),sc:mob?.74:.64}); }   /* step＝出場順（0＝奥が先）·dy＝出場の初期オフセット·amp＝スクロール視差幅·sc＝深度スケール */
   function layoutHello(){
     var box=host.querySelector('.v-c2'); if(!box) return null;
     var W=box.clientWidth; if(!W) return null;
     var cws=sh(Array.prototype.slice.call(box.querySelectorAll('.cw')));
     cws.forEach(function(el){ box.appendChild(el); });                    /* ① 語順シャッフル */
+    var mob=matchMedia('(max-width:600px)').matches;   /* 毎回判定＝resize/回転にも追従 */
     var roles=ROLE_SETS[(Math.random()*ROLE_SETS.length)|0], plan=[];
     cws.forEach(function(cw,i){
-      var r=roles[i]||roles[0], tr=tierOf(r.s);
+      var r=roles[i]||roles[0], tr=tierOf(r.s,mob);
       FAMS.forEach(function(f){ cw.classList.remove(f); });
       cw.classList.add(r.f);                                              /* ② 色＝深度 */
       cw.style.fontSize='';
       var base=parseFloat(getComputedStyle(cw).fontSize);
-      cw.style.fontSize=(base*r.s).toFixed(1)+'px';                       /* ③ 大きさ＝深度 */
-      if(cw.offsetWidth>W){ cw.style.fontSize=(base*r.s*W/cw.offsetWidth).toFixed(1)+'px'; }   /* はみ出し保護 */
+      cw.style.fontSize=(base*tr.sc).toFixed(1)+'px';                      /* ③ 大きさ＝深度 */
+      if(cw.offsetWidth>W){ cw.style.fontSize=(base*tr.sc*W/cw.offsetWidth).toFixed(1)+'px'; }  /* はみ出し保護 */
       cw.style.zIndex=tr.z;                                               /* ④ 手前ほど上 */
       cw.style.marginLeft='0';
       var slack=W-cw.offsetWidth;                                         /* ⑤ 横位置＝余白内でランダム（%＝resize 追従）*/
-      cw.style.marginLeft=(slack>4 ? (Math.random()*slack/W*100).toFixed(2) : Math.max(0,slack/2/W*100).toFixed(2))+'%';
-      cw.classList.remove('settled');
+      var span=mob?slack*.45:slack, start=(slack-span)/2;                 /* 260723 PM：手機は振れ幅を 45% に制限し中央寄せ＝散らばらず「一塊」に見える（電脳は span=slack で従来どおり）*/
+      cw.style.marginLeft=(slack>4 ? ((start+Math.random()*span)/W*100).toFixed(2) : Math.max(0,slack/2/W*100).toFixed(2))+'%';
       cw.style.transition='none'; cw.style.opacity='0'; cw.style.setProperty('--in',tr.dy+'px');
       plan.push({el:cw,tr:tr});
     });
@@ -627,7 +645,6 @@ body[data-mlang="off"] .mlang{ display:none; }
       timers.push(setTimeout(function(){ p.el.style.opacity=p.tr.o; p.el.style.setProperty('--in','0px'); }, p.tr.step*130));
     });
     cur=plan; para();                                   /* 視差の初期値を出場と同時に置く＝入った瞬間の飛びを防ぐ */
-    if(!reduce) timers.push(setTimeout(function(){ plan.forEach(function(p){ p.el.classList.add('settled'); }); }, 260+660));
   }
   /* スクロール視差：舞台中心が視野中心からどれだけ離れているかを -1..1 に正規化し、層ごとの amp を掛ける。
      層どうしの「相対」ズレが奥行きを作る（全体が同量動くと視差はゼロ）。手前ほど大きく動く。

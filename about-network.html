@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@700&text=%EC%95%88%EB%85%95%ED%95%98%EC%84%B8%EC%9A%94&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700&text=%E4%BD%A0%E5%A5%BD&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700&text=%E5%93%88%E5%9B%89&display=swap" rel="stylesheet">   <!-- 260723：繁體「哈囉」追加分（臨時 md 6）·text 子集＝この 2 字のみ配信·語を変えたら本 text も要更新 -->
 <!-- ============================================================
   L2 新設（2026-07-15）：多言語対応・現地ネットワーク（生産 slug＝/ja/about/network・IA-v2 §1・第3頁）・命名＝「親-子.html」
   ・共通分＝assets/（tokens.css＋shared.css＋shared.js）。base/tokens/chrome は共通側·本ページ style は頁固有のみ。
@@ -88,7 +89,7 @@
 /* 関連入口（.rel）→ shared.css へ移設（全站統一）*/
 /* ===== 多言語ブロック：4 版本切替（プレビュー·default B·普通/B/C/D）===== */
 .nwv.v-c3{ display:flex; }   /* 260720 PM：D 竖排 確定——data-nwmode 切替機構・落選 A/B/C の CSS＝strip 済 */
-.fj,.fe{ font-family:'Noto Serif JP',serif; } .fk{ font-family:'Noto Serif KR','Noto Serif JP',serif; } .fc{ font-family:'Noto Serif SC','Noto Serif JP',serif; }
+.fj,.fe{ font-family:'Noto Serif JP',serif; } .fk{ font-family:'Noto Serif KR','Noto Serif JP',serif; } .fc{ font-family:'Noto Serif SC','Noto Serif JP',serif; } .ft{ font-family:'Noto Serif TC','Noto Serif SC','Noto Serif JP',serif; }
 /* D 竖排 確定（こんにちは 竖排 brand 锚·横排三行 紧凑间距·垂直居中）*/
 .v-c3{ align-items:center; gap:clamp(1.6rem,4vw,3.4rem); }
 .v-c3 .c3-v{ writing-mode:vertical-rl; margin:0; font-weight:700; font-size:clamp(2.5rem,5.6vw,4.1rem); line-height:1.04; color:var(--brand); letter-spacing:.02em; }
@@ -100,6 +101,13 @@
 /* ===== 入场动画（打字机＝D 確定のみ・260720 strip 後）===== */
 .tw-ch{ opacity:0; } .tw-ch.on{ opacity:1; }
 .tw-cursor{ display:inline-block; width:.07em; height:.9em; background:var(--brand); margin:0 .05em; vertical-align:-.08em; }
+/* 260723 修正：.c3-v は writing-mode:vertical-rl＝インライン軸が縦。inline-block の height がインライン寸法になるため、
+   光標が居る間だけ .c3-v が .9em（≈59px）伸び、次の語へ移った瞬間に縮む→ align-items:center が再センタリングして
+   ブロック全体が一気に跳んでいた。縦組み用に幅と高さを入替＝①跳び幅 59px→4.6px（実質不可視）②形も正しくなる
+   （縦書きのキャレットは横棒。光標の長辺は常に「文字の流れ方向と直交」）。物理プロパティ width/height のみ使用＝
+   論理プロパティや caret-shape のようなブラウザ差のある機能は不使用。vertical-align は縦組みでは横位置を司るため
+   最も予測しやすい baseline で上書き。 */
+.v-c3 .c3-v .tw-cursor{ width:.9em; height:.07em; vertical-align:baseline; }
 .tw-cursor.blink{ animation:twblink .53s steps(1) infinite; }
 @keyframes twblink{ 50%{ opacity:0; } }
 @media(prefers-reduced-motion:reduce){ .tw-ch{ opacity:1!important; transform:none!important; transition:none!important; } .tw-cursor{ display:none!important; } }
@@ -144,10 +152,13 @@
           <p class="nw-body jp">日本語・韓国語・中国語は、各言語のネイティブスタッフがお話をうかがいます。</p>
         </div>
         <div class="nw-words">
-          <!-- D 竖排 確定（mtg5 選定・260720 PM 落账）——落選 A普通/B会話流/C重叠＝markup・CSS・picker strip 済 -->
+          <!-- D 竖排 確定（mtg5 選定・260720 PM 落账）——落選 A普通/B会話流/C重叠＝markup・CSS・picker strip 済
+               260723：繁體「哈囉」追加（臨時 md 6·index と同段）。横列 3→4 行。打招呼層のみ＝「ネイティブ体制」の能力声明（左の本文）には不算入·PM 裁定「氛围≠承诺」。
+               語順＝안녕하세요／Hello／你好／哈囉（✅ 260723 PM 指定·打字机の順序も DOM 順＝この順）。
+               ⚠️ 打字机の総尺が約 2.2s→2.55s に延長（88ms/字＋語間 176ms·2 字＋1 ポーズ分） -->
           <div class="nwv v-c3">
             <p class="c3-v fj" lang="ja">こんにちは</p>
-            <div class="c3-h"><p class="fk" lang="ko"><span class="c3t">안녕하세요</span></p><p class="fc" lang="zh-Hans"><span class="c3t">你好</span></p><p class="fe" lang="en"><span class="c3t">Hello</span></p></div>
+            <div class="c3-h"><p class="fk" lang="ko"><span class="c3t">안녕하세요</span></p><p class="fe" lang="en"><span class="c3t">Hello</span></p><p class="fc" lang="zh-Hans"><span class="c3t">你好</span></p><p class="ft" lang="zh-Hant"><span class="c3t">哈囉</span></p></div>
           </div>
         </div>
       </div>
@@ -288,7 +299,7 @@
     var cur=document.createElement('span'); cur.className='tw-cursor blink'; var i=0, iv=88;
     var first=els[0]; if(first){ first.insertBefore(cur, first.firstChild); } /* 開場：光标先在起点闪一会儿（准备感）*/
     function step(){
-      if(i>=seq.length){ timers.push(setTimeout(function(){ if(cur.parentNode) cur.remove(); },1300)); return; }
+      if(i>=seq.length){ timers.push(setTimeout(function(){ cur.classList.remove('blink'); cur.style.visibility='hidden'; },1300)); return; }   /* 260723：remove ではなく不可視化＝占有幅をそのまま残す。現行の語では列幅は 안녕하세요 が決めるので remove でもズレないが、文案が変われば最終行が最長になり得る＝その時に崩れない保険（reset() が次回再生時に掃除する） */
       var it=seq[i++];
       if(it===null){ timers.push(setTimeout(step, iv*2)); return; }
       it.classList.add('on'); it.after(cur); timers.push(setTimeout(step, iv));
